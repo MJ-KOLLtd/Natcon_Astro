@@ -907,14 +907,6 @@
       height: 1.35rem;
       display: block;
     }
-    .cel-nc .nc-speaker-note {
-      margin-top: 1.75rem;
-      text-align: center;
-      font-size: 0.95rem;
-      color: var(--nc-muted);
-    }
-    .cel-nc .nc-speaker-note strong { color: var(--nc-green); }
-
     /* Theme 50/50 (TED inverted section) */
     .cel-nc .nc-theme-split {
       display: grid;
@@ -1249,8 +1241,14 @@
       margin: 0 auto 1.75rem;
       font-size: 1.15rem;
     }
+    .cel-nc .nc-final .nc-btn-row {
+      justify-content: center;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
     .cel-nc .nc-fine {
       margin-top: 2rem;
+      margin-bottom: 0;
       font-size: 0.85rem;
       color: rgba(255,255,255,0.45);
     }

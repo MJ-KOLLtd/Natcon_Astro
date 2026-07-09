@@ -65,4 +65,3 @@ Vercel → Project → **Settings → Domains** → add your conference domain.
 
 - Static output only (`output: 'static'`) — no server runtime required.
 - Styles keep the original `.cel-nc` scope so the TED-like CE-Logic design stays intact.
-- Speaker photos currently use placeholders under `public/assets/`.
