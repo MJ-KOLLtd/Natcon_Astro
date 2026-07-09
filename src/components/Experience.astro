@@ -18,6 +18,7 @@ const pillars = [
     image: '/assets/visual-ceigo-launch.webp',
     title: 'CeiGo launch',
     body: 'Keynote on AI in libraries, logo unveiling, and formal product launch proceedings.',
+    logo: '/assets/partner-ceigo.webp',
   },
   {
     image: '/assets/visual-panel-room.webp',
@@ -53,8 +54,18 @@ const pillars = [
     <div class="nc-hover-grid">
       {
         pillars.map((pillar) => (
-          <article class="nc-hover-card">
+          <article class:list={['nc-hover-card', { 'has-brand-logo': !!pillar.logo }]}>
             <img src={pillar.image} alt="" loading="lazy" width="1280" height="720" />
+            {pillar.logo && (
+              <img
+                class="nc-hover-brand-logo"
+                src={pillar.logo}
+                alt="CeiGo"
+                width="320"
+                height="160"
+                loading="lazy"
+              />
+            )}
             <div class="nc-hover-content">
               <h3>{pillar.title}</h3>
               <p>{pillar.body}</p>
