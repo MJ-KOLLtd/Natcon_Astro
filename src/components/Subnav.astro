@@ -1,8 +1,8 @@
 ---
-// Sticky conference subnav
+// Sticky conference subnav — desktop links + hamburger on mobile/tablet
 ---
 
-<div class="nc-subnav">
+<div class="nc-subnav" data-nc-subnav>
   <div class="nc-container nc-subnav-inner">
     <a
       class="nc-subnav-brand"
@@ -26,16 +26,110 @@
         <span>July 30-31, 2026</span>
       </span>
     </a>
-    <nav class="nc-subnav-menu" aria-label="Conference sections">
-      <span class="nc-live-chip">
-        <span class="nc-live-dot" aria-hidden="true"></span>
-        Event-day stream
-      </span>
-      <a class="nc-subnav-link hide-md" href="#cel-nc-stream">Stream</a>
-      <a class="nc-subnav-link hide-md" href="#cel-nc-speakers">Speakers</a>
-      <a class="nc-subnav-link hide-md" href="#cel-nc-partners">Partners</a>
-      <a class="nc-subnav-link hide-md" href="#cel-nc-experience">Program</a>
-      <a class="nc-btn nc-btn-gold" href="#cel-nc-stream">Live stream</a>
-    </nav>
+
+    <div class="nc-subnav-end">
+      <a class="nc-btn nc-btn-gold nc-subnav-cta-bar" href="#cel-nc-stream">Live stream</a>
+
+      <button
+        type="button"
+        class="nc-menu-toggle"
+        data-nc-menu-toggle
+        aria-expanded="false"
+        aria-controls="nc-subnav-menu"
+        aria-label="Open menu"
+      >
+        <span class="nc-menu-toggle-box" aria-hidden="true">
+          <span class="nc-menu-toggle-bar"></span>
+          <span class="nc-menu-toggle-bar"></span>
+          <span class="nc-menu-toggle-bar"></span>
+        </span>
+      </button>
+
+      <nav class="nc-subnav-menu" id="nc-subnav-menu" aria-label="Conference sections">
+        <span class="nc-live-chip">
+          <span class="nc-live-dot" aria-hidden="true"></span>
+          Event-day stream
+        </span>
+        <a class="nc-subnav-link" href="#cel-nc-stream">Stream</a>
+        <a class="nc-subnav-link" href="#cel-nc-speakers">Speakers</a>
+        <a class="nc-subnav-link" href="#cel-nc-partners">Partners</a>
+        <a class="nc-subnav-link" href="#cel-nc-experience">Program</a>
+        <a class="nc-btn nc-btn-gold nc-subnav-cta-menu" href="#cel-nc-stream">Live stream</a>
+      </nav>
+    </div>
   </div>
 </div>
+
+<script>
+  function initSubnav() {
+    const root = document.querySelector('[data-nc-subnav]');
+    if (!root || root.dataset.ready === '1') return;
+    root.dataset.ready = '1';
+
+    const toggle = root.querySelector('[data-nc-menu-toggle]');
+    const menu = root.querySelector('#nc-subnav-menu');
+    if (!toggle || !menu) return;
+
+    const mq = window.matchMedia('(max-width: 1024px)');
+
+    function setOpen(open) {
+      root.classList.toggle('is-menu-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!mq.matches) {
+        menu.removeAttribute('hidden');
+        return;
+      }
+      if (open) menu.removeAttribute('hidden');
+      else menu.setAttribute('hidden', '');
+    }
+
+    function close() {
+      setOpen(false);
+    }
+
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') === 'true';
+      setOpen(!open);
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mq.matches) close();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && root.classList.contains('is-menu-open')) {
+        close();
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!root.classList.contains('is-menu-open')) return;
+      if (!root.contains(e.target)) close();
+    });
+
+    function onViewport() {
+      if (mq.matches) {
+        setOpen(false);
+      } else {
+        root.classList.remove('is-menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        menu.removeAttribute('hidden');
+      }
+    }
+
+    onViewport();
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', onViewport);
+    } else {
+      mq.addListener(onViewport);
+    }
+  }
+
+  initSubnav();
+  document.addEventListener('astro:page-load', initSubnav);
+</script>

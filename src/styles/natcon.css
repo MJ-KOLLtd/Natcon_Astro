@@ -304,6 +304,12 @@
       .cel-nc .nc-subnav-logo { height: 1.35rem; max-width: 6.5rem; }
       .cel-nc .nc-subnav-brand-text strong { font-size: 0.78rem; }
     }
+    .cel-nc .nc-subnav-end {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
     .cel-nc .nc-subnav-menu {
       display: flex;
       align-items: center;
@@ -337,6 +343,7 @@
     }
     .cel-nc .nc-subnav-link:hover { color: #fff !important; }
     .cel-nc .nc-subnav .nc-btn { padding: 0.65rem 1.15rem; font-size: 0.88rem; }
+    .cel-nc .nc-subnav-cta-bar { display: none; }
     .cel-nc .nc-live-chip {
       display: inline-flex;
       align-items: center;
@@ -360,12 +367,132 @@
       70% { box-shadow: 0 0 0 8px rgba(236,32,40,0); }
       100% { box-shadow: 0 0 0 0 rgba(236,32,40,0); }
     }
-    @media (max-width: 900px) {
-      .cel-nc .nc-subnav-link.hide-md { display: none; }
+
+    /* Hamburger toggle — hidden on desktop */
+    .cel-nc .nc-menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin: 0;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cel-nc .nc-menu-toggle:hover,
+    .cel-nc .nc-menu-toggle:focus-visible {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.35);
+      outline: none;
+    }
+    .cel-nc .nc-menu-toggle-box {
+      position: relative;
+      display: block;
+      width: 1.25rem;
+      height: 0.9rem;
+    }
+    .cel-nc .nc-menu-toggle-bar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      border-radius: 1px;
+      background: currentColor;
+      transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
+    }
+    .cel-nc .nc-menu-toggle-bar:nth-child(1) { top: 0; }
+    .cel-nc .nc-menu-toggle-bar:nth-child(2) { top: calc(50% - 1px); }
+    .cel-nc .nc-menu-toggle-bar:nth-child(3) { top: calc(100% - 2px); }
+    .cel-nc .nc-subnav.is-menu-open .nc-menu-toggle-bar:nth-child(1) {
+      top: calc(50% - 1px);
+      transform: rotate(45deg);
+    }
+    .cel-nc .nc-subnav.is-menu-open .nc-menu-toggle-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .cel-nc .nc-subnav.is-menu-open .nc-menu-toggle-bar:nth-child(3) {
+      top: calc(50% - 1px);
+      transform: rotate(-45deg);
+    }
+
+    /* Mobile + tablet: hamburger + dropdown panel (covers iPad landscape) */
+    @media (max-width: 1024px) {
+      .cel-nc .nc-menu-toggle { display: inline-flex; }
+      .cel-nc .nc-subnav-cta-bar {
+        display: inline-flex;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.8rem;
+      }
+      .cel-nc .nc-subnav-cta-menu {
+        display: none;
+      }
+      .cel-nc .nc-subnav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        gap: 0.15rem;
+        padding: 0.75rem var(--nc-pad-x) 1rem;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+        max-height: min(70vh, 28rem);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .cel-nc .nc-subnav-menu[hidden] {
+        display: none !important;
+      }
+      .cel-nc .nc-subnav:not(.is-menu-open) .nc-subnav-menu {
+        display: none;
+      }
+      .cel-nc .nc-subnav.is-menu-open .nc-subnav-menu {
+        display: flex;
+      }
+      .cel-nc .nc-subnav-link {
+        padding: 0.9rem 0.35rem;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .cel-nc .nc-subnav-link::after {
+        left: 0.35rem;
+        right: auto;
+        bottom: 0.55rem;
+        width: 0;
+      }
+      .cel-nc .nc-subnav-link:hover::after,
+      .cel-nc .nc-subnav-link.is-active::after {
+        width: 1.5rem;
+      }
+      .cel-nc .nc-subnav-menu .nc-live-chip {
+        padding: 0.65rem 0.35rem 0.35rem;
+        font-size: 0.72rem;
+      }
+      .cel-nc .nc-subnav-inner {
+        min-height: 3.75rem;
+      }
     }
     @media (max-width: 640px) {
-      .cel-nc .nc-subnav-menu .nc-live-chip { display: none; }
-      .cel-nc .nc-subnav .nc-btn { padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+      .cel-nc .nc-subnav-cta-bar {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+      }
+      .cel-nc .nc-menu-toggle {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
     }
 
     /* ===== HERO (TED conference-header: centered, full-bleed media + overlay) ===== */
