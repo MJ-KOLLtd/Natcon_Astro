@@ -17,17 +17,25 @@ import '../styles/natcon.css';
 
 <BaseLayout>
   <div class="cel-nc" id="cel-natcon-2026">
-    <Subnav />
-    <Hero />
-    <Secondary />
-    <Highlights />
-    <Theme />
-    <Stream />
-    <Speakers />
-    <Experience />
-    <Stats />
-    <Partners />
-    <FAQ />
-    <FinalCta />
+    <!-- Fixed brand scene: stays while glass content scrolls over it -->
+    <div class="nc-page-bg" aria-hidden="true">
+      <div class="nc-page-bg-image"></div>
+      <div class="nc-page-bg-shade"></div>
+    </div>
+
+    <div class="nc-page-stack">
+      <Subnav />
+      <Hero />
+      <Secondary />
+      <Highlights />
+      <Theme />
+      <Stream />
+      <Speakers />
+      <Experience />
+      <Stats />
+      <Partners />
+      <FAQ />
+      <FinalCta />
+    </div>
   </div>
 </BaseLayout>

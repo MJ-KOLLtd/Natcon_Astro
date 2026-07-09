@@ -1,18 +1,20 @@
 ---
 const launchPartners = [
   {
-    logo: '/assets/partner-igroup.webp',
-    alt: 'iGroup',
-    badge: 'CeiGo launch',
-    name: 'iGroup',
-    body: 'AI keynote partner for “From Search to Synthesis” and CeiGo launch programming.',
+    logo: '/assets/partner-superhuman.webp',
+    alt: 'Superhuman',
+    badge: 'AI productivity',
+    name: 'Superhuman',
+    body: 'Partner spotlight on AI-assisted writing and productivity for academic communities.',
+    box: 'wide',
   },
   {
-    logo: '/assets/partner-superhuman.webp',
-    alt: 'Grammarly by Superhuman',
-    badge: 'AI productivity',
-    name: 'Grammarly by Superhuman',
-    body: 'Partner spotlight on AI-assisted writing and productivity for academic communities.',
+    logo: '/assets/partner-scientific.webp',
+    alt: 'Scientific e-Resources',
+    badge: 'CeiGo · Launch partner',
+    name: 'Scientific e-Resources',
+    body: 'Digital resource partner supporting research access and the CeiGo launch program.',
+    box: 'tall',
   },
 ];
 
@@ -23,20 +25,31 @@ const knowledgePartners = [
     badge: 'Research content',
     name: 'Gale, Part of Cengage Group',
     body: 'Digital archives and research resources for teaching, learning, and discovery.',
+    box: 'wide',
   },
   {
     logo: '/assets/partner-mcgraw.webp',
-    alt: 'McGraw-Hill',
+    alt: 'McGraw Hill',
     badge: 'Learning content',
-    name: 'McGraw-Hill',
+    name: 'McGraw Hill',
     body: 'Learning solutions partner spotlighting content for higher education excellence.',
+    box: 'square',
   },
   {
-    logo: '/assets/partner-scientific.webp',
-    alt: 'Scientific eResources',
-    badge: 'Scientific resources',
-    name: 'Scientific eResources',
-    body: 'Partner presentation supporting research access and scholarly resource ecosystems.',
+    logo: '/assets/partner-cambridge.webp',
+    alt: 'Cambridge',
+    badge: 'Scholarly publishing',
+    name: 'Cambridge',
+    body: 'Scholarly and educational resources supporting globally competitive institutions.',
+    box: 'square',
+  },
+  {
+    logo: '/assets/partner-knimbus.webp',
+    alt: 'Knimbus',
+    badge: 'Discovery platform',
+    name: 'Knimbus',
+    body: 'Research discovery platform supporting digital library ecosystems.',
+    box: 'wide',
   },
 ];
 ---
@@ -51,15 +64,12 @@ const knowledgePartners = [
     </p>
 
     <div class="nc-partner-tier">
-      <p class="nc-tier-label is-gold">Presenting · Launch partners</p>
-      <div
-        class="nc-partner-grid"
-        style="grid-template-columns:repeat(2,minmax(0,1fr));"
-      >
+      <p class="nc-tier-label is-gold">Major sponsors</p>
+      <div class="nc-partner-grid nc-partner-grid-2">
         {
           launchPartners.map((p) => (
             <article class="nc-partner">
-              <div class="nc-partner-logo">
+              <div class:list={['nc-partner-logo', 'is-dark', 'is-' + p.box]}>
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>
@@ -77,7 +87,7 @@ const knowledgePartners = [
         {
           knowledgePartners.map((p) => (
             <article class="nc-partner">
-              <div class="nc-partner-logo">
+              <div class:list={['nc-partner-logo', 'is-dark', 'is-' + p.box]}>
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>
@@ -91,7 +101,7 @@ const knowledgePartners = [
 
     <div class="nc-host-band">
       <div>
-        <p class="nc-eyebrow" style="color:var(--nc-gold);margin-bottom:0.75rem;">
+        <p class="nc-eyebrow" style="margin-bottom:0.75rem;">
           Presented by
         </p>
         <div class="nc-host-logos">

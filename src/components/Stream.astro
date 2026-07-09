@@ -1,10 +1,6 @@
 ---
-/**
- * On event day, set STREAM_URL below and remove the disabled onclick.
- * Search for STREAM_URL across the project when going live.
- */
-const STREAM_URL = '#'; // e.g. 'https://youtube.com/live/...'
-const streamReady = STREAM_URL !== '#';
+/** Official CE-Logic Facebook page — stream activates on event days */
+const STREAM_URL = 'https://www.facebook.com/celogic';
 ---
 
 <section class="nc-section is-dark" id="cel-nc-stream">
@@ -30,31 +26,19 @@ const streamReady = STREAM_URL !== '#';
         </div>
         <h3>Official conference stream</h3>
         <p>
-          Please return to this page on July 30-31, 2026. The stream link will be
-          activated when the program begins.
+          Follow CE-Logic on Facebook for the official stream. The live link
+          activates when programming begins on July 30-31, 2026.
         </p>
-        {
-          streamReady ? (
-            <a
-              class="nc-btn nc-btn-gold"
-              href={STREAM_URL}
-              id="cel-nc-watch-live"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch live stream
-            </a>
-          ) : (
-            <a
-              class="nc-btn nc-btn-gold"
-              href="#"
-              id="cel-nc-watch-live"
-              onclick="return false;"
-            >
-              Stream link activates on event day
-            </a>
-          )
-        }
+        <a
+          class="nc-btn nc-btn-gold"
+          href={STREAM_URL}
+          id="cel-nc-watch-live"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch on Facebook
+        </a>
+        <p class="nc-stream-note">Stream link activates on event day</p>
       </div>
       <aside class="nc-stream-aside">
         <h4>Program coverage</h4>
@@ -73,7 +57,7 @@ const streamReady = STREAM_URL !== '#';
           </li>
           <li>
             <strong>Access</strong>
-            Available on this page during live programming
+            Official stream via CE-Logic Facebook
           </li>
         </ul>
         <a

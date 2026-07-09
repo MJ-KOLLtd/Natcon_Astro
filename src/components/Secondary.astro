@@ -1,5 +1,7 @@
 ---
 import BtnArrow from './BtnArrow.astro';
+
+const FB_STREAM = 'https://www.facebook.com/celogic';
 ---
 
 <section class="nc-secondary">
@@ -15,11 +17,19 @@ import BtnArrow from './BtnArrow.astro';
           performance. Sessions will be available via live stream on event days.
         </p>
         <div class="nc-btn-row" style="margin-top:1.25rem;">
-          <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+          <a
+            class="nc-btn nc-btn-primary"
+            href={FB_STREAM}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Live stream access
             <BtnArrow />
           </a>
         </div>
+        <p class="nc-secondary-note">
+          Stream link activates on event day · July 30-31, 2026
+        </p>
       </div>
     </div>
   </div>

@@ -1,24 +1,26 @@
 ---
 import BtnArrow from './BtnArrow.astro';
 
+const FB_STREAM = 'https://www.facebook.com/celogic';
+
 const pillars = [
   {
-    image: '/assets/hero-bg.webp',
+    image: '/assets/visual-keynote-stage.webp',
     title: 'Opening keynote',
     body: 'Philippine libraries as strategic enablers of data-driven and globally competitive education.',
   },
   {
-    image: '/assets/speaker-placeholder.webp',
+    image: '/assets/visual-strategy.webp',
     title: 'Strategy sessions',
     body: 'Development planning, digital ecosystems, AI-enabled services, and library investments aligned with research performance.',
   },
   {
-    image: '/assets/hero-bg.webp',
+    image: '/assets/visual-ceigo-launch.webp',
     title: 'CeiGo launch',
     body: 'Keynote on AI in libraries, logo unveiling, and formal product launch proceedings.',
   },
   {
-    image: '/assets/speaker-placeholder.webp',
+    image: '/assets/visual-panel-room.webp',
     title: 'Leadership panel',
     body: 'Library directors and partners discuss artificial intelligence, academic integrity, and sustainable growth.',
   },
@@ -37,7 +39,12 @@ const pillars = [
           launch, available via live stream.
         </p>
       </div>
-      <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+      <a
+        class="nc-btn nc-btn-primary"
+        href={FB_STREAM}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         View live stream
         <BtnArrow />
       </a>
@@ -47,7 +54,7 @@ const pillars = [
       {
         pillars.map((pillar) => (
           <article class="nc-hover-card">
-            <img src={pillar.image} alt="" loading="lazy" />
+            <img src={pillar.image} alt="" loading="lazy" width="1280" height="720" />
             <div class="nc-hover-content">
               <h3>{pillar.title}</h3>
               <p>{pillar.body}</p>

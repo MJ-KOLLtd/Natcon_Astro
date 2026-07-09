@@ -1,0 +1,75 @@
+---
+// Institutional partners & endorsements — shown immediately under hero
+const partners = [
+  {
+    logo: '/assets/partner-up-library.webp',
+    alt: 'University of the Philippines Library',
+    name: 'UP Library',
+    width: 120,
+    height: 120,
+  },
+  {
+    logo: '/assets/partner-plai.webp',
+    alt: 'Philippine Librarians Association, Inc.',
+    name: 'PLAI',
+    width: 120,
+    height: 120,
+  },
+];
+
+const endorsed = [
+  {
+    logo: '/assets/partner-paarl.webp',
+    alt: 'PAARL · Philippine Association of Academic/Research Librarians',
+    name: 'PAARL',
+    width: 140,
+    height: 130,
+  },
+];
+---
+
+<section class="nc-alliance" aria-label="Institutional partners and endorsements">
+  <div class="nc-container nc-alliance-inner">
+    <div class="nc-alliance-group">
+      <p class="nc-alliance-label">In partnership with</p>
+      <ul class="nc-alliance-logos">
+        {
+          partners.map((p) => (
+            <li>
+              <img
+                src={p.logo}
+                alt={p.alt}
+                width={p.width}
+                height={p.height}
+                loading="eager"
+                decoding="async"
+              />
+              <span class="nc-alliance-name">{p.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="nc-alliance-divider" aria-hidden="true"></div>
+    <div class="nc-alliance-group">
+      <p class="nc-alliance-label">Endorsed by</p>
+      <ul class="nc-alliance-logos">
+        {
+          endorsed.map((p) => (
+            <li>
+              <img
+                src={p.logo}
+                alt={p.alt}
+                width={p.width}
+                height={p.height}
+                loading="eager"
+                decoding="async"
+              />
+              <span class="nc-alliance-name">{p.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
