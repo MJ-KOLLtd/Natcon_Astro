@@ -1,0 +1,27 @@
+---
+const stats = [
+  { value: '18th', label: 'National Conference' },
+  { value: '2', label: 'Days of programming' },
+  { value: '12+', label: 'Featured speakers' },
+  { value: 'Live', label: 'On-the-day stream' },
+];
+---
+
+<section
+  class="nc-section is-dark"
+  id="cel-nc-stats"
+  style="padding-top:clamp(3rem,6vw,4.5rem);padding-bottom:clamp(3rem,6vw,4.5rem);"
+>
+  <div class="nc-container">
+    <div class="nc-stats">
+      {
+        stats.map((stat) => (
+          <div class="nc-stat">
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

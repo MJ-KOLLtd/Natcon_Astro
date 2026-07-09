@@ -1,0 +1,1698 @@
+<!--
+  18th CE-Logic National Conference landing page (WordPress HTML block)
+  WordPress / Elementor: paste into an HTML widget.
+
+  Official CE-Logic logo colors (from NEW CE-Logic Logo 1.png):
+  Blue #0070B0 / #1890D0 · Gold/Amber #F8B838 · Red #E82028 · Green #106838
+  Wordmark split: “CE-” blue · “LOGIC” gold · network-dot mark
+
+  1) Upload /assets/* (incl. ce-logic-logo.png/webp) to Media Library
+  2) Replace assets/... paths with Media URLs
+  3) Set real stream URL on event day (search STREAM_URL)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+<div class="cel-nc" id="cel-natcon-2026">
+  <style>
+    .cel-nc {
+      /* TED-like system + official CE-Logic logo palette */
+      --nc-bg: #ffffff;
+      --nc-text: #000000;
+      --nc-muted: #555555;
+      --nc-soft: #f6f6f6;
+      --nc-dark: #1d1d1d;
+      --nc-ink: #0a0a0a;
+      --nc-line: #e8e8e8;
+
+      /* From official CE-Logic logo */
+      --nc-blue: #0070b0;
+      --nc-blue-bright: #1890d0;
+      --nc-blue-dark: #005a8c;
+      --nc-gold: #f8b838;
+      --nc-gold-soft: #f8c038;
+      --nc-green: #106838;
+      --nc-red: #e82028;
+      --nc-sage: #d8e8de;
+
+      --nc-accent: var(--nc-blue);
+      --nc-accent-dark: var(--nc-blue-dark);
+
+      --nc-max: 87.5rem;
+      --nc-pad-x: clamp(1.25rem, 4vw, 3rem);
+      --nc-section: clamp(4rem, 8vw, 7.5rem);
+      --nc-font: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+      box-sizing: border-box;
+      background: var(--nc-bg);
+      color: var(--nc-text);
+      font-family: var(--nc-font);
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      text-align: left;
+    }
+    .cel-nc *,
+    .cel-nc *::before,
+    .cel-nc *::after { box-sizing: border-box; }
+    .cel-nc img { max-width: 100%; display: block; border: 0; }
+    .cel-nc a { color: var(--nc-accent); text-decoration: none; }
+    .cel-nc a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .cel-nc p { margin: 0 0 1em; }
+    .cel-nc ::selection { background: var(--nc-blue); color: #fff; }
+
+    .cel-nc .nc-container {
+      width: 100%;
+      max-width: var(--nc-max);
+      margin: 0 auto;
+      padding-left: var(--nc-pad-x);
+      padding-right: var(--nc-pad-x);
+    }
+
+    .cel-nc .nc-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.5em;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-h1 {
+      margin: 0 0 0.2em;
+      font-family: var(--nc-font);
+      font-size: clamp(2.6rem, 7.5vw, 5rem);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-h2 {
+      margin: 0 0 0.45em;
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-h3 {
+      margin: 0 0 0.5em;
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .cel-nc .nc-h4 {
+      margin: 0 0 0.4em;
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .cel-nc .nc-lead {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      line-height: 1.5;
+      color: var(--nc-muted);
+      max-width: 42rem;
+    }
+    .cel-nc .nc-lead-lg {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.45;
+      color: var(--nc-text);
+      max-width: 48rem;
+      font-weight: 400;
+    }
+    .cel-nc .nc-em {
+      color: var(--nc-accent);
+      font-style: normal;
+    }
+    .cel-nc .nc-section {
+      padding: var(--nc-section) 0;
+      background: var(--nc-bg);
+      color: var(--nc-text);
+      position: relative;
+    }
+    .cel-nc .nc-section.is-soft { background: var(--nc-soft); }
+    .cel-nc .nc-section.is-dark {
+      background: var(--nc-ink);
+      color: #fff;
+    }
+    .cel-nc .nc-section.is-dark .nc-lead,
+    .cel-nc .nc-section.is-dark .nc-eyebrow { color: rgba(255,255,255,0.72); }
+    .cel-nc .nc-section.is-dark .nc-h1,
+    .cel-nc .nc-section.is-dark .nc-h2,
+    .cel-nc .nc-section.is-dark .nc-h3,
+    .cel-nc .nc-section.is-dark .nc-h4 { color: #fff; }
+    .cel-nc .nc-section.is-dark .nc-em { color: var(--nc-gold); }
+    .cel-nc .nc-section.is-blue {
+      background: var(--nc-blue);
+      color: #fff;
+    }
+    .cel-nc .nc-section.is-blue .nc-lead,
+    .cel-nc .nc-section.is-blue .nc-eyebrow { color: rgba(255,255,255,0.85); }
+    .cel-nc .nc-section.is-blue .nc-h2 { color: #fff; }
+    .cel-nc .nc-section.is-blue .nc-em { color: var(--nc-gold); }
+
+    .cel-nc .nc-center { text-align: center; }
+    .cel-nc .nc-center .nc-lead,
+    .cel-nc .nc-center .nc-lead-lg { margin-left: auto; margin-right: auto; }
+
+    /* Buttons: CE-Logic weight + arrow icon on hover */
+    .cel-nc .nc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem 2.25rem;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      font-family: var(--nc-font);
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .cel-nc .nc-btn-icon {
+      display: inline-flex;
+      width: 1.1em;
+      height: 1.1em;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .cel-nc .nc-btn-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .cel-nc .nc-btn:hover .nc-btn-icon { transform: rotate(45deg); }
+    .cel-nc .nc-btn-primary {
+      background: var(--nc-accent);
+      color: #fff !important;
+      border-color: var(--nc-accent);
+    }
+    .cel-nc .nc-btn-primary:hover { background: var(--nc-accent-dark); border-color: var(--nc-accent-dark); }
+    .cel-nc .nc-btn-gold {
+      background: var(--nc-gold);
+      color: var(--nc-ink) !important;
+      border-color: var(--nc-gold);
+    }
+    .cel-nc .nc-btn-gold:hover { background: var(--nc-gold-soft); border-color: var(--nc-gold-soft); }
+    .cel-nc .nc-btn-outline {
+      background: transparent;
+      color: var(--nc-text) !important;
+      border-color: var(--nc-text);
+    }
+    .cel-nc .nc-btn-outline:hover { background: var(--nc-text); color: #fff !important; }
+    .cel-nc .nc-btn-outline-light {
+      background: transparent;
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.85);
+    }
+    .cel-nc .nc-btn-outline-light:hover { background: #fff; color: var(--nc-ink) !important; }
+    .cel-nc .nc-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+    }
+    .cel-nc .nc-center .nc-btn-row { justify-content: center; }
+
+    /* Post-hero secondary band (TED: “What is the conference?”) */
+    .cel-nc .nc-secondary {
+      background: var(--nc-bg);
+      border-bottom: 1px solid var(--nc-line);
+      padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+    }
+    .cel-nc .nc-secondary-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: end;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-secondary-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-secondary-q {
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin: 0;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-secondary-a {
+      margin: 0;
+    }
+    .cel-nc .nc-secondary-a .nc-h3 {
+      margin-bottom: 0.65rem;
+      text-transform: uppercase;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .cel-nc .nc-secondary-a p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--nc-muted);
+      max-width: 36rem;
+    }
+
+    /* ===== STICKY CONFERENCE SUBNAV (TED conference-subnav) ===== */
+    .cel-nc .nc-subnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+    }
+    .cel-nc .nc-subnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.25rem;
+    }
+    .cel-nc .nc-subnav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none !important;
+      color: #fff !important;
+      min-width: 0;
+    }
+    .cel-nc .nc-subnav-logo {
+      height: 1.75rem;
+      width: auto;
+      max-width: 10rem;
+      object-fit: contain;
+      flex-shrink: 0;
+      /* Official logo: blue + gold reads on dark nav without invert */
+    }
+    .cel-nc .nc-subnav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+      border-left: 1px solid rgba(255,255,255,0.18);
+      padding-left: 0.75rem;
+    }
+    .cel-nc .nc-subnav-brand strong {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .cel-nc .nc-subnav-brand strong .nc-ce { color: var(--nc-blue-bright); }
+    .cel-nc .nc-subnav-brand strong .nc-logic { color: var(--nc-gold); }
+    .cel-nc .nc-subnav-brand span {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 640px) {
+      .cel-nc .nc-subnav-logo { height: 1.35rem; max-width: 6.5rem; }
+      .cel-nc .nc-subnav-brand-text strong { font-size: 0.78rem; }
+    }
+    .cel-nc .nc-subnav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem 0.15rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .cel-nc .nc-subnav-link {
+      position: relative;
+      color: rgba(255,255,255,0.88) !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      padding: 0.65rem 0.85rem;
+      letter-spacing: -0.01em;
+    }
+    .cel-nc .nc-subnav-link::after {
+      content: "";
+      position: absolute;
+      left: 0.85rem;
+      right: 0.85rem;
+      bottom: 0.35rem;
+      height: 2px;
+      background: currentColor;
+      width: 0;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cel-nc .nc-subnav-link:hover::after,
+    .cel-nc .nc-subnav-link.is-active::after {
+      width: calc(100% - 1.7rem);
+    }
+    .cel-nc .nc-subnav-link:hover { color: #fff !important; }
+    .cel-nc .nc-subnav .nc-btn { padding: 0.65rem 1.15rem; font-size: 0.88rem; }
+    .cel-nc .nc-live-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-gold);
+      padding: 0 0.35rem;
+    }
+    .cel-nc .nc-live-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--nc-red);
+      animation: cel-nc-pulse 1.6s infinite;
+    }
+    @keyframes cel-nc-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(236,32,40,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(236,32,40,0); }
+      100% { box-shadow: 0 0 0 0 rgba(236,32,40,0); }
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-subnav-link.hide-md { display: none; }
+    }
+    @media (max-width: 640px) {
+      .cel-nc .nc-subnav-menu .nc-live-chip { display: none; }
+      .cel-nc .nc-subnav .nc-btn { padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+    }
+
+    /* ===== HERO (TED conference-header: centered, full-bleed media + overlay) ===== */
+    .cel-nc .nc-hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      min-height: min(92lvh, 52rem);
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(6rem, 14vw, 10rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+      background: var(--nc-ink);
+      text-align: center;
+    }
+    .cel-nc .nc-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .cel-nc .nc-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      filter: saturate(0.85);
+    }
+    .cel-nc .nc-hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.92) 100%),
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(0,112,176,0.38), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 90%, rgba(16,104,56,0.22), transparent 55%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(248,184,56,0.12), transparent 50%);
+    }
+    .cel-nc .nc-hero .nc-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cel-nc .nc-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 1.25rem;
+      font-family: var(--nc-font);
+    }
+    .cel-nc .nc-hero-meta span + span::before {
+      content: "·";
+      margin-right: 1.25rem;
+      opacity: 0.5;
+    }
+    .cel-nc .nc-hero-logo {
+      display: block;
+      width: min(22rem, 72vw);
+      height: auto;
+      margin: 0 auto 1.35rem;
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,0.35));
+    }
+    .cel-nc .nc-hero-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(248, 184, 56, 0.65);
+      border-radius: 4px;
+      color: var(--nc-gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-hero .nc-h1 {
+      color: #fff;
+      max-width: 14ch;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+      font-size: clamp(2.2rem, 6.5vw, 4rem);
+    }
+    .cel-nc .nc-hero .nc-h1 .nc-year { color: var(--nc-gold); }
+    .cel-nc a.nc-hero-logo-link {
+      display: inline-block;
+      text-decoration: none !important;
+      margin-bottom: 0.25rem;
+    }
+    .cel-nc a.nc-hero-logo-link:hover .nc-hero-logo {
+      opacity: 0.92;
+    }
+    .cel-nc .nc-hero-desc {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.55;
+      max-width: 32.5rem;
+      color: rgba(255,255,255,0.88);
+      margin: 0 auto;
+      font-weight: 400;
+      text-wrap: pretty;
+    }
+    .cel-nc .nc-hero .nc-btn-row {
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .cel-nc .nc-btn-linkish {
+      background: transparent;
+      color: #fff !important;
+      border-color: transparent;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-decoration: none !important;
+    }
+    .cel-nc .nc-btn-linkish:hover {
+      color: var(--nc-gold) !important;
+    }
+
+    /* ===== YOUR INVITATION (TED list-with-images pattern) ===== */
+    .cel-nc .nc-invite {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-invite { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-invite-visual {
+      position: sticky;
+      top: 5.5rem;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--nc-dark);
+      aspect-ratio: 4 / 5;
+      max-height: 36rem;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-invite-visual { position: relative; top: 0; max-height: none; aspect-ratio: 16 / 10; }
+    }
+    .cel-nc .nc-invite-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cel-nc .nc-invite-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+    .cel-nc .nc-invite-item {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--nc-line);
+    }
+    .cel-nc .nc-invite-item:first-child { border-top: 0; padding-top: 0; }
+    .cel-nc .nc-invite-item p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--nc-muted);
+    }
+
+    /* ===== THEME BLOCK ===== */
+    .cel-nc .nc-theme-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-green);
+      margin: 0 0 1rem;
+    }
+    .cel-nc .nc-theme-copy {
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      line-height: 1.55;
+      max-width: 48rem;
+      color: var(--nc-text);
+    }
+    .cel-nc .nc-theme-copy strong { font-weight: 700; }
+
+    /* ===== STREAMING ===== */
+    .cel-nc .nc-stream-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-stream-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-stream-stage {
+      position: relative;
+      min-height: 22rem;
+      border-radius: 4px;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(0,0,0,0.55), rgba(9,119,188,0.55)),
+        url("assets/hero-bg.webp") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .cel-nc .nc-stream-badge {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--nc-red);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.75rem;
+      border-radius: 4px;
+    }
+    .cel-nc .nc-stream-stage h3 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .cel-nc .nc-stream-stage p {
+      color: rgba(255,255,255,0.88);
+      max-width: 34rem;
+      margin-bottom: 1.25rem;
+    }
+    .cel-nc .nc-stream-aside {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+    }
+    .cel-nc .nc-stream-aside h4 {
+      margin: 0 0 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--nc-gold);
+      font-weight: 800;
+    }
+    .cel-nc .nc-stream-aside ul {
+      list-style: none;
+      margin: 0 0 1.5rem;
+      padding: 0;
+    }
+    .cel-nc .nc-stream-aside li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.98rem;
+      line-height: 1.4;
+    }
+    .cel-nc .nc-stream-aside li:last-child { border-bottom: 0; }
+    .cel-nc .nc-stream-aside li strong {
+      display: block;
+      color: var(--nc-gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== SPEAKERS: photo-box carousel ===== */
+    .cel-nc .nc-speakers-intro {
+      max-width: 46rem;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+    .cel-nc .nc-photo-box {
+      position: relative;
+      margin: 0 calc(-1 * var(--nc-pad-x));
+      padding: 0 var(--nc-pad-x);
+    }
+    .cel-nc .nc-photo-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0.5rem 8vw 1.25rem;
+    }
+    .cel-nc .nc-photo-track::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) {
+      .cel-nc .nc-photo-track { gap: 1.5rem; padding-left: 12vw; padding-right: 12vw; }
+    }
+    @media (min-width: 992px) {
+      .cel-nc .nc-photo-track { gap: 2.5rem; padding-left: 18vw; padding-right: 18vw; }
+    }
+    .cel-nc .nc-photo-slide {
+      flex: 0 0 78%;
+      scroll-snap-align: center;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #252323;
+      aspect-ratio: 3 / 4;
+      max-height: 32rem;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    @media (min-width: 768px) {
+      .cel-nc .nc-photo-slide { flex-basis: 42%; }
+    }
+    @media (min-width: 992px) {
+      .cel-nc .nc-photo-slide { flex-basis: 28%; }
+    }
+    .cel-nc .nc-photo-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .cel-nc .nc-photo-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      color: #fff;
+      opacity: 0.55;
+      transform: translateY(0.35rem);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .cel-nc .nc-photo-slide.is-active {
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+      transform: scale(1.02);
+    }
+    .cel-nc .nc-photo-slide.is-active img { transform: scale(1.04); }
+    .cel-nc .nc-photo-slide.is-active .nc-photo-copy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy h3 {
+      margin: 0 0 0.25rem;
+      color: #fff;
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      line-height: 1.2;
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.85);
+    }
+    .cel-nc .nc-photo-tag {
+      display: inline-block;
+      margin-bottom: 0.45rem;
+      background: var(--nc-gold);
+      color: var(--nc-ink);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.5rem;
+      border-radius: 3px;
+    }
+    .cel-nc .nc-photo-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+    .cel-nc .nc-photo-btn {
+      width: 3rem;
+      height: 3rem;
+      border: 0;
+      border-radius: 4px;
+      background: var(--nc-ink);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .cel-nc .nc-photo-btn:hover {
+      background: var(--nc-blue);
+      transform: translateY(-1px);
+    }
+    .cel-nc .nc-photo-btn:focus-visible {
+      outline: 2px solid var(--nc-blue);
+      outline-offset: 2px;
+    }
+    .cel-nc .nc-photo-btn svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      display: block;
+    }
+    .cel-nc .nc-speaker-note {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-speaker-note strong { color: var(--nc-green); }
+
+    /* Theme 50/50 (TED inverted section) */
+    .cel-nc .nc-theme-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-theme-split { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-theme-visual {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      max-height: 36rem;
+      background: #111;
+    }
+    .cel-nc .nc-theme-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-theme-visual { aspect-ratio: 16 / 10; max-height: none; order: -1; }
+    }
+
+    /* ===== EXPERIENCE: hover-card grid ===== */
+    .cel-nc .nc-exp-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1.25rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .cel-nc .nc-exp-head .nc-lead { margin: 0; max-width: 36rem; }
+    .cel-nc .nc-hover-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 1000px) {
+      .cel-nc .nc-hover-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .cel-nc .nc-hover-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-hover-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 22rem;
+      background: #111;
+      isolation: isolate;
+    }
+    .cel-nc .nc-hover-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      transition: transform 0.5s ease, opacity 0.35s ease;
+    }
+    .cel-nc .nc-hover-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.88) 100%);
+      z-index: 1;
+    }
+    .cel-nc .nc-hover-card:hover img {
+      transform: scale(1.06);
+      opacity: 0.7;
+    }
+    .cel-nc .nc-hover-card .nc-hover-content {
+      position: absolute;
+      left: 1.15rem;
+      right: 1.15rem;
+      bottom: 1.15rem;
+      z-index: 2;
+      color: #fff;
+    }
+    .cel-nc .nc-hover-card h3 {
+      margin: 0 0 0.45rem;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+    .cel-nc .nc-hover-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.82);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+    }
+    .cel-nc .nc-hover-card:hover p,
+    .cel-nc .nc-hover-card:focus-within p {
+      max-height: 8rem;
+      opacity: 1;
+      margin-top: 0.15rem;
+    }
+    @media (hover: none) {
+      .cel-nc .nc-hover-card p {
+        max-height: 8rem;
+        opacity: 1;
+      }
+    }
+
+    /* Stats band (TED stats, honest NatCon numbers) */
+    .cel-nc .nc-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) {
+      .cel-nc .nc-stats { grid-template-columns: 1fr 1fr; }
+    }
+    .cel-nc .nc-stat {
+      background: var(--nc-ink);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .cel-nc .nc-stat strong {
+      display: block;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--nc-gold);
+      margin-bottom: 0.5rem;
+    }
+    .cel-nc .nc-stat span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* FAQ */
+    .cel-nc .nc-faq {
+      max-width: 46rem;
+      margin: 0 auto;
+    }
+    .cel-nc .nc-faq details {
+      border-bottom: 1px solid var(--nc-line);
+      padding: 1.15rem 0;
+    }
+    .cel-nc .nc-faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .cel-nc .nc-faq summary::-webkit-details-marker { display: none; }
+    .cel-nc .nc-faq summary::after {
+      content: "+";
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--nc-blue);
+      flex-shrink: 0;
+    }
+    .cel-nc .nc-faq details[open] summary::after { content: "–"; }
+    .cel-nc .nc-faq details p {
+      margin: 0.85rem 0 0;
+      color: var(--nc-muted);
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    /* ===== PARTNERS ===== */
+    .cel-nc .nc-partner-tier { margin-bottom: 2.5rem; }
+    .cel-nc .nc-partner-tier:last-child { margin-bottom: 0; }
+    .cel-nc .nc-tier-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--nc-green);
+      margin: 0 0 1rem;
+    }
+    .cel-nc .nc-tier-label.is-gold { color: #9a7600; }
+    .cel-nc .nc-partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-partner-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .cel-nc .nc-partner-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-partner {
+      background: var(--nc-soft);
+      border: 1px solid var(--nc-line);
+      border-radius: 4px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      height: 100%;
+      transition: border-color 0.15s ease;
+    }
+    .cel-nc .nc-partner:hover { border-color: rgba(9,119,188,0.4); }
+    .cel-nc .nc-partner-logo {
+      background: #fff;
+      border: 1px solid var(--nc-line);
+      border-radius: 4px;
+      min-height: 5.5rem;
+      display: grid;
+      place-items: center;
+      padding: 0.75rem;
+    }
+    .cel-nc .nc-partner-logo img {
+      max-height: 3.5rem;
+      width: auto;
+      object-fit: contain;
+    }
+    .cel-nc .nc-partner h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+    .cel-nc .nc-partner p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--nc-muted);
+      line-height: 1.45;
+    }
+    .cel-nc .nc-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-blue);
+      background: rgba(9,119,188,0.1);
+      padding: 0.28rem 0.5rem;
+      border-radius: 3px;
+    }
+    .cel-nc .nc-host-band {
+      margin-top: 2.5rem;
+      background: linear-gradient(110deg, var(--nc-blue) 0%, var(--nc-blue-dark) 45%, #0a3d5c 100%);
+      color: #fff;
+      border-radius: 4px;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-host-band { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-host-band p {
+      margin: 0;
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .cel-nc .nc-host-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem 1.75rem;
+      margin: 0.85rem 0 1rem;
+    }
+    .cel-nc .nc-host-logos a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none !important;
+      background: rgba(255,255,255,0.96);
+      border-radius: 6px;
+      padding: 0.65rem 0.9rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cel-nc .nc-host-logos a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .cel-nc .nc-host-logos img {
+      display: block;
+      height: 2.35rem;
+      width: auto;
+      max-width: 11rem;
+      object-fit: contain;
+    }
+    .cel-nc .nc-host-logos .nc-host-logo-ceals {
+      height: 2.1rem;
+      max-width: 9.5rem;
+    }
+    .cel-nc .nc-host-stats {
+      display: grid;
+      gap: 0.65rem;
+    }
+    .cel-nc .nc-host-stats span {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 4px;
+      padding: 0.75rem 0.9rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .cel-nc .nc-final {
+      background: var(--nc-ink);
+      color: #fff;
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      text-align: center;
+    }
+    .cel-nc .nc-final .nc-h2 { color: #fff; }
+    .cel-nc .nc-final p {
+      color: rgba(255,255,255,0.78);
+      max-width: 36rem;
+      margin: 0 auto 1.75rem;
+      font-size: 1.15rem;
+    }
+    .cel-nc .nc-fine {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+    }
+  </style>
+
+  <!-- CONFERENCE SUBNAV: stream, speakers, partners (no invite/register/venue) -->
+  <div class="nc-subnav">
+    <div class="nc-container nc-subnav-inner">
+      <a class="nc-subnav-brand" href="https://ceals.ph/our-brands/brands-ce-logic/" aria-label="CE-Logic brand page" target="_blank" rel="noopener noreferrer">
+        <img class="nc-subnav-logo" src="assets/ce-logic-logo.webp" alt="CE-Logic" width="200" height="38" />
+        <span class="nc-subnav-brand-text">
+          <strong><span class="nc-ce">NatCon</span> <span class="nc-logic">2026</span></strong>
+          <span>July 30-31, 2026</span>
+        </span>
+      </a>
+      <nav class="nc-subnav-menu" aria-label="Conference sections">
+        <span class="nc-live-chip"><span class="nc-live-dot" aria-hidden="true"></span> Event-day stream</span>
+        <a class="nc-subnav-link hide-md" href="#cel-nc-stream">Stream</a>
+        <a class="nc-subnav-link hide-md" href="#cel-nc-speakers">Speakers</a>
+        <a class="nc-subnav-link hide-md" href="#cel-nc-partners">Partners</a>
+        <a class="nc-subnav-link hide-md" href="#cel-nc-experience">Program</a>
+        <a class="nc-btn nc-btn-gold" href="#cel-nc-stream">Live stream</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- CONFERENCE HEADER (TED: meta · logo/mark · H1 · description · dual CTAs · full-bleed bg) -->
+  <header class="nc-hero">
+    <div class="nc-hero-bg" aria-hidden="true">
+      <img src="assets/hero-bg.webp" alt="" width="1920" height="900" />
+    </div>
+    <div class="nc-container">
+      <div class="nc-hero-meta">
+        <span>July 30-31, 2026</span>
+        <span>18th Edition</span>
+        <span>Live stream access</span>
+      </div>
+      <a class="nc-hero-logo-link" href="https://ceals.ph/our-brands/brands-ce-logic/" target="_blank" rel="noopener noreferrer" aria-label="Visit the CE-Logic brand page">
+        <img class="nc-hero-logo" src="assets/ce-logic-logo.webp" alt="CE-Logic" width="480" height="90" />
+      </a>
+      <div class="nc-hero-mark">Library Solutions · 18th National Conference</div>
+      <h1 class="nc-h1">National Conference <span class="nc-year">2026</span></h1>
+      <p class="nc-hero-desc">
+        A professional forum for academic library leaders advancing data-informed decision-making, digital transformation, and institutional competitiveness in higher education.
+      </p>
+      <div class="nc-btn-row">
+        <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+          View live stream
+          <span class="nc-btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+        <a class="nc-btn nc-btn-linkish" href="#cel-nc-speakers">
+          View speakers
+          <span class="nc-btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECONDARY (TED: What is the conference? / Beyond the talks) -->
+  <section class="nc-secondary">
+    <div class="nc-container">
+      <div class="nc-secondary-grid">
+        <p class="nc-secondary-q">About the CE-Logic National Conference</p>
+        <div class="nc-secondary-a">
+          <h2 class="nc-h3">Strategy, technology, and research impact</h2>
+          <p>
+            The CE-Logic National Conference convenes academic library leaders, solution partners, and higher education stakeholders for a program focused on strategic planning, digital services, and research performance. Sessions will be available via live stream on event days.
+          </p>
+          <div class="nc-btn-row" style="margin-top:1.25rem;">
+            <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+              Live stream access
+              <span class="nc-btn-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM HIGHLIGHTS (not an invitation / not registration) -->
+  <section class="nc-section" id="cel-nc-highlights">
+    <div class="nc-container">
+      <div class="nc-invite">
+        <div class="nc-invite-visual">
+          <img src="assets/speaker-placeholder.webp" alt="" width="800" height="1000" loading="lazy" />
+        </div>
+        <div>
+          <p class="nc-eyebrow">Program overview</p>
+          <h2 class="nc-h2">What will be streamed</h2>
+          <p class="nc-lead-lg" style="margin-bottom:0.25rem;"><strong>The 18th CE-Logic National Conference program includes the following focus areas:</strong></p>
+
+          <div class="nc-invite-list">
+            <div class="nc-invite-item">
+              <h3 class="nc-h4">Library leadership</h3>
+              <p>University librarians, LIS educators, and institutional decision-makers examine the strategic role of library and information services in higher education.</p>
+            </div>
+            <div class="nc-invite-item">
+              <h3 class="nc-h4">Digital transformation</h3>
+              <p>Multi-year planning, AI-enabled services, and the evolution of academic libraries into data-informed centers for teaching, learning, and research.</p>
+            </div>
+            <div class="nc-invite-item">
+              <h3 class="nc-h4">Research and institutional performance</h3>
+              <p>Discussions on research visibility, quality assurance, academic integrity, and tools that support globally competitive Philippine HEIs.</p>
+            </div>
+            <div class="nc-invite-item">
+              <h3 class="nc-h4">Partners and sponsors</h3>
+              <p>Featured presentations from technology and content partners, including AI productivity solutions, research databases, learning resources, and the CeiGo launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEME (TED 50/50 inverted block) -->
+  <section class="nc-section is-dark" id="cel-nc-theme">
+    <div class="nc-container">
+      <div class="nc-theme-split">
+        <div class="nc-theme-visual">
+          <img src="assets/speaker-placeholder.webp" alt="" width="800" height="1000" loading="lazy" />
+        </div>
+        <div>
+          <p class="nc-theme-label" style="color:var(--nc-gold);">Conference theme</p>
+          <h2 class="nc-h2">2026 theme</h2>
+          <div class="nc-theme-copy" style="color:rgba(255,255,255,0.88);">
+            <p>
+              Higher education institutions continue to adapt to artificial intelligence, research performance benchmarks, and the demand for data-literate graduates. Academic libraries are central to this work.
+            </p>
+            <p>
+              The 2026 theme, <strong style="color:#fff;">Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education</strong>, frames higher education institutions as key drivers of sustainable development through professionals and graduates who use data for informed decision-making and institutional impact.
+            </p>
+            <p>
+              Aligned with the <strong style="color:#fff;">CHED ACHIEVE</strong> framework and the <strong style="color:#fff;">United Nations Sustainable Development Goals (SDGs)</strong>, the conference program will be available via live stream for library leaders and stakeholders nationwide.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ON-THE-DAY STREAMING -->
+  <section class="nc-section is-dark" id="cel-nc-stream">
+    <div class="nc-container">
+      <p class="nc-eyebrow"><span class="nc-live-chip" style="color:var(--nc-gold);"><span class="nc-live-dot"></span> Event-day access</span></p>
+      <h2 class="nc-h2">Live <span class="nc-em">stream</span></h2>
+      <p class="nc-lead" style="max-width:40rem;">
+        Keynotes, plenary sessions, partner presentations, the CeiGo launch, and the leadership panel will be available through the official conference live stream on event days.
+      </p>
+
+      <div class="nc-stream-grid">
+        <div class="nc-stream-stage">
+          <div class="nc-stream-badge"><span class="nc-live-dot" style="background:#fff;box-shadow:none;"></span> Available on event days</div>
+          <h3>Official conference stream</h3>
+          <p>Please return to this page on July 30-31, 2026. The stream link will be activated when the program begins.</p>
+          <!-- STREAM_URL: replace href on event day -->
+          <a class="nc-btn nc-btn-gold" href="#" id="cel-nc-watch-live" onclick="return false;">Stream link activates on event day</a>
+        </div>
+        <aside class="nc-stream-aside">
+          <h4>Program coverage</h4>
+          <ul>
+            <li><strong>Day 1</strong> Opening keynote, strategy sessions, and CeiGo launch</li>
+            <li><strong>Day 2</strong> AI services session, leadership panel, and closing</li>
+            <li><strong>Partners</strong> Featured sponsor and partner presentations</li>
+            <li><strong>Access</strong> Available on this page during live programming</li>
+          </ul>
+          <a class="nc-btn nc-btn-outline-light" href="#cel-nc-speakers" style="width:100%;">View speakers</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS: photo-box carousel -->
+  <section class="nc-section" id="cel-nc-speakers">
+    <div class="nc-container">
+      <div class="nc-speakers-intro">
+        <p class="nc-eyebrow">Speakers</p>
+        <h2 class="nc-h2">Featured speakers</h2>
+        <p class="nc-lead" style="margin:0 auto;">
+          The program features quality assurance leaders, university librarians, LIS faculty, and industry partners addressing data strategy, artificial intelligence, academic integrity, and institutional competitiveness. Additional speakers may be announced.
+        </p>
+      </div>
+    </div>
+
+    <div class="nc-photo-box" data-nc-carousel>
+      <div class="nc-photo-track" data-nc-track tabindex="0" aria-label="Speaker carousel">
+        <article class="nc-photo-slide is-active">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Keynote</span>
+            <h3>Dr. Milabel E. Ho</h3>
+            <p>Executive Director, AACCUP</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Welcome · Session</span>
+            <h3>Ms. Elvira B. Lapuz</h3>
+            <p>University Librarian, UP Diliman</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">PLAI · Session</span>
+            <h3>Dr. Maria Pretty Lay T. Abdala</h3>
+            <p>Dean, BulSU · President, PLAI</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Session</span>
+            <h3>Janice D.C. Peñaflor</h3>
+            <p>Associate Director, DLSU Libraries</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Session</span>
+            <h3>Efren M. Torres, Jr.</h3>
+            <p>Access &amp; Resource Management, DLSU Libraries</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Session</span>
+            <h3>Prof. Dan Anthony Dorado</h3>
+            <p>UP School of Library and Information Studies</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Panel</span>
+            <h3>Ms. Joenabie Arevalo</h3>
+            <p>University Librarian, Ateneo de Manila University</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Panel</span>
+            <h3>Edgardo B. Quiros, RL</h3>
+            <p>Assistant Director, National Library of the Philippines</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">CeiGo</span>
+            <h3>Dr. Diu Seng (“DS”) See</h3>
+            <p>Business &amp; Sales Enablement Manager, iGroup</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Partner</span>
+            <h3>Mike Shen</h3>
+            <p>Channel Partner Manager APAC, Grammarly by Superhuman</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Partner</span>
+            <h3>Sean Chia</h3>
+            <p>Senior Regional Account Manager, Gale / Cengage</p>
+          </div>
+        </article>
+        <article class="nc-photo-slide">
+          <img src="assets/speaker-placeholder.webp" alt="" width="600" height="800" loading="lazy" />
+          <div class="nc-photo-copy">
+            <span class="nc-photo-tag">Panel · Host</span>
+            <h3>Mr. John Emyl Eugenio</h3>
+            <p>Chief Executive Officer, CE-Logic, Inc.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="nc-photo-nav">
+        <button type="button" class="nc-photo-btn" data-nc-prev aria-label="Previous speaker">
+          <svg viewBox="0 0 24 21" fill="none" aria-hidden="true"><path d="M10.3409 20.4897L0.159091 10.3079L10.3409 0.12611L11.6818 1.44429L3.77273 9.35338H23.5455V11.2625H3.77273L11.6818 19.1488L10.3409 20.4897Z" fill="currentColor"/></svg>
+        </button>
+        <button type="button" class="nc-photo-btn" data-nc-next aria-label="Next speaker">
+          <svg viewBox="0 0 24 21" fill="none" aria-hidden="true"><path d="M13.2045 20.4897L11.8636 19.1602L19.7727 11.2625H0V9.35338H19.7727L11.8636 1.45565L13.2045 0.12611L23.3864 10.3079L13.2045 20.4897Z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="nc-container">
+      <p class="nc-speaker-note"><strong>Official photographs forthcoming.</strong> Temporary placeholders will be replaced with confirmed speaker images.</p>
+    </div>
+  </section>
+
+  <!-- YOUR NATCON EXPERIENCE (TED hover cards) -->
+  <section class="nc-section" id="cel-nc-experience">
+    <div class="nc-container">
+      <div class="nc-exp-head">
+        <div>
+          <p class="nc-eyebrow">Conference program</p>
+          <h2 class="nc-h2" style="margin-bottom:0.5rem;">Program pillars</h2>
+          <p class="nc-lead">
+            A two-day program covering institutional strategy, artificial intelligence in library services, partner presentations, and the CeiGo launch, available via live stream.
+          </p>
+        </div>
+        <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+          View live stream
+          <span class="nc-btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <div class="nc-hover-grid">
+        <article class="nc-hover-card">
+          <img src="assets/hero-bg.webp" alt="" loading="lazy" />
+          <div class="nc-hover-content">
+            <h3>Opening keynote</h3>
+            <p>Philippine libraries as strategic enablers of data-driven and globally competitive education.</p>
+          </div>
+        </article>
+        <article class="nc-hover-card">
+          <img src="assets/speaker-placeholder.webp" alt="" loading="lazy" />
+          <div class="nc-hover-content">
+            <h3>Strategy sessions</h3>
+            <p>Development planning, digital ecosystems, AI-enabled services, and library investments aligned with research performance.</p>
+          </div>
+        </article>
+        <article class="nc-hover-card">
+          <img src="assets/hero-bg.webp" alt="" loading="lazy" />
+          <div class="nc-hover-content">
+            <h3>CeiGo launch</h3>
+            <p>Keynote on AI in libraries, logo unveiling, and formal product launch proceedings.</p>
+          </div>
+        </article>
+        <article class="nc-hover-card">
+          <img src="assets/speaker-placeholder.webp" alt="" loading="lazy" />
+          <div class="nc-hover-content">
+            <h3>Leadership panel</h3>
+            <p>Library directors and partners discuss artificial intelligence, academic integrity, and sustainable growth.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="nc-section is-dark" id="cel-nc-stats" style="padding-top:clamp(3rem,6vw,4.5rem);padding-bottom:clamp(3rem,6vw,4.5rem);">
+    <div class="nc-container">
+      <div class="nc-stats">
+        <div class="nc-stat"><strong>18th</strong><span>National Conference</span></div>
+        <div class="nc-stat"><strong>2</strong><span>Days of programming</span></div>
+        <div class="nc-stat"><strong>12+</strong><span>Featured speakers</span></div>
+        <div class="nc-stat"><strong>Live</strong><span>On-the-day stream</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS & SPONSORS -->
+  <section class="nc-section is-soft" id="cel-nc-partners">
+    <div class="nc-container">
+      <p class="nc-eyebrow">Partners and sponsors</p>
+      <h2 class="nc-h2">Conference partners</h2>
+      <p class="nc-lead" style="margin-bottom:2.5rem;">
+        Technology, content, and research partners supporting the 18th CE-Logic National Conference program and live stream experience.
+      </p>
+
+      <div class="nc-partner-tier">
+        <p class="nc-tier-label is-gold">Presenting · Launch partners</p>
+        <div class="nc-partner-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+          <article class="nc-partner">
+            <div class="nc-partner-logo">
+              <img src="assets/partner-igroup.webp" alt="iGroup" width="320" height="160" loading="lazy" />
+            </div>
+            <span class="nc-badge">CeiGo launch</span>
+            <h3>iGroup</h3>
+            <p>AI keynote partner for “From Search to Synthesis” and CeiGo launch programming.</p>
+          </article>
+          <article class="nc-partner">
+            <div class="nc-partner-logo">
+              <img src="assets/partner-superhuman.webp" alt="Grammarly by Superhuman" width="320" height="160" loading="lazy" />
+            </div>
+            <span class="nc-badge">AI productivity</span>
+            <h3>Grammarly by Superhuman</h3>
+            <p>Partner spotlight on AI-assisted writing and productivity for academic communities.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="nc-partner-tier">
+        <p class="nc-tier-label">Knowledge &amp; learning partners</p>
+        <div class="nc-partner-grid">
+          <article class="nc-partner">
+            <div class="nc-partner-logo">
+              <img src="assets/partner-gale.webp" alt="Gale" width="320" height="160" loading="lazy" />
+            </div>
+            <span class="nc-badge">Research content</span>
+            <h3>Gale, Part of Cengage Group</h3>
+            <p>Digital archives and research resources for teaching, learning, and discovery.</p>
+          </article>
+          <article class="nc-partner">
+            <div class="nc-partner-logo">
+              <img src="assets/partner-mcgraw.webp" alt="McGraw-Hill" width="320" height="160" loading="lazy" />
+            </div>
+            <span class="nc-badge">Learning content</span>
+            <h3>McGraw-Hill</h3>
+            <p>Learning solutions partner spotlighting content for higher education excellence.</p>
+          </article>
+          <article class="nc-partner">
+            <div class="nc-partner-logo">
+              <img src="assets/partner-scientific.webp" alt="Scientific eResources" width="320" height="160" loading="lazy" />
+            </div>
+            <span class="nc-badge">Scientific resources</span>
+            <h3>Scientific eResources</h3>
+            <p>Partner presentation supporting research access and scholarly resource ecosystems.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="nc-host-band">
+        <div>
+          <p class="nc-eyebrow" style="color:var(--nc-gold);margin-bottom:0.75rem;">Presented by</p>
+          <div class="nc-host-logos">
+            <a href="https://ceals.ph/our-brands/brands-ce-logic/" target="_blank" rel="noopener noreferrer" aria-label="CE-Logic brand page">
+              <img src="assets/ce-logic-logo.webp" alt="CE-Logic" width="220" height="42" />
+            </a>
+            <a href="https://ceals.ph/" target="_blank" rel="noopener noreferrer" aria-label="C&amp;E Adaptive Learning Solutions">
+              <img class="nc-host-logo-ceals" src="assets/ceals-logo.webp" alt="C&amp;E Adaptive Learning Solutions" width="200" height="76" />
+            </a>
+          </div>
+          <p>CE-Logic, Inc. provides library automation, interactive media systems, databases, e-books, and e-journals under C&amp;E Adaptive Learning Solutions. The National Conference supports institutional capacity in digital library services, research access, and future-ready learning ecosystems for Philippine higher education institutions.</p>
+        </div>
+        <div class="nc-host-stats">
+          <span>Library Solutions, C&amp;E ALS</span>
+          <span>18th National Conference</span>
+          <span>Research, learning, and AI partners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (stream-focused; no venue / registration) -->
+  <section class="nc-section" id="cel-nc-faq">
+    <div class="nc-container">
+      <div class="nc-center" style="margin-bottom:2rem;">
+        <h2 class="nc-h2">Frequently asked questions</h2>
+        <p class="nc-lead">Information on live streaming, speakers, and conference partners.</p>
+      </div>
+      <div class="nc-faq">
+        <details open>
+          <summary>How may I access the live stream?</summary>
+          <p>Please return to this page on July 30-31, 2026. The official stream link will be activated when programming begins. Use the “Watch stream” control in the page navigation during event days.</p>
+        </details>
+        <details>
+          <summary>What sessions will be streamed?</summary>
+          <p>Day 1 includes the opening keynote, strategy sessions, and the CeiGo launch. Day 2 includes the AI services session, leadership panel, and closing remarks. Partner presentations form part of the live program.</p>
+        </details>
+        <details>
+          <summary>When will speaker photographs be published?</summary>
+          <p>Official speaker photographs will replace temporary placeholders as they are confirmed. Names and institutional affiliations follow the indicative program.</p>
+        </details>
+        <details>
+          <summary>Who are the partners and sponsors?</summary>
+          <p>Conference partners include iGroup (CeiGo launch), Grammarly by Superhuman, Gale, Part of Cengage Group, McGraw-Hill, and Scientific eResources. The conference is presented by CE-Logic, Inc., under C&amp;E Adaptive Learning Solutions.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section class="nc-final">
+    <div class="nc-container">
+      <h2 class="nc-h2">July 30-31, 2026<br />Live stream access</h2>
+      <p>18th CE-Logic National Conference. Featured speakers, partners and sponsors, and event-day live streaming are available on this page. Registration is not required to view the stream.</p>
+      <div class="nc-btn-row">
+        <a class="nc-btn nc-btn-gold" href="#cel-nc-stream">Live stream</a>
+        <a class="nc-btn nc-btn-outline-light" href="#cel-nc-partners">Partners and sponsors</a>
+      </div>
+      <p class="nc-fine">CE-Logic National Conference · C&amp;E Adaptive Learning Solutions</p>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    var root = document.getElementById("cel-natcon-2026");
+    if (!root) return;
+    var box = root.querySelector("[data-nc-carousel]");
+    if (!box) return;
+    var track = box.querySelector("[data-nc-track]");
+    var slides = Array.prototype.slice.call(box.querySelectorAll(".nc-photo-slide"));
+    var prev = box.querySelector("[data-nc-prev]");
+    var next = box.querySelector("[data-nc-next]");
+    if (!track || !slides.length) return;
+
+    function nearestIndex() {
+      var center = track.scrollLeft + track.clientWidth / 2;
+      var best = 0;
+      var bestDist = Infinity;
+      for (var i = 0; i < slides.length; i++) {
+        var s = slides[i];
+        var mid = s.offsetLeft + s.offsetWidth / 2;
+        var d = Math.abs(mid - center);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      }
+      return best;
+    }
+
+    function setActive(i) {
+      for (var n = 0; n < slides.length; n++) {
+        if (n === i) slides[n].classList.add("is-active");
+        else slides[n].classList.remove("is-active");
+      }
+    }
+
+    function scrollToIndex(i) {
+      if (i < 0) i = 0;
+      if (i > slides.length - 1) i = slides.length - 1;
+      var s = slides[i];
+      var left = s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2;
+      track.scrollTo({ left: left, behavior: "smooth" });
+      setActive(i);
+    }
+
+    var ticking = false;
+    track.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        setActive(nearestIndex());
+        ticking = false;
+      });
+    });
+
+    if (prev) prev.addEventListener("click", function () { scrollToIndex(nearestIndex() - 1); });
+    if (next) next.addEventListener("click", function () { scrollToIndex(nearestIndex() + 1); });
+
+    // Center first slide on load
+    requestAnimationFrame(function () { scrollToIndex(0); });
+  })();
+  </script>
+</div>

@@ -1,0 +1,1129 @@
+    .cel-nc {
+      /* TED-like system + official CE-Logic logo palette */
+      --nc-bg: #ffffff;
+      --nc-text: #000000;
+      --nc-muted: #555555;
+      --nc-soft: #f6f6f6;
+      --nc-dark: #1d1d1d;
+      --nc-ink: #0a0a0a;
+      --nc-line: #e8e8e8;
+
+      /* From official CE-Logic logo */
+      --nc-blue: #0070b0;
+      --nc-blue-bright: #1890d0;
+      --nc-blue-dark: #005a8c;
+      --nc-gold: #f8b838;
+      --nc-gold-soft: #f8c038;
+      --nc-green: #106838;
+      --nc-red: #e82028;
+      --nc-sage: #d8e8de;
+
+      --nc-accent: var(--nc-blue);
+      --nc-accent-dark: var(--nc-blue-dark);
+
+      --nc-max: 87.5rem;
+      --nc-pad-x: clamp(1.25rem, 4vw, 3rem);
+      --nc-section: clamp(4rem, 8vw, 7.5rem);
+      --nc-font: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+      box-sizing: border-box;
+      background: var(--nc-bg);
+      color: var(--nc-text);
+      font-family: var(--nc-font);
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+      text-align: left;
+    }
+    .cel-nc *,
+    .cel-nc *::before,
+    .cel-nc *::after { box-sizing: border-box; }
+    .cel-nc img { max-width: 100%; display: block; border: 0; }
+    .cel-nc a { color: var(--nc-accent); text-decoration: none; }
+    .cel-nc a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .cel-nc p { margin: 0 0 1em; }
+    .cel-nc ::selection { background: var(--nc-blue); color: #fff; }
+
+    .cel-nc .nc-container {
+      width: 100%;
+      max-width: var(--nc-max);
+      margin: 0 auto;
+      padding-left: var(--nc-pad-x);
+      padding-right: var(--nc-pad-x);
+    }
+
+    .cel-nc .nc-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.5em;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-h1 {
+      margin: 0 0 0.2em;
+      font-family: var(--nc-font);
+      font-size: clamp(2.6rem, 7.5vw, 5rem);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-h2 {
+      margin: 0 0 0.45em;
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-h3 {
+      margin: 0 0 0.5em;
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .cel-nc .nc-h4 {
+      margin: 0 0 0.4em;
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .cel-nc .nc-lead {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      line-height: 1.5;
+      color: var(--nc-muted);
+      max-width: 42rem;
+    }
+    .cel-nc .nc-lead-lg {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.45;
+      color: var(--nc-text);
+      max-width: 48rem;
+      font-weight: 400;
+    }
+    .cel-nc .nc-em {
+      color: var(--nc-accent);
+      font-style: normal;
+    }
+    .cel-nc .nc-section {
+      padding: var(--nc-section) 0;
+      background: var(--nc-bg);
+      color: var(--nc-text);
+      position: relative;
+    }
+    .cel-nc .nc-section.is-soft { background: var(--nc-soft); }
+    .cel-nc .nc-section.is-dark {
+      background: var(--nc-ink);
+      color: #fff;
+    }
+    .cel-nc .nc-section.is-dark .nc-lead,
+    .cel-nc .nc-section.is-dark .nc-eyebrow { color: rgba(255,255,255,0.72); }
+    .cel-nc .nc-section.is-dark .nc-h1,
+    .cel-nc .nc-section.is-dark .nc-h2,
+    .cel-nc .nc-section.is-dark .nc-h3,
+    .cel-nc .nc-section.is-dark .nc-h4 { color: #fff; }
+    .cel-nc .nc-section.is-dark .nc-em { color: var(--nc-gold); }
+    .cel-nc .nc-section.is-blue {
+      background: var(--nc-blue);
+      color: #fff;
+    }
+    .cel-nc .nc-section.is-blue .nc-lead,
+    .cel-nc .nc-section.is-blue .nc-eyebrow { color: rgba(255,255,255,0.85); }
+    .cel-nc .nc-section.is-blue .nc-h2 { color: #fff; }
+    .cel-nc .nc-section.is-blue .nc-em { color: var(--nc-gold); }
+
+    .cel-nc .nc-center { text-align: center; }
+    .cel-nc .nc-center .nc-lead,
+    .cel-nc .nc-center .nc-lead-lg { margin-left: auto; margin-right: auto; }
+
+    /* Buttons: CE-Logic weight + arrow icon on hover */
+    .cel-nc .nc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem 2.25rem;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      font-family: var(--nc-font);
+      font-size: 1rem;
+      line-height: 1.4;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .cel-nc .nc-btn-icon {
+      display: inline-flex;
+      width: 1.1em;
+      height: 1.1em;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .cel-nc .nc-btn-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .cel-nc .nc-btn:hover .nc-btn-icon { transform: rotate(45deg); }
+    .cel-nc .nc-btn-primary {
+      background: var(--nc-accent);
+      color: #fff !important;
+      border-color: var(--nc-accent);
+    }
+    .cel-nc .nc-btn-primary:hover { background: var(--nc-accent-dark); border-color: var(--nc-accent-dark); }
+    .cel-nc .nc-btn-gold {
+      background: var(--nc-gold);
+      color: var(--nc-ink) !important;
+      border-color: var(--nc-gold);
+    }
+    .cel-nc .nc-btn-gold:hover { background: var(--nc-gold-soft); border-color: var(--nc-gold-soft); }
+    .cel-nc .nc-btn-outline {
+      background: transparent;
+      color: var(--nc-text) !important;
+      border-color: var(--nc-text);
+    }
+    .cel-nc .nc-btn-outline:hover { background: var(--nc-text); color: #fff !important; }
+    .cel-nc .nc-btn-outline-light {
+      background: transparent;
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.85);
+    }
+    .cel-nc .nc-btn-outline-light:hover { background: #fff; color: var(--nc-ink) !important; }
+    .cel-nc .nc-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+    }
+    .cel-nc .nc-center .nc-btn-row { justify-content: center; }
+
+    /* Post-hero secondary band (TED: “What is the conference?”) */
+    .cel-nc .nc-secondary {
+      background: var(--nc-bg);
+      border-bottom: 1px solid var(--nc-line);
+      padding: clamp(2.5rem, 5vw, 3.5rem) 0;
+    }
+    .cel-nc .nc-secondary-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: end;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-secondary-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-secondary-q {
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin: 0;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-secondary-a {
+      margin: 0;
+    }
+    .cel-nc .nc-secondary-a .nc-h3 {
+      margin-bottom: 0.65rem;
+      text-transform: uppercase;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .cel-nc .nc-secondary-a p {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--nc-muted);
+      max-width: 36rem;
+    }
+
+    /* ===== STICKY CONFERENCE SUBNAV (TED conference-subnav) ===== */
+    .cel-nc .nc-subnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #fff;
+    }
+    .cel-nc .nc-subnav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.25rem;
+    }
+    .cel-nc .nc-subnav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none !important;
+      color: #fff !important;
+      min-width: 0;
+    }
+    .cel-nc .nc-subnav-logo {
+      height: 1.75rem;
+      width: auto;
+      max-width: 10rem;
+      object-fit: contain;
+      flex-shrink: 0;
+      /* Official logo: blue + gold reads on dark nav without invert */
+    }
+    .cel-nc .nc-subnav-brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      min-width: 0;
+      border-left: 1px solid rgba(255,255,255,0.18);
+      padding-left: 0.75rem;
+    }
+    .cel-nc .nc-subnav-brand strong {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .cel-nc .nc-subnav-brand strong .nc-ce { color: var(--nc-blue-bright); }
+    .cel-nc .nc-subnav-brand strong .nc-logic { color: var(--nc-gold); }
+    .cel-nc .nc-subnav-brand span {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 640px) {
+      .cel-nc .nc-subnav-logo { height: 1.35rem; max-width: 6.5rem; }
+      .cel-nc .nc-subnav-brand-text strong { font-size: 0.78rem; }
+    }
+    .cel-nc .nc-subnav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem 0.15rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .cel-nc .nc-subnav-link {
+      position: relative;
+      color: rgba(255,255,255,0.88) !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none !important;
+      padding: 0.65rem 0.85rem;
+      letter-spacing: -0.01em;
+    }
+    .cel-nc .nc-subnav-link::after {
+      content: "";
+      position: absolute;
+      left: 0.85rem;
+      right: 0.85rem;
+      bottom: 0.35rem;
+      height: 2px;
+      background: currentColor;
+      width: 0;
+      transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .cel-nc .nc-subnav-link:hover::after,
+    .cel-nc .nc-subnav-link.is-active::after {
+      width: calc(100% - 1.7rem);
+    }
+    .cel-nc .nc-subnav-link:hover { color: #fff !important; }
+    .cel-nc .nc-subnav .nc-btn { padding: 0.65rem 1.15rem; font-size: 0.88rem; }
+    .cel-nc .nc-live-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-gold);
+      padding: 0 0.35rem;
+    }
+    .cel-nc .nc-live-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--nc-red);
+      animation: cel-nc-pulse 1.6s infinite;
+    }
+    @keyframes cel-nc-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(236,32,40,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(236,32,40,0); }
+      100% { box-shadow: 0 0 0 0 rgba(236,32,40,0); }
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-subnav-link.hide-md { display: none; }
+    }
+    @media (max-width: 640px) {
+      .cel-nc .nc-subnav-menu .nc-live-chip { display: none; }
+      .cel-nc .nc-subnav .nc-btn { padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+    }
+
+    /* ===== HERO (TED conference-header: centered, full-bleed media + overlay) ===== */
+    .cel-nc .nc-hero {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      min-height: min(92lvh, 52rem);
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(6rem, 14vw, 10rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+      background: var(--nc-ink);
+      text-align: center;
+    }
+    .cel-nc .nc-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .cel-nc .nc-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+      filter: saturate(0.85);
+    }
+    .cel-nc .nc-hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.72) 45%, rgba(10,10,10,0.92) 100%),
+        radial-gradient(ellipse 70% 50% at 50% 20%, rgba(0,112,176,0.38), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 90%, rgba(16,104,56,0.22), transparent 55%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(248,184,56,0.12), transparent 50%);
+    }
+    .cel-nc .nc-hero .nc-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cel-nc .nc-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 1.25rem;
+      font-family: var(--nc-font);
+    }
+    .cel-nc .nc-hero-meta span + span::before {
+      content: "·";
+      margin-right: 1.25rem;
+      opacity: 0.5;
+    }
+    .cel-nc .nc-hero-logo {
+      display: block;
+      width: min(22rem, 72vw);
+      height: auto;
+      margin: 0 auto 1.35rem;
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,0.35));
+    }
+    .cel-nc .nc-hero-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(248, 184, 56, 0.65);
+      border-radius: 4px;
+      color: var(--nc-gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .cel-nc .nc-hero .nc-h1 {
+      color: #fff;
+      max-width: 14ch;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+      font-size: clamp(2.2rem, 6.5vw, 4rem);
+    }
+    .cel-nc .nc-hero .nc-h1 .nc-year { color: var(--nc-gold); }
+    .cel-nc a.nc-hero-logo-link {
+      display: inline-block;
+      text-decoration: none !important;
+      margin-bottom: 0.25rem;
+    }
+    .cel-nc a.nc-hero-logo-link:hover .nc-hero-logo {
+      opacity: 0.92;
+    }
+    .cel-nc .nc-hero-desc {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.55;
+      max-width: 32.5rem;
+      color: rgba(255,255,255,0.88);
+      margin: 0 auto;
+      font-weight: 400;
+      text-wrap: pretty;
+    }
+    .cel-nc .nc-hero .nc-btn-row {
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .cel-nc .nc-btn-linkish {
+      background: transparent;
+      color: #fff !important;
+      border-color: transparent;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      text-decoration: none !important;
+    }
+    .cel-nc .nc-btn-linkish:hover {
+      color: var(--nc-gold) !important;
+    }
+
+    /* ===== YOUR INVITATION (TED list-with-images pattern) ===== */
+    .cel-nc .nc-invite {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-invite { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-invite-visual {
+      position: sticky;
+      top: 5.5rem;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--nc-dark);
+      aspect-ratio: 4 / 5;
+      max-height: 36rem;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-invite-visual { position: relative; top: 0; max-height: none; aspect-ratio: 16 / 10; }
+    }
+    .cel-nc .nc-invite-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .cel-nc .nc-invite-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      margin-top: 1.5rem;
+    }
+    .cel-nc .nc-invite-item {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--nc-line);
+    }
+    .cel-nc .nc-invite-item:first-child { border-top: 0; padding-top: 0; }
+    .cel-nc .nc-invite-item p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--nc-muted);
+    }
+
+    /* ===== THEME BLOCK ===== */
+    .cel-nc .nc-theme-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-green);
+      margin: 0 0 1rem;
+    }
+    .cel-nc .nc-theme-copy {
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      line-height: 1.55;
+      max-width: 48rem;
+      color: var(--nc-text);
+    }
+    .cel-nc .nc-theme-copy strong { font-weight: 700; }
+
+    /* ===== STREAMING ===== */
+    .cel-nc .nc-stream-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      align-items: stretch;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-stream-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-stream-stage {
+      position: relative;
+      min-height: 22rem;
+      border-radius: 4px;
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(0,0,0,0.55), rgba(9,119,188,0.55)),
+        url("/assets/hero-bg.webp") center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+    .cel-nc .nc-stream-badge {
+      position: absolute;
+      top: 1.25rem;
+      left: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--nc-red);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 0.75rem;
+      border-radius: 4px;
+    }
+    .cel-nc .nc-stream-stage h3 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .cel-nc .nc-stream-stage p {
+      color: rgba(255,255,255,0.88);
+      max-width: 34rem;
+      margin-bottom: 1.25rem;
+    }
+    .cel-nc .nc-stream-aside {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+    }
+    .cel-nc .nc-stream-aside h4 {
+      margin: 0 0 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--nc-gold);
+      font-weight: 800;
+    }
+    .cel-nc .nc-stream-aside ul {
+      list-style: none;
+      margin: 0 0 1.5rem;
+      padding: 0;
+    }
+    .cel-nc .nc-stream-aside li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.98rem;
+      line-height: 1.4;
+    }
+    .cel-nc .nc-stream-aside li:last-child { border-bottom: 0; }
+    .cel-nc .nc-stream-aside li strong {
+      display: block;
+      color: var(--nc-gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    /* ===== SPEAKERS: photo-box carousel ===== */
+    .cel-nc .nc-speakers-intro {
+      max-width: 46rem;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+    .cel-nc .nc-photo-box {
+      position: relative;
+      margin: 0 calc(-1 * var(--nc-pad-x));
+      padding: 0 var(--nc-pad-x);
+    }
+    .cel-nc .nc-photo-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0.5rem 8vw 1.25rem;
+    }
+    .cel-nc .nc-photo-track::-webkit-scrollbar { display: none; }
+    @media (min-width: 768px) {
+      .cel-nc .nc-photo-track { gap: 1.5rem; padding-left: 12vw; padding-right: 12vw; }
+    }
+    @media (min-width: 992px) {
+      .cel-nc .nc-photo-track { gap: 2.5rem; padding-left: 18vw; padding-right: 18vw; }
+    }
+    .cel-nc .nc-photo-slide {
+      flex: 0 0 78%;
+      scroll-snap-align: center;
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #252323;
+      aspect-ratio: 3 / 4;
+      max-height: 32rem;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    @media (min-width: 768px) {
+      .cel-nc .nc-photo-slide { flex-basis: 42%; }
+    }
+    @media (min-width: 992px) {
+      .cel-nc .nc-photo-slide { flex-basis: 28%; }
+    }
+    .cel-nc .nc-photo-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .cel-nc .nc-photo-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy {
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+      color: #fff;
+      opacity: 0.55;
+      transform: translateY(0.35rem);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .cel-nc .nc-photo-slide.is-active {
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+      transform: scale(1.02);
+    }
+    .cel-nc .nc-photo-slide.is-active img { transform: scale(1.04); }
+    .cel-nc .nc-photo-slide.is-active .nc-photo-copy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy h3 {
+      margin: 0 0 0.25rem;
+      color: #fff;
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      line-height: 1.2;
+    }
+    .cel-nc .nc-photo-slide .nc-photo-copy p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.85);
+    }
+    .cel-nc .nc-photo-tag {
+      display: inline-block;
+      margin-bottom: 0.45rem;
+      background: var(--nc-gold);
+      color: var(--nc-ink);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.5rem;
+      border-radius: 3px;
+    }
+    .cel-nc .nc-photo-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+    .cel-nc .nc-photo-btn {
+      width: 3rem;
+      height: 3rem;
+      border: 0;
+      border-radius: 4px;
+      background: var(--nc-ink);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .cel-nc .nc-photo-btn:hover {
+      background: var(--nc-blue);
+      transform: translateY(-1px);
+    }
+    .cel-nc .nc-photo-btn:focus-visible {
+      outline: 2px solid var(--nc-blue);
+      outline-offset: 2px;
+    }
+    .cel-nc .nc-photo-btn svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      display: block;
+    }
+    .cel-nc .nc-speaker-note {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-speaker-note strong { color: var(--nc-green); }
+
+    /* Theme 50/50 (TED inverted section) */
+    .cel-nc .nc-theme-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-theme-split { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-theme-visual {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      max-height: 36rem;
+      background: #111;
+    }
+    .cel-nc .nc-theme-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .cel-nc .nc-theme-visual { aspect-ratio: 16 / 10; max-height: none; order: -1; }
+    }
+
+    /* ===== EXPERIENCE: hover-card grid ===== */
+    .cel-nc .nc-exp-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1.25rem 2rem;
+      margin-bottom: 2rem;
+    }
+    .cel-nc .nc-exp-head .nc-lead { margin: 0; max-width: 36rem; }
+    .cel-nc .nc-hover-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 1000px) {
+      .cel-nc .nc-hover-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .cel-nc .nc-hover-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-hover-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      min-height: 22rem;
+      background: #111;
+      isolation: isolate;
+    }
+    .cel-nc .nc-hover-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      transition: transform 0.5s ease, opacity 0.35s ease;
+    }
+    .cel-nc .nc-hover-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.88) 100%);
+      z-index: 1;
+    }
+    .cel-nc .nc-hover-card:hover img {
+      transform: scale(1.06);
+      opacity: 0.7;
+    }
+    .cel-nc .nc-hover-card .nc-hover-content {
+      position: absolute;
+      left: 1.15rem;
+      right: 1.15rem;
+      bottom: 1.15rem;
+      z-index: 2;
+      color: #fff;
+    }
+    .cel-nc .nc-hover-card h3 {
+      margin: 0 0 0.45rem;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+    .cel-nc .nc-hover-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.82);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+    }
+    .cel-nc .nc-hover-card:hover p,
+    .cel-nc .nc-hover-card:focus-within p {
+      max-height: 8rem;
+      opacity: 1;
+      margin-top: 0.15rem;
+    }
+    @media (hover: none) {
+      .cel-nc .nc-hover-card p {
+        max-height: 8rem;
+        opacity: 1;
+      }
+    }
+
+    /* Stats band (TED stats, honest NatCon numbers) */
+    .cel-nc .nc-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) {
+      .cel-nc .nc-stats { grid-template-columns: 1fr 1fr; }
+    }
+    .cel-nc .nc-stat {
+      background: var(--nc-ink);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .cel-nc .nc-stat strong {
+      display: block;
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--nc-gold);
+      margin-bottom: 0.5rem;
+    }
+    .cel-nc .nc-stat span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* FAQ */
+    .cel-nc .nc-faq {
+      max-width: 46rem;
+      margin: 0 auto;
+    }
+    .cel-nc .nc-faq details {
+      border-bottom: 1px solid var(--nc-line);
+      padding: 1.15rem 0;
+    }
+    .cel-nc .nc-faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .cel-nc .nc-faq summary::-webkit-details-marker { display: none; }
+    .cel-nc .nc-faq summary::after {
+      content: "+";
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1;
+      color: var(--nc-blue);
+      flex-shrink: 0;
+    }
+    .cel-nc .nc-faq details[open] summary::after { content: "–"; }
+    .cel-nc .nc-faq details p {
+      margin: 0.85rem 0 0;
+      color: var(--nc-muted);
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    /* ===== PARTNERS ===== */
+    .cel-nc .nc-partner-tier { margin-bottom: 2.5rem; }
+    .cel-nc .nc-partner-tier:last-child { margin-bottom: 0; }
+    .cel-nc .nc-tier-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--nc-green);
+      margin: 0 0 1rem;
+    }
+    .cel-nc .nc-tier-label.is-gold { color: #9a7600; }
+    .cel-nc .nc-partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-partner-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .cel-nc .nc-partner-grid { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-partner {
+      background: var(--nc-soft);
+      border: 1px solid var(--nc-line);
+      border-radius: 4px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      height: 100%;
+      transition: border-color 0.15s ease;
+    }
+    .cel-nc .nc-partner:hover { border-color: rgba(9,119,188,0.4); }
+    .cel-nc .nc-partner-logo {
+      background: #fff;
+      border: 1px solid var(--nc-line);
+      border-radius: 4px;
+      min-height: 5.5rem;
+      display: grid;
+      place-items: center;
+      padding: 0.75rem;
+    }
+    .cel-nc .nc-partner-logo img {
+      max-height: 3.5rem;
+      width: auto;
+      object-fit: contain;
+    }
+    .cel-nc .nc-partner h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+    }
+    .cel-nc .nc-partner p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--nc-muted);
+      line-height: 1.45;
+    }
+    .cel-nc .nc-badge {
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-blue);
+      background: rgba(9,119,188,0.1);
+      padding: 0.28rem 0.5rem;
+      border-radius: 3px;
+    }
+    .cel-nc .nc-host-band {
+      margin-top: 2.5rem;
+      background: linear-gradient(110deg, var(--nc-blue) 0%, var(--nc-blue-dark) 45%, #0a3d5c 100%);
+      color: #fff;
+      border-radius: 4px;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .cel-nc .nc-host-band { grid-template-columns: 1fr; }
+    }
+    .cel-nc .nc-host-band p {
+      margin: 0;
+      color: rgba(255,255,255,0.92);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .cel-nc .nc-host-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem 1.75rem;
+      margin: 0.85rem 0 1rem;
+    }
+    .cel-nc .nc-host-logos a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none !important;
+      background: rgba(255,255,255,0.96);
+      border-radius: 6px;
+      padding: 0.65rem 0.9rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .cel-nc .nc-host-logos a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .cel-nc .nc-host-logos img {
+      display: block;
+      height: 2.35rem;
+      width: auto;
+      max-width: 11rem;
+      object-fit: contain;
+    }
+    .cel-nc .nc-host-logos .nc-host-logo-ceals {
+      height: 2.1rem;
+      max-width: 9.5rem;
+    }
+    .cel-nc .nc-host-stats {
+      display: grid;
+      gap: 0.65rem;
+    }
+    .cel-nc .nc-host-stats span {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 4px;
+      padding: 0.75rem 0.9rem;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .cel-nc .nc-final {
+      background: var(--nc-ink);
+      color: #fff;
+      padding: clamp(4rem, 8vw, 6.5rem) 0;
+      text-align: center;
+    }
+    .cel-nc .nc-final .nc-h2 { color: #fff; }
+    .cel-nc .nc-final p {
+      color: rgba(255,255,255,0.78);
+      max-width: 36rem;
+      margin: 0 auto 1.75rem;
+      font-size: 1.15rem;
+    }
+    .cel-nc .nc-fine {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+    }

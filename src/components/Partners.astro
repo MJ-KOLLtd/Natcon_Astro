@@ -1,0 +1,141 @@
+---
+const launchPartners = [
+  {
+    logo: '/assets/partner-igroup.webp',
+    alt: 'iGroup',
+    badge: 'CeiGo launch',
+    name: 'iGroup',
+    body: 'AI keynote partner for “From Search to Synthesis” and CeiGo launch programming.',
+  },
+  {
+    logo: '/assets/partner-superhuman.webp',
+    alt: 'Grammarly by Superhuman',
+    badge: 'AI productivity',
+    name: 'Grammarly by Superhuman',
+    body: 'Partner spotlight on AI-assisted writing and productivity for academic communities.',
+  },
+];
+
+const knowledgePartners = [
+  {
+    logo: '/assets/partner-gale.webp',
+    alt: 'Gale',
+    badge: 'Research content',
+    name: 'Gale, Part of Cengage Group',
+    body: 'Digital archives and research resources for teaching, learning, and discovery.',
+  },
+  {
+    logo: '/assets/partner-mcgraw.webp',
+    alt: 'McGraw-Hill',
+    badge: 'Learning content',
+    name: 'McGraw-Hill',
+    body: 'Learning solutions partner spotlighting content for higher education excellence.',
+  },
+  {
+    logo: '/assets/partner-scientific.webp',
+    alt: 'Scientific eResources',
+    badge: 'Scientific resources',
+    name: 'Scientific eResources',
+    body: 'Partner presentation supporting research access and scholarly resource ecosystems.',
+  },
+];
+---
+
+<section class="nc-section is-soft" id="cel-nc-partners">
+  <div class="nc-container">
+    <p class="nc-eyebrow">Partners and sponsors</p>
+    <h2 class="nc-h2">Conference partners</h2>
+    <p class="nc-lead" style="margin-bottom:2.5rem;">
+      Technology, content, and research partners supporting the 18th CE-Logic
+      National Conference program and live stream experience.
+    </p>
+
+    <div class="nc-partner-tier">
+      <p class="nc-tier-label is-gold">Presenting · Launch partners</p>
+      <div
+        class="nc-partner-grid"
+        style="grid-template-columns:repeat(2,minmax(0,1fr));"
+      >
+        {
+          launchPartners.map((p) => (
+            <article class="nc-partner">
+              <div class="nc-partner-logo">
+                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
+              </div>
+              <span class="nc-badge">{p.badge}</span>
+              <h3>{p.name}</h3>
+              <p>{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="nc-partner-tier">
+      <p class="nc-tier-label">Knowledge &amp; learning partners</p>
+      <div class="nc-partner-grid">
+        {
+          knowledgePartners.map((p) => (
+            <article class="nc-partner">
+              <div class="nc-partner-logo">
+                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
+              </div>
+              <span class="nc-badge">{p.badge}</span>
+              <h3>{p.name}</h3>
+              <p>{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="nc-host-band">
+      <div>
+        <p class="nc-eyebrow" style="color:var(--nc-gold);margin-bottom:0.75rem;">
+          Presented by
+        </p>
+        <div class="nc-host-logos">
+          <a
+            href="https://ceals.ph/our-brands/brands-ce-logic/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CE-Logic brand page"
+          >
+            <img
+              src="/assets/ce-logic-logo.webp"
+              alt="CE-Logic"
+              width="220"
+              height="42"
+            />
+          </a>
+          <a
+            href="https://ceals.ph/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="C&E Adaptive Learning Solutions"
+          >
+            <img
+              class="nc-host-logo-ceals"
+              src="/assets/ceals-logo.webp"
+              alt="C&E Adaptive Learning Solutions"
+              width="200"
+              height="76"
+            />
+          </a>
+        </div>
+        <p>
+          CE-Logic, Inc. provides library automation, interactive media systems,
+          databases, e-books, and e-journals under C&amp;E Adaptive Learning
+          Solutions. The National Conference supports institutional capacity in
+          digital library services, research access, and future-ready learning
+          ecosystems for Philippine higher education institutions.
+        </p>
+      </div>
+      <div class="nc-host-stats">
+        <span>Library Solutions, C&amp;E ALS</span>
+        <span>18th National Conference</span>
+        <span>Research, learning, and AI partners</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,190 @@
+---
+const speakers = [
+  {
+    tag: 'Keynote',
+    name: 'Dr. Milabel E. Ho',
+    role: 'Executive Director, AACCUP',
+  },
+  {
+    tag: 'Welcome · Session',
+    name: 'Ms. Elvira B. Lapuz',
+    role: 'University Librarian, UP Diliman',
+  },
+  {
+    tag: 'PLAI · Session',
+    name: 'Dr. Maria Pretty Lay T. Abdala',
+    role: 'Dean, BulSU · President, PLAI',
+  },
+  {
+    tag: 'Session',
+    name: 'Janice D.C. Peñaflor',
+    role: 'Associate Director, DLSU Libraries',
+  },
+  {
+    tag: 'Session',
+    name: 'Efren M. Torres, Jr.',
+    role: 'Access & Resource Management, DLSU Libraries',
+  },
+  {
+    tag: 'Session',
+    name: 'Prof. Dan Anthony Dorado',
+    role: 'UP School of Library and Information Studies',
+  },
+  {
+    tag: 'Panel',
+    name: 'Ms. Joenabie Arevalo',
+    role: 'University Librarian, Ateneo de Manila University',
+  },
+  {
+    tag: 'Panel',
+    name: 'Edgardo B. Quiros, RL',
+    role: 'Assistant Director, National Library of the Philippines',
+  },
+  {
+    tag: 'CeiGo',
+    name: 'Dr. Diu Seng (“DS”) See',
+    role: 'Business & Sales Enablement Manager, iGroup',
+  },
+  {
+    tag: 'Partner',
+    name: 'Mike Shen',
+    role: 'Channel Partner Manager APAC, Grammarly by Superhuman',
+  },
+  {
+    tag: 'Partner',
+    name: 'Sean Chia',
+    role: 'Senior Regional Account Manager, Gale / Cengage',
+  },
+  {
+    tag: 'Panel · Host',
+    name: 'Mr. John Emyl Eugenio',
+    role: 'Chief Executive Officer, CE-Logic, Inc.',
+  },
+];
+---
+
+<section class="nc-section" id="cel-nc-speakers">
+  <div class="nc-container">
+    <div class="nc-speakers-intro">
+      <p class="nc-eyebrow">Speakers</p>
+      <h2 class="nc-h2">Featured speakers</h2>
+      <p class="nc-lead" style="margin:0 auto;">
+        The program features quality assurance leaders, university librarians, LIS
+        faculty, and industry partners addressing data strategy, artificial
+        intelligence, academic integrity, and institutional competitiveness.
+        Additional speakers may be announced.
+      </p>
+    </div>
+  </div>
+
+  <div class="nc-photo-box" data-nc-carousel>
+    <div class="nc-photo-track" data-nc-track tabindex="0" aria-label="Speaker carousel">
+      {
+        speakers.map((speaker, i) => (
+          <article class:list={['nc-photo-slide', { 'is-active': i === 0 }]}>
+            <img
+              src="/assets/speaker-placeholder.webp"
+              alt=""
+              width="600"
+              height="800"
+              loading="lazy"
+            />
+            <div class="nc-photo-copy">
+              <span class="nc-photo-tag">{speaker.tag}</span>
+              <h3>{speaker.name}</h3>
+              <p>{speaker.role}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="nc-photo-nav">
+      <button type="button" class="nc-photo-btn" data-nc-prev aria-label="Previous speaker">
+        <svg viewBox="0 0 24 21" fill="none" aria-hidden="true">
+          <path
+            d="M10.3409 20.4897L0.159091 10.3079L10.3409 0.12611L11.6818 1.44429L3.77273 9.35338H23.5455V11.2625H3.77273L11.6818 19.1488L10.3409 20.4897Z"
+            fill="currentColor"></path>
+        </svg>
+      </button>
+      <button type="button" class="nc-photo-btn" data-nc-next aria-label="Next speaker">
+        <svg viewBox="0 0 24 21" fill="none" aria-hidden="true">
+          <path
+            d="M13.2045 20.4897L11.8636 19.1602L19.7727 11.2625H0V9.35338H19.7727L11.8636 1.45565L13.2045 0.12611L23.3864 10.3079L13.2045 20.4897Z"
+            fill="currentColor"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="nc-container">
+    <p class="nc-speaker-note">
+      <strong>Official photographs forthcoming.</strong> Temporary placeholders
+      will be replaced with confirmed speaker images.
+    </p>
+  </div>
+</section>
+
+<script>
+  function initCarousel() {
+    const root = document.getElementById('cel-natcon-2026');
+    if (!root) return;
+    const box = root.querySelector('[data-nc-carousel]');
+    if (!box) return;
+    const track = box.querySelector('[data-nc-track]');
+    const slides = Array.from(box.querySelectorAll('.nc-photo-slide'));
+    const prev = box.querySelector('[data-nc-prev]');
+    const next = box.querySelector('[data-nc-next]');
+    if (!track || !slides.length) return;
+
+    function nearestIndex() {
+      const center = track!.scrollLeft + track!.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      for (let i = 0; i < slides.length; i++) {
+        const s = slides[i] as HTMLElement;
+        const mid = s.offsetLeft + s.offsetWidth / 2;
+        const d = Math.abs(mid - center);
+        if (d < bestDist) {
+          bestDist = d;
+          best = i;
+        }
+      }
+      return best;
+    }
+
+    function setActive(i: number) {
+      for (let n = 0; n < slides.length; n++) {
+        if (n === i) slides[n].classList.add('is-active');
+        else slides[n].classList.remove('is-active');
+      }
+    }
+
+    function scrollToIndex(i: number) {
+      if (i < 0) i = 0;
+      if (i > slides.length - 1) i = slides.length - 1;
+      const s = slides[i] as HTMLElement;
+      const left = s.offsetLeft - (track!.clientWidth - s.offsetWidth) / 2;
+      track!.scrollTo({ left, behavior: 'smooth' });
+      setActive(i);
+    }
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setActive(nearestIndex());
+        ticking = false;
+      });
+    });
+
+    if (prev) prev.addEventListener('click', () => scrollToIndex(nearestIndex() - 1));
+    if (next) next.addEventListener('click', () => scrollToIndex(nearestIndex() + 1));
+
+    requestAnimationFrame(() => scrollToIndex(0));
+  }
+
+  initCarousel();
+  document.addEventListener('astro:page-load', initCarousel);
+</script>

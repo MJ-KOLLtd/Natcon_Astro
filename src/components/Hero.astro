@@ -1,0 +1,48 @@
+---
+import BtnArrow from './BtnArrow.astro';
+---
+
+<header class="nc-hero">
+  <div class="nc-hero-bg" aria-hidden="true">
+    <img src="/assets/hero-bg.webp" alt="" width="1920" height="900" />
+  </div>
+  <div class="nc-container">
+    <div class="nc-hero-meta">
+      <span>July 30-31, 2026</span>
+      <span>18th Edition</span>
+      <span>Live stream access</span>
+    </div>
+    <a
+      class="nc-hero-logo-link"
+      href="https://ceals.ph/our-brands/brands-ce-logic/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit the CE-Logic brand page"
+    >
+      <img
+        class="nc-hero-logo"
+        src="/assets/ce-logic-logo.webp"
+        alt="CE-Logic"
+        width="480"
+        height="90"
+      />
+    </a>
+    <div class="nc-hero-mark">Library Solutions · 18th National Conference</div>
+    <h1 class="nc-h1">National Conference <span class="nc-year">2026</span></h1>
+    <p class="nc-hero-desc">
+      A professional forum for academic library leaders advancing data-informed
+      decision-making, digital transformation, and institutional competitiveness
+      in higher education.
+    </p>
+    <div class="nc-btn-row">
+      <a class="nc-btn nc-btn-primary" href="#cel-nc-stream">
+        View live stream
+        <BtnArrow />
+      </a>
+      <a class="nc-btn nc-btn-linkish" href="#cel-nc-speakers">
+        View speakers
+        <BtnArrow />
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,89 @@
+---
+/**
+ * On event day, set STREAM_URL below and remove the disabled onclick.
+ * Search for STREAM_URL across the project when going live.
+ */
+const STREAM_URL = '#'; // e.g. 'https://youtube.com/live/...'
+const streamReady = STREAM_URL !== '#';
+---
+
+<section class="nc-section is-dark" id="cel-nc-stream">
+  <div class="nc-container">
+    <p class="nc-eyebrow">
+      <span class="nc-live-chip" style="color:var(--nc-gold);">
+        <span class="nc-live-dot"></span>
+        Event-day access
+      </span>
+    </p>
+    <h2 class="nc-h2">Live <span class="nc-em">stream</span></h2>
+    <p class="nc-lead" style="max-width:40rem;">
+      Keynotes, plenary sessions, partner presentations, the CeiGo launch, and
+      the leadership panel will be available through the official conference live
+      stream on event days.
+    </p>
+
+    <div class="nc-stream-grid">
+      <div class="nc-stream-stage">
+        <div class="nc-stream-badge">
+          <span class="nc-live-dot" style="background:#fff;box-shadow:none;"></span>
+          Available on event days
+        </div>
+        <h3>Official conference stream</h3>
+        <p>
+          Please return to this page on July 30-31, 2026. The stream link will be
+          activated when the program begins.
+        </p>
+        {
+          streamReady ? (
+            <a
+              class="nc-btn nc-btn-gold"
+              href={STREAM_URL}
+              id="cel-nc-watch-live"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Watch live stream
+            </a>
+          ) : (
+            <a
+              class="nc-btn nc-btn-gold"
+              href="#"
+              id="cel-nc-watch-live"
+              onclick="return false;"
+            >
+              Stream link activates on event day
+            </a>
+          )
+        }
+      </div>
+      <aside class="nc-stream-aside">
+        <h4>Program coverage</h4>
+        <ul>
+          <li>
+            <strong>Day 1</strong>
+            Opening keynote, strategy sessions, and CeiGo launch
+          </li>
+          <li>
+            <strong>Day 2</strong>
+            AI services session, leadership panel, and closing
+          </li>
+          <li>
+            <strong>Partners</strong>
+            Featured sponsor and partner presentations
+          </li>
+          <li>
+            <strong>Access</strong>
+            Available on this page during live programming
+          </li>
+        </ul>
+        <a
+          class="nc-btn nc-btn-outline-light"
+          href="#cel-nc-speakers"
+          style="width:100%;"
+        >
+          View speakers
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>

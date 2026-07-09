@@ -1,0 +1,15 @@
+{
+  "name": "natcon-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node ./node_modules/astro/astro.js dev",
+    "build": "node ./node_modules/astro/astro.js build",
+    "preview": "node ./node_modules/astro/astro.js preview",
+    "astro": "node ./node_modules/astro/astro.js"
+  },
+  "dependencies": {
+    "astro": "^5.10.0"
+  }
+}
