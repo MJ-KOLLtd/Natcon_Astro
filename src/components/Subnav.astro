@@ -1,12 +1,17 @@
 ---
+interface Props {
+  homeHref?: string;
+}
+
+const { homeHref = '#hero' } = Astro.props;
 const STREAM_URL = 'https://www.facebook.com/celogic';
 ---
 
-<div class="nc-subnav" data-nc-subnav>
+<header class="nc-subnav" data-nc-subnav role="banner">
   <div class="nc-container nc-subnav-inner">
     <a
       class="nc-subnav-brand"
-      href="#cel-nc-home"
+      href={homeHref}
       aria-label="NATCON 2026 home"
     >
       <img
@@ -23,11 +28,6 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
     </a>
 
     <div class="nc-subnav-end">
-      <span class="nc-live-chip nc-live-chip--bar">
-        <span class="nc-live-dot" aria-hidden="true"></span>
-        Event-day stream
-      </span>
-
       <a
         class="nc-btn nc-btn-gold nc-subnav-cta-bar"
         href={STREAM_URL}
@@ -51,10 +51,10 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
       </button>
 
       <nav class="nc-subnav-menu" id="nc-subnav-menu" aria-label="Conference sections">
-        <span class="nc-live-chip">
+        <a class="nc-subnav-link nc-subnav-link--event" href="#cel-nc-stream">
           <span class="nc-live-dot" aria-hidden="true"></span>
           Event-day stream
-        </span>
+        </a>
         <a class="nc-subnav-link" href="#cel-nc-stream">Stream</a>
         <a class="nc-subnav-link" href="#cel-nc-speakers">Speakers</a>
         <a class="nc-subnav-link" href="#cel-nc-partners">Partners</a>
@@ -68,7 +68,7 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
       </nav>
     </div>
   </div>
-</div>
+</header>
 
 <script>
   function initSubnav() {

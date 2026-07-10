@@ -1,31 +1,16 @@
 ---
+import Subnav from './Subnav.astro';
+
 const REGISTER_URL = 'https://www.ce-logic.com/';
 const INQUIRY_MAIL = 'mailto:info@ce-logic.com';
-const STREAM_URL = 'https://www.facebook.com/celogic';
 ---
 
 <div class="cel-nc-figma">
   <a class="skip" href="#register">Skip to registration</a>
 
-  <header class="site-nav" role="banner">
-    <img
-      src="/assets/nav.png"
-      width="1920"
-      height="88"
-      alt="CE-Logic · NATCON 2026 · July 30-31, 2026"
-      decoding="async"
-      fetchpriority="high"
-    />
-    <nav class="nav-hotspots" aria-label="Primary">
-      <a class="hotspot hs-logo" href="#hero" title="CE-Logic">CE-Logic home</a>
-      <a class="hotspot hs-event" href="#cel-nc-stream" title="Event-Day Stream">Event-Day Stream</a>
-      <a class="hotspot hs-stream" href="#cel-nc-stream" title="Stream">Stream</a>
-      <a class="hotspot hs-speakers" href="#cel-nc-speakers" title="Speakers">Speakers</a>
-      <a class="hotspot hs-partners" href="#cel-nc-partners" title="Partners">Partners</a>
-      <a class="hotspot hs-program" href="#cel-nc-experience" title="Program">Program</a>
-      <a class="hotspot hs-live" href={STREAM_URL} target="_blank" rel="noopener noreferrer" title="Live stream">Live stream</a>
-    </nav>
-  </header>
+  <div class="cel-nc nc-figma-nav">
+    <Subnav homeHref="#hero" />
+  </div>
 
   <section class="screen" id="hero" aria-label="Conference hero">
     <div class="screen-frame">

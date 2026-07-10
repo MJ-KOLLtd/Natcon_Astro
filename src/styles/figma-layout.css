@@ -15,29 +15,14 @@
   overflow-x: clip;
 }
 
-/* Single sticky nav (cropped once from the Figma mockup) */
-.cel-nc-figma .site-nav {
-  position: sticky;
-  top: 0;
+/* Real HTML header — reuse .cel-nc subnav styles */
+.cel-nc-figma .nc-figma-nav {
+  position: relative;
   z-index: 50;
-  width: 100%;
-  line-height: 0;
+}
+
+.cel-nc-figma .nc-figma-nav .nc-subnav {
   background: #061a36;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
-}
-
-.cel-nc-figma .site-nav > img {
-  display: block;
-  width: 100%;
-  height: auto;
-  user-select: none;
-  -webkit-user-drag: none;
-  pointer-events: none;
-}
-
-.cel-nc-figma .nav-hotspots {
-  position: absolute;
-  inset: 0;
 }
 
 /* Full-bleed frames — imagery carries its own background, no poster box */
@@ -90,15 +75,6 @@
 .cel-nc-figma .hotspot:hover {
   background: rgba(255, 255, 255, 0.05);
 }
-
-/* Nav hotspots — % of 1920×88 strip */
-.cel-nc-figma .hs-logo      { left: 2.2%; top: 12%; width: 11.5%; height: 76%; }
-.cel-nc-figma .hs-event    { left: 52.2%; top: 18%; width: 11.2%; height: 64%; }
-.cel-nc-figma .hs-stream   { left: 64.0%; top: 18%; width: 5.2%; height: 64%; }
-.cel-nc-figma .hs-speakers { left: 70.0%; top: 18%; width: 5.6%; height: 64%; }
-.cel-nc-figma .hs-partners { left: 76.2%; top: 18%; width: 5.4%; height: 64%; }
-.cel-nc-figma .hs-program  { left: 82.2%; top: 18%; width: 5.6%; height: 64%; }
-.cel-nc-figma .hs-live     { left: 88.6%; top: 10%; width: 8.6%; height: 80%; border-radius: 6px; }
 
 /* Register-frame content hotspots (coords relative to cropped 1920×992 image) */
 .cel-nc-figma .hs-cpd      { left: 55.5%; top: 7%;  width: 16%; height: 30%; border-radius: 50%; }
