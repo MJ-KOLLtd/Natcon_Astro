@@ -5,14 +5,8 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
 
 <section class="nc-section is-dark" id="cel-nc-stream">
   <div class="nc-container">
-    <p class="nc-eyebrow">
-      <span class="nc-live-chip" style="color:var(--nc-gold);">
-        <span class="nc-live-dot"></span>
-        Event-day access
-      </span>
-    </p>
     <h2 class="nc-h2">Live <span class="nc-em">stream</span></h2>
-    <p class="nc-lead" style="max-width:40rem;">
+    <p class="nc-lead">
       Keynotes, plenary sessions, partner presentations, the CeiGo launch, and
       the leadership panel will be available through the official conference live
       stream on event days.
@@ -29,6 +23,27 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
           Follow CE-Logic on Facebook for the official stream. The live link
           activates when programming begins on July 30-31, 2026.
         </p>
+        <div class="nc-countdown nc-countdown--stage" data-nc-countdown aria-live="polite">
+          <p class="nc-countdown-label">Countdown to Day 1 · July 30, 2026</p>
+          <div class="nc-countdown-grid">
+            <div class="nc-countdown-unit">
+              <strong data-nc-countdown-days>--</strong>
+              <span>Days</span>
+            </div>
+            <div class="nc-countdown-unit">
+              <strong data-nc-countdown-hours>--</strong>
+              <span>Hours</span>
+            </div>
+            <div class="nc-countdown-unit">
+              <strong data-nc-countdown-mins>--</strong>
+              <span>Minutes</span>
+            </div>
+            <div class="nc-countdown-unit">
+              <strong data-nc-countdown-secs>--</strong>
+              <span>Seconds</span>
+            </div>
+          </div>
+        </div>
         <a
           class="nc-btn nc-btn-gold"
           href={STREAM_URL}
@@ -71,3 +86,51 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
     </div>
   </div>
 </section>
+
+<script>
+  function initStreamCountdown() {
+    const root = document.querySelector('[data-nc-countdown]');
+    if (!root || root.dataset.ready === '1') return;
+    root.dataset.ready = '1';
+
+    const daysEl = root.querySelector('[data-nc-countdown-days]');
+    const hoursEl = root.querySelector('[data-nc-countdown-hours]');
+    const minsEl = root.querySelector('[data-nc-countdown-mins]');
+    const secsEl = root.querySelector('[data-nc-countdown-secs]');
+    const labelEl = root.querySelector('.nc-countdown-label');
+    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+    const TARGET = new Date('2026-07-30T08:00:00+08:00').getTime();
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function tick() {
+      const remaining = TARGET - Date.now();
+      if (remaining <= 0) {
+        root.classList.add('is-live');
+        daysEl.textContent = '00';
+        hoursEl.textContent = '00';
+        minsEl.textContent = '00';
+        secsEl.textContent = '00';
+        if (labelEl) labelEl.textContent = 'Livestream is active';
+        return;
+      }
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const mins = Math.floor((remaining % 3600000) / 60000);
+      const secs = Math.floor((remaining % 60000) / 1000);
+      daysEl.textContent = String(days);
+      hoursEl.textContent = pad(hours);
+      minsEl.textContent = pad(mins);
+      secsEl.textContent = pad(secs);
+    }
+
+    tick();
+    window.setInterval(tick, 1000);
+  }
+
+  initStreamCountdown();
+  document.addEventListener('astro:page-load', initStreamCountdown);
+</script>

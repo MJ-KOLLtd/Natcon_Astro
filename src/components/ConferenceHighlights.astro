@@ -1,0 +1,24 @@
+---
+const highlights = [
+  { value: '18th', label: 'National Conference' },
+  { value: '7.5', label: 'CPD Units for Librarians' },
+  { value: '2', label: 'Days of programming' },
+  { value: '12+', label: 'Featured speakers' },
+];
+---
+
+<section class="nc-section is-soft nc-conference-highlights" id="cel-nc-highlights">
+  <div class="nc-container">
+    <h2 class="nc-h2">Highlights</h2>
+    <div class="nc-stats nc-stats--highlights">
+      {
+        highlights.map((item) => (
+          <div class="nc-stat">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

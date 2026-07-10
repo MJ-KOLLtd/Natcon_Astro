@@ -1,8 +1,6 @@
 ---
 import Subnav from './Subnav.astro';
 
-const REGISTER_URL = 'https://www.ce-logic.com/';
-const INQUIRY_MAIL = 'mailto:info@ce-logic.com';
 ---
 
 <div class="cel-nc-figma">
@@ -38,13 +36,6 @@ const INQUIRY_MAIL = 'mailto:info@ce-logic.com';
         decoding="async"
         loading="lazy"
       />
-      <div class="hotspots">
-        <a class="hotspot hs-cpd" href="#register" title="7.5 CPD Units">7.5 CPD Units</a>
-        <a class="hotspot hs-register" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Register now — Limited slots available">Register now</a>
-        <a class="hotspot hs-scan" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Scan me to register">Scan me</a>
-        <a class="hotspot hs-qr" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Registration QR code">QR code</a>
-        <a class="hotspot hs-inquiry" href={INQUIRY_MAIL} title="Contact your Solutions Specialist">Contact Solutions Specialist</a>
-      </div>
     </div>
   </section>
 </div>

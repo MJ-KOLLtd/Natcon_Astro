@@ -1,0 +1,33 @@
+---
+import { conferenceResources } from '../data/conferenceResources';
+---
+
+<section class="nc-section is-soft nc-resources" id="cel-nc-resources" aria-label="Conference resources">
+  <div class="nc-container">
+    <h2 class="nc-h3">Conference materials</h2>
+    <p class="nc-lead" style="margin-bottom:1.75rem;">
+      Download program details, endorsement letters, partner brochures, and
+      presentation decks for the 18th CE-Logic National Conference.
+    </p>
+
+    <ul class="nc-resources-list">
+      {
+        conferenceResources.map((item) => (
+          <li>
+            <a
+              class="nc-resources-link"
+              href={item.href}
+              download={item.fileName}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <strong>{item.label}</strong>
+              <span>{item.note}</span>
+              <span class="nc-resources-badge">Download</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

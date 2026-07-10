@@ -1,10 +1,27 @@
 ---
+import { conferenceResources } from '../data/conferenceResources';
+
 interface Props {
   homeHref?: string;
 }
 
 const { homeHref = '#hero' } = Astro.props;
-const STREAM_URL = 'https://www.facebook.com/celogic';
+
+const navLinks = [
+  { label: 'Highlights', href: '#cel-nc-highlights' },
+  { label: 'Livestream', href: '#cel-nc-stream', showCountdown: true },
+  { label: 'About', href: '#cel-nc-about' },
+  { label: 'Stream Coverage', href: '#cel-nc-what-streamed' },
+  { label: 'Theme', href: '#cel-nc-theme' },
+  { label: 'Speakers', href: '#cel-nc-speakers' },
+  { label: 'Partners', href: '#cel-nc-partners' },
+];
+
+const resourceLinks = conferenceResources.map((item) => ({
+  label: item.label,
+  href: item.href,
+  fileName: item.fileName,
+}));
 ---
 
 <header class="nc-subnav" data-nc-subnav role="banner">
@@ -21,20 +38,10 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
         width="148"
         height="32"
       />
-      <span class="nc-subnav-brand-text">
-        <strong>NATCON 2026</strong>
-        <span>July 30-31, 2026</span>
-      </span>
+      <span class="nc-subnav-brand-text">NATCON 2026 · July 30, 31, 2026</span>
     </a>
 
     <div class="nc-subnav-end">
-      <a
-        class="nc-btn nc-btn-gold nc-subnav-cta-bar"
-        href={STREAM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >Live stream</a>
-
       <button
         type="button"
         class="nc-menu-toggle"
@@ -51,20 +58,60 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
       </button>
 
       <nav class="nc-subnav-menu" id="nc-subnav-menu" aria-label="Conference sections">
-        <a class="nc-subnav-link nc-subnav-link--event" href="#cel-nc-stream">
-          <span class="nc-live-dot" aria-hidden="true"></span>
-          Event-day stream
-        </a>
-        <a class="nc-subnav-link" href="#cel-nc-stream">Stream</a>
-        <a class="nc-subnav-link" href="#cel-nc-speakers">Speakers</a>
-        <a class="nc-subnav-link" href="#cel-nc-partners">Partners</a>
-        <a class="nc-subnav-link" href="#cel-nc-experience">Program</a>
-        <a
-          class="nc-btn nc-btn-gold nc-subnav-cta-menu"
-          href={STREAM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >Live stream</a>
+        {
+          navLinks.map((item) => (
+            <a
+              class:list={[
+                'nc-subnav-link',
+                item.showCountdown && 'nc-subnav-link--livestream',
+              ]}
+              href={item.href}
+            >
+              {item.label}
+              {item.showCountdown && (
+                <span
+                  class="nc-subnav-countdown"
+                  data-nc-countdown-compact
+                  aria-live="polite"
+                />
+              )}
+            </a>
+          ))
+        }
+
+        <div class="nc-subnav-resources" data-nc-resources>
+          <button
+            type="button"
+            class="nc-subnav-link nc-subnav-resources-toggle"
+            aria-expanded="false"
+            aria-controls="nc-subnav-resources-panel"
+            data-nc-resources-toggle
+          >
+            Resources
+            <span class="nc-subnav-caret" aria-hidden="true"></span>
+          </button>
+          <div
+            class="nc-subnav-resources-panel"
+            id="nc-subnav-resources-panel"
+            hidden
+            role="menu"
+          >
+            {
+              resourceLinks.map((item) => (
+                <a
+                  class="nc-subnav-resources-item"
+                  href={item.href}
+                  download={item.fileName}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="menuitem"
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </nav>
     </div>
   </div>
@@ -80,12 +127,25 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
     const menu = root.querySelector('#nc-subnav-menu');
     if (!toggle || !menu) return;
 
+    const resources = root.querySelector('[data-nc-resources]');
+    const resourcesToggle = root.querySelector('[data-nc-resources-toggle]');
+    const resourcesPanel = root.querySelector('#nc-subnav-resources-panel');
+
     const mq = window.matchMedia('(max-width: 1024px)');
+
+    function setResourcesOpen(open) {
+      if (!resources || !resourcesToggle || !resourcesPanel) return;
+      resources.classList.toggle('is-open', open);
+      resourcesToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) resourcesPanel.removeAttribute('hidden');
+      else resourcesPanel.setAttribute('hidden', '');
+    }
 
     function setOpen(open) {
       root.classList.toggle('is-menu-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) setResourcesOpen(false);
       if (!mq.matches) {
         menu.removeAttribute('hidden');
         return;
@@ -103,9 +163,18 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
       setOpen(!open);
     });
 
+    if (resourcesToggle) {
+      resourcesToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = resourcesToggle.getAttribute('aria-expanded') === 'true';
+        setResourcesOpen(!open);
+      });
+    }
+
     menu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         if (mq.matches) close();
+        setResourcesOpen(false);
       });
     });
 
@@ -114,9 +183,16 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
         close();
         toggle.focus();
       }
+      if (e.key === 'Escape' && resources?.classList.contains('is-open')) {
+        setResourcesOpen(false);
+        resourcesToggle?.focus();
+      }
     });
 
     document.addEventListener('click', (e) => {
+      if (resources && !resources.contains(e.target)) {
+        setResourcesOpen(false);
+      }
       if (!root.classList.contains('is-menu-open')) return;
       if (!root.contains(e.target)) close();
     });
@@ -129,6 +205,7 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Open menu');
         menu.removeAttribute('hidden');
+        setResourcesOpen(false);
       }
     }
 
@@ -140,6 +217,40 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
     }
   }
 
+  function initCountdownCompact() {
+    const TARGET = new Date('2026-07-30T08:00:00+08:00').getTime();
+    const nodes = document.querySelectorAll('[data-nc-countdown-compact]');
+    if (!nodes.length) return;
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function tick() {
+      const remaining = TARGET - Date.now();
+      nodes.forEach((node) => {
+        if (remaining <= 0) {
+          node.textContent = 'Live now';
+          node.classList.add('is-live');
+          return;
+        }
+        const days = Math.floor(remaining / 86400000);
+        const hours = Math.floor((remaining % 86400000) / 3600000);
+        const mins = Math.floor((remaining % 3600000) / 60000);
+        node.textContent = `${days}d ${pad(hours)}h ${pad(mins)}m`;
+      });
+    }
+
+    tick();
+    if (!window.__ncCountdownCompact) {
+      window.__ncCountdownCompact = window.setInterval(tick, 1000);
+    }
+  }
+
   initSubnav();
-  document.addEventListener('astro:page-load', initSubnav);
+  initCountdownCompact();
+  document.addEventListener('astro:page-load', () => {
+    initSubnav();
+    initCountdownCompact();
+  });
 </script>

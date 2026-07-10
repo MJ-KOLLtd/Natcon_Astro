@@ -1,9 +1,12 @@
 ---
+const PLACEHOLDER = '/assets/speaker-placeholder.webp';
+
 const speakers = [
   {
     tag: 'Keynote',
     name: 'Dr. Milabel E. Ho',
     role: 'Executive Director, AACCUP',
+    photo: '/assets/speakers/milabel-ho.jpg',
   },
   {
     tag: 'Welcome · Session',
@@ -19,21 +22,26 @@ const speakers = [
     tag: 'Session',
     name: 'Janice D.C. Peñaflor',
     role: 'Associate Director, DLSU Libraries',
+    photo: '/assets/speakers/janice-dc-penaflor.jpg',
   },
   {
     tag: 'Session',
     name: 'Efren M. Torres, Jr.',
     role: 'Access & Resource Management, DLSU Libraries',
+    photo: '/assets/speakers/efren-torres.jpg',
   },
   {
     tag: 'Session',
     name: 'Prof. Dan Anthony Dorado',
     role: 'UP School of Library and Information Studies',
+    photo: '/assets/speakers/dan-anthony-dorado.jpg',
   },
   {
     tag: 'Panel',
     name: 'Ms. Joenabie Arevalo',
     role: 'University Librarian, Ateneo de Manila University',
+    photo: '/assets/speakers/joenabie-arevalo.jpg',
+    photoPosition: 'center 8%',
   },
   {
     tag: 'Panel',
@@ -44,6 +52,7 @@ const speakers = [
     tag: 'CeiGo',
     name: 'Dr. Diu Seng (“DS”) See',
     role: 'Business & Sales Enablement Manager, iGroup',
+    photo: '/assets/speakers/diu-seng-ds-see.png',
   },
   {
     tag: 'Partner',
@@ -66,9 +75,8 @@ const speakers = [
 <section class="nc-section" id="cel-nc-speakers">
   <div class="nc-container">
     <div class="nc-speakers-intro">
-      <p class="nc-eyebrow">Speakers</p>
       <h2 class="nc-h2">Featured speakers</h2>
-      <p class="nc-lead" style="margin:0 auto;">
+      <p class="nc-lead">
         The program features quality assurance leaders, university librarians, LIS
         faculty, and industry partners addressing data strategy, artificial
         intelligence, academic integrity, and institutional competitiveness.
@@ -82,11 +90,12 @@ const speakers = [
         speakers.map((speaker, i) => (
           <article class:list={['nc-photo-slide', { 'is-active': i === 0 }]}>
             <img
-              src="/assets/speaker-placeholder.webp"
-              alt=""
+              src={speaker.photo ?? PLACEHOLDER}
+              alt={speaker.name}
               width="600"
               height="800"
               loading="lazy"
+              style={speaker.photoPosition ? `--nc-photo-position: ${speaker.photoPosition}` : undefined}
             />
             <div class="nc-photo-copy">
               <span class="nc-photo-tag">{speaker.tag}</span>
@@ -122,15 +131,17 @@ const speakers = [
     const root = document.getElementById('cel-natcon-2026');
     if (!root) return;
     const box = root.querySelector('[data-nc-carousel]');
-    if (!box) return;
-    const track = box.querySelector('[data-nc-track]');
+    if (!box || box.dataset.ncCarouselReady === '1') return;
+    box.dataset.ncCarouselReady = '1';
+
+    const track = box.querySelector('[data-nc-track]') as HTMLElement | null;
     const slides = Array.from(box.querySelectorAll('.nc-photo-slide'));
     const prev = box.querySelector('[data-nc-prev]');
     const next = box.querySelector('[data-nc-next]');
     if (!track || !slides.length) return;
 
     function nearestIndex() {
-      const center = track!.scrollLeft + track!.clientWidth / 2;
+      const center = track.scrollLeft + track.clientWidth / 2;
       let best = 0;
       let bestDist = Infinity;
       for (let i = 0; i < slides.length; i++) {
@@ -152,29 +163,37 @@ const speakers = [
       }
     }
 
-    function scrollToIndex(i: number) {
+    function scrollToIndex(i: number, smooth = true) {
       if (i < 0) i = 0;
       if (i > slides.length - 1) i = slides.length - 1;
       const s = slides[i] as HTMLElement;
-      const left = s.offsetLeft - (track!.clientWidth - s.offsetWidth) / 2;
-      track!.scrollTo({ left, behavior: 'smooth' });
+      const left = s.offsetLeft - (track.clientWidth - s.offsetWidth) / 2;
+      track.scrollTo({ left, behavior: smooth ? 'smooth' : 'instant' });
       setActive(i);
     }
 
     let ticking = false;
-    track.addEventListener('scroll', () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        setActive(nearestIndex());
-        ticking = false;
-      });
-    });
+    let lastScrollLeft = track.scrollLeft;
+
+    track.addEventListener(
+      'scroll',
+      () => {
+        if (track.scrollLeft === lastScrollLeft) return;
+        lastScrollLeft = track.scrollLeft;
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          setActive(nearestIndex());
+          ticking = false;
+        });
+      },
+      { passive: true },
+    );
 
     if (prev) prev.addEventListener('click', () => scrollToIndex(nearestIndex() - 1));
     if (next) next.addEventListener('click', () => scrollToIndex(nearestIndex() + 1));
 
-    requestAnimationFrame(() => scrollToIndex(0));
+    scrollToIndex(0, false);
   }
 
   initCarousel();

@@ -35,7 +35,7 @@
 /* Mobile polish — layout only, colors unchanged */
 @media (max-width: 900px) {
   .cel-nc {
-    --nc-pad-x: clamp(1rem, 4vw, 1.5rem);
+    --nc-pad-x: clamp(1rem, 4vw, 1.35rem);
     --nc-section: clamp(2.75rem, 7vw, 4rem);
   }
 
@@ -65,13 +65,17 @@
   }
 
   .cel-nc .nc-speakers-intro {
-    padding-left: var(--nc-pad-x);
-    padding-right: var(--nc-pad-x);
+    text-align: left;
   }
 
-  .cel-nc .nc-photo-box {
-    margin-left: calc(-1 * var(--nc-pad-x));
-    margin-right: calc(-1 * var(--nc-pad-x));
+  .cel-nc .nc-speakers-intro .nc-lead {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .cel-nc .nc-photo-track {
+    padding-left: var(--nc-pad-x);
+    padding-right: var(--nc-pad-x);
   }
 
   .cel-nc .nc-final .nc-btn-row {
@@ -85,6 +89,10 @@
 }
 
 @media (max-width: 640px) {
+  .cel-nc {
+    --nc-pad-x: 1rem;
+  }
+
   .cel-nc .nc-h2 {
     font-size: clamp(1.65rem, 7vw, 2.25rem);
   }
@@ -95,5 +103,13 @@
 
   .cel-nc .nc-stat {
     padding: 1.35rem 0.85rem;
+  }
+
+  .cel-nc .nc-resources-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cel-nc .nc-photo-slide {
+    flex-basis: 86%;
   }
 }

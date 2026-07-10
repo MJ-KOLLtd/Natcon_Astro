@@ -10,7 +10,7 @@
   position: relative;
   background: #03153a;
   color: #fff;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
@@ -79,8 +79,6 @@
 /* Register-frame content hotspots (coords relative to cropped 1920×992 image) */
 .cel-nc-figma .hs-cpd      { left: 55.5%; top: 7%;  width: 16%; height: 30%; border-radius: 50%; }
 .cel-nc-figma .hs-register { left: 62%;   top: 24%; width: 28%; height: 46%; border-radius: 50%; }
-.cel-nc-figma .hs-scan     { left: 54.5%; top: 54%; width: 28%; height: 18%; }
-.cel-nc-figma .hs-qr       { left: 68%;   top: 48%; width: 14%; height: 26%; }
 .cel-nc-figma .hs-inquiry  { left: 52%;   top: 82%; width: 40%; height: 8%; }
 
 .cel-nc-figma .hs-date-area { left: 22%; top: 80%; width: 56%; height: 10%; }
@@ -104,8 +102,12 @@
 
 #hero,
 #register,
+#cel-nc-highlights,
 #cel-nc-stream,
+#cel-nc-what-streamed,
 #cel-nc-speakers,
+#cel-nc-about,
+#cel-nc-theme,
 #cel-nc-partners,
 #cel-nc-experience {
   scroll-margin-top: clamp(3.25rem, 6vw, 5.5rem);

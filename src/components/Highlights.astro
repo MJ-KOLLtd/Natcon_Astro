@@ -1,25 +1,25 @@
 ---
 const items = [
   {
-    title: 'Library leadership',
+    title: 'Library Leadership',
     body: 'University librarians, LIS educators, and institutional decision-makers examine the strategic role of library and information services in higher education.',
   },
   {
-    title: 'Digital transformation',
+    title: 'Digital Transformation',
     body: 'Multi-year planning, AI-enabled services, and the evolution of academic libraries into data-informed centers for teaching, learning, and research.',
   },
   {
-    title: 'Research and institutional performance',
+    title: 'Research and Institutional Performance',
     body: 'Discussions on research visibility, quality assurance, academic integrity, and tools that support globally competitive Philippine HEIs.',
   },
   {
-    title: 'Partners and sponsors',
+    title: 'Partners and Sponsors',
     body: 'Featured presentations from technology and content partners, including AI productivity solutions, research databases, learning resources, and the CeiGo launch.',
   },
 ];
 ---
 
-<section class="nc-section" id="cel-nc-highlights">
+<section class="nc-section" id="cel-nc-what-streamed">
   <div class="nc-container">
     <div class="nc-invite">
       <div class="nc-invite-visual">
@@ -32,8 +32,7 @@ const items = [
         />
       </div>
       <div>
-        <p class="nc-eyebrow">Program overview</p>
-        <h2 class="nc-h2">What will be streamed</h2>
+        <h2 class="nc-h2 nc-title-case">What Will Be Streamed</h2>
         <p class="nc-lead-lg" style="margin-bottom:0.25rem;">
           <strong>
             The 18th CE-Logic National Conference program includes the following
@@ -45,7 +44,7 @@ const items = [
           {
             items.map((item) => (
               <div class="nc-invite-item">
-                <h3 class="nc-h4">{item.title}</h3>
+                <h3 class="nc-h4 nc-title-case">{item.title}</h3>
                 <p>{item.body}</p>
               </div>
             ))

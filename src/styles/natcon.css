@@ -25,10 +25,10 @@
       --nc-accent: var(--nc-blue);
       --nc-accent-dark: var(--nc-blue-dark);
 
-      --nc-max: 87.5rem;
-      --nc-pad-x: clamp(1.25rem, 4vw, 3rem);
+      --nc-max: min(118rem, calc(100% - 2 * var(--nc-pad-x)));
+      --nc-pad-x: clamp(1rem, 2.5vw, 2rem);
       --nc-section: clamp(4rem, 8vw, 7.5rem);
-      --nc-font: Montserrat, Poppins, Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      --nc-font: Roboto, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
 
       box-sizing: border-box;
       background: transparent;
@@ -157,13 +157,13 @@
       font-size: clamp(1.05rem, 1.5vw, 1.25rem);
       line-height: 1.5;
       color: var(--nc-muted);
-      max-width: 42rem;
+      max-width: 56rem;
     }
     .cel-nc .nc-lead-lg {
       font-size: clamp(1.15rem, 2vw, 1.5rem);
       line-height: 1.45;
       color: var(--nc-text);
-      max-width: 48rem;
+      max-width: 62rem;
       font-weight: 400;
     }
     .cel-nc .nc-em {
@@ -174,7 +174,9 @@
       padding: var(--nc-section) 0;
       color: var(--nc-text);
       position: relative;
-      background: linear-gradient(
+      isolation: isolate;
+      background-color: rgba(245, 250, 255, 0.97);
+      background-image: linear-gradient(
         160deg,
         rgba(255,255,255,0.82) 0%,
         rgba(248,252,255,0.72) 50%,
@@ -187,7 +189,8 @@
       -webkit-backdrop-filter: blur(18px) saturate(1.2);
     }
     .cel-nc .nc-section.is-soft {
-      background: linear-gradient(
+      background-color: rgba(236, 244, 252, 0.97);
+      background-image: linear-gradient(
         160deg,
         rgba(240,248,255,0.75) 0%,
         rgba(232,242,252,0.68) 100%
@@ -195,7 +198,8 @@
     }
     .cel-nc .nc-section.is-dark {
       color: #fff;
-      background: linear-gradient(
+      background-color: rgba(8, 28, 48, 0.97);
+      background-image: linear-gradient(
         160deg,
         rgba(10, 42, 72, 0.72) 0%,
         rgba(5, 20, 36, 0.78) 55%,
@@ -301,7 +305,9 @@
 
     /* Post-hero secondary band (TED: “What is the conference?”) */
     .cel-nc .nc-secondary {
-      background: linear-gradient(
+      isolation: isolate;
+      background-color: rgba(248, 252, 255, 0.97);
+      background-image: linear-gradient(
         160deg,
         rgba(255,255,255,0.8) 0%,
         rgba(245,250,255,0.7) 100%
@@ -315,15 +321,10 @@
     }
     .cel-nc .nc-secondary-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: clamp(1.5rem, 4vw, 3.5rem);
-      align-items: center;
-    }
-    @media (max-width: 800px) {
-      .cel-nc .nc-secondary-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-      }
+      grid-template-columns: 1fr;
+      gap: 0;
+      max-width: none;
+      width: 100%;
     }
     .cel-nc .nc-secondary-q {
       font-size: clamp(1.35rem, 2.5vw, 1.85rem);
@@ -346,16 +347,18 @@
     }
     .cel-nc .nc-secondary-a .nc-h3 {
       margin-bottom: 0.65rem;
-      text-transform: uppercase;
       font-size: clamp(1.5rem, 3vw, 2.25rem);
       font-weight: 800;
       letter-spacing: -0.03em;
+    }
+    .cel-nc .nc-title-case {
+      text-transform: none;
     }
     .cel-nc .nc-secondary-a p {
       margin: 0;
       font-size: 1.1rem;
       color: var(--nc-muted);
-      max-width: 36rem;
+      max-width: 62rem;
     }
     .cel-nc .nc-secondary-note {
       margin: 0.75rem 0 0 !important;
@@ -364,7 +367,7 @@
       font-weight: 500;
     }
     .cel-nc .nc-stream-note {
-      margin: 0.85rem 0 0;
+      margin: 0;
       font-size: 0.82rem;
       color: rgba(255,255,255,0.65);
       font-weight: 500;
@@ -388,12 +391,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 1.25rem;
       min-height: 4.25rem;
     }
     @media (max-width: 700px) {
       .cel-nc .nc-subnav-inner { min-height: 3.5rem; }
-      .cel-nc .nc-subnav-brand-text span { display: none; }
     }
     .cel-nc .nc-subnav-brand {
       display: flex;
@@ -401,7 +403,8 @@
       gap: 0.75rem;
       text-decoration: none !important;
       color: #fff !important;
-      min-width: 0;
+      flex-shrink: 0;
+      min-width: max-content;
     }
     .cel-nc .nc-subnav-logo {
       height: 1.65rem;
@@ -411,59 +414,52 @@
       flex-shrink: 0;
     }
     .cel-nc .nc-subnav-brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
-      min-width: 0;
+      display: block;
+      flex-shrink: 0;
+      white-space: nowrap;
       border-left: 1px solid rgba(255,255,255,0.18);
       padding-left: 0.75rem;
-    }
-    .cel-nc .nc-subnav-brand strong {
-      font-size: 0.88rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-    .cel-nc .nc-subnav-brand strong { color: #fff; }
-    .cel-nc .nc-subnav-brand span {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.65);
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: #fff;
     }
     @media (max-width: 640px) {
       .cel-nc .nc-subnav-logo { height: 1.35rem; max-width: 6.75rem; }
-      .cel-nc .nc-subnav-brand-text strong { font-size: 0.78rem; }
+      .cel-nc .nc-subnav-brand-text { font-size: 0.68rem; }
     }
     .cel-nc .nc-subnav-end {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      flex-shrink: 0;
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      min-width: 0;
     }
     .cel-nc .nc-subnav-menu {
       display: flex;
       align-items: center;
-      gap: 0.25rem 0.15rem;
-      flex-wrap: wrap;
+      gap: 0.15rem;
+      flex-wrap: nowrap;
       justify-content: flex-end;
     }
     .cel-nc .nc-subnav-link {
       position: relative;
       color: rgba(255,255,255,0.88) !important;
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       font-weight: 600;
       text-decoration: none !important;
-      padding: 0.65rem 0.85rem;
+      padding: 0.65rem 0.7rem;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
     .cel-nc .nc-subnav-link::after {
       content: "";
       position: absolute;
-      left: 0.85rem;
-      right: 0.85rem;
-      bottom: 0.35rem;
+      left: 0.7rem;
+      right: 0.7rem;
+      bottom: 0.4rem;
       height: 2px;
       background: currentColor;
       width: 0;
@@ -471,20 +467,32 @@
     }
     .cel-nc .nc-subnav-link:hover::after,
     .cel-nc .nc-subnav-link.is-active::after {
-      width: calc(100% - 1.7rem);
+      width: calc(100% - 1.4rem);
     }
     .cel-nc .nc-subnav-link:hover { color: #fff !important; }
-    .cel-nc .nc-subnav-link--event {
+    .cel-nc .nc-subnav-link--livestream {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      gap: 0.35rem;
     }
-    .cel-nc .nc-subnav-link--event .nc-live-dot {
-      flex-shrink: 0;
+    .cel-nc .nc-subnav-countdown {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(245, 184, 0, 0.16);
+      border: 1px solid rgba(245, 184, 0, 0.35);
+      color: var(--nc-gold);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+    .cel-nc .nc-subnav-countdown.is-live {
+      background: rgba(236, 32, 40, 0.2);
+      border-color: rgba(236, 32, 40, 0.45);
+      color: #ffb4b4;
     }
     .cel-nc .nc-subnav .nc-btn {
       padding: 0.65rem 1.25rem;
@@ -496,7 +504,7 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(245, 184, 0, 0.35);
     }
-    .cel-nc .nc-subnav-cta-bar { display: none; }
+
     .cel-nc .nc-live-chip {
       display: inline-flex;
       align-items: center;
@@ -577,14 +585,6 @@
     /* Mobile + tablet: hamburger + dropdown panel (covers iPad landscape) */
     @media (max-width: 1024px) {
       .cel-nc .nc-menu-toggle { display: inline-flex; }
-      .cel-nc .nc-subnav-cta-bar {
-        display: inline-flex;
-        padding: 0.55rem 0.95rem;
-        font-size: 0.8rem;
-      }
-      .cel-nc .nc-subnav-cta-menu {
-        display: none;
-      }
       .cel-nc .nc-subnav-menu {
         position: absolute;
         top: 100%;
@@ -633,15 +633,34 @@
         padding: 0.65rem 0.35rem 0.35rem;
         font-size: 0.72rem;
       }
+      .cel-nc .nc-subnav-resources {
+        width: 100%;
+      }
+      .cel-nc .nc-subnav-resources-toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.9rem 0.35rem;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .cel-nc .nc-subnav-resources-panel {
+        position: static;
+        min-width: 0;
+        margin: 0 0 0.35rem;
+        padding: 0.25rem 0 0.5rem;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+      .cel-nc .nc-subnav-resources-item {
+        padding: 0.75rem 0.35rem;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
       .cel-nc .nc-subnav-inner {
         min-height: 3.75rem;
       }
     }
     @media (max-width: 640px) {
-      .cel-nc .nc-subnav-cta-bar {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.75rem;
-      }
       .cel-nc .nc-menu-toggle {
         width: 2.5rem;
         height: 2.5rem;
@@ -649,7 +668,123 @@
     }
 
     @media (min-width: 1025px) {
-      .cel-nc .nc-subnav-link--event { font-size: 0.78rem; }
+      .cel-nc .nc-subnav-link--event { font-size: 0.76rem; }
+    }
+    @media (min-width: 1361px) {
+      .cel-nc .nc-subnav-link {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.85rem;
+      }
+      .cel-nc .nc-subnav-menu {
+        gap: 0.25rem;
+      }
+      .cel-nc .nc-subnav-brand-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    .cel-nc .nc-subnav-resources {
+      position: relative;
+    }
+    .cel-nc .nc-subnav-resources-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+    }
+    .cel-nc .nc-subnav-caret {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-0.1rem);
+      transition: transform 0.2s ease;
+    }
+    .cel-nc .nc-subnav-resources.is-open .nc-subnav-caret {
+      transform: rotate(-135deg) translateY(0.1rem);
+    }
+    .cel-nc .nc-subnav-resources-panel {
+      position: absolute;
+      top: calc(100% + 0.35rem);
+      right: 0;
+      z-index: 60;
+      min-width: 16rem;
+      padding: 0.45rem;
+      border-radius: 0.65rem;
+      background: rgba(6, 26, 54, 0.98);
+      border: 1px solid rgba(140, 200, 255, 0.18);
+      box-shadow: 0 14px 34px rgba(0, 10, 25, 0.42);
+    }
+    .cel-nc .nc-subnav-resources-panel[hidden] {
+      display: none !important;
+    }
+    .cel-nc .nc-subnav-resources-item {
+      display: block;
+      padding: 0.65rem 0.75rem;
+      border-radius: 0.4rem;
+      color: rgba(255,255,255,0.9) !important;
+      font-size: 0.86rem;
+      font-weight: 600;
+      line-height: 1.35;
+      text-decoration: none !important;
+    }
+    .cel-nc .nc-subnav-resources-item:hover {
+      background: rgba(255,255,255,0.08);
+      color: #fff !important;
+    }
+
+    .cel-nc .nc-resources-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+    @media (min-width: 768px) {
+      .cel-nc .nc-resources-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .cel-nc .nc-resources-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 1.1rem;
+      border-radius: 0.75rem;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(0, 40, 80, 0.08);
+      color: inherit !important;
+      text-decoration: none !important;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .cel-nc .nc-resources-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 20, 40, 0.1);
+    }
+    .cel-nc .nc-resources-link strong {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .cel-nc .nc-resources-link span {
+      font-size: 0.9rem;
+      color: var(--nc-muted);
+    }
+    .cel-nc .nc-resources-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-top: 0.45rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(245, 184, 0, 0.18);
+      border: 1px solid rgba(245, 184, 0, 0.45);
+      color: #8a6400;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: none;
     }
 
     /* ===== HERO — Figma mockup (2.png top + 3.png bottom) ===== */
@@ -1169,12 +1304,66 @@
     .cel-nc .nc-theme-copy {
       font-size: clamp(1.15rem, 2vw, 1.45rem);
       line-height: 1.55;
-      max-width: 48rem;
+      max-width: none;
       color: var(--nc-text);
     }
     .cel-nc .nc-theme-copy strong { font-weight: 700; }
 
     /* ===== STREAMING ===== */
+    .cel-nc .nc-countdown {
+      margin: 0;
+      max-width: none;
+      width: 100%;
+    }
+    .cel-nc .nc-countdown--stage {
+      padding: 1.25rem 1.35rem 1.35rem;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .cel-nc .nc-countdown-label {
+      margin: 0 0 1rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--nc-gold);
+    }
+    .cel-nc .nc-countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    @media (max-width: 520px) {
+      .cel-nc .nc-countdown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .cel-nc .nc-countdown-unit {
+      padding: 0.9rem 0.55rem;
+      border-radius: 4px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .cel-nc .nc-countdown-unit strong {
+      display: block;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .cel-nc .nc-countdown-unit span {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .cel-nc .nc-countdown.is-live .nc-countdown-label {
+      color: #ffb4b4;
+    }
     .cel-nc .nc-stream-grid {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -1187,7 +1376,7 @@
     }
     .cel-nc .nc-stream-stage {
       position: relative;
-      min-height: 22rem;
+      min-height: 26rem;
       border-radius: 4px;
       overflow: hidden;
       background:
@@ -1196,7 +1385,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: clamp(1.5rem, 3vw, 2.25rem);
+      gap: 1.125rem;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
     }
     .cel-nc .nc-stream-badge {
       position: absolute;
@@ -1215,17 +1405,21 @@
       border-radius: 4px;
     }
     .cel-nc .nc-stream-stage h3 {
-      margin: 0 0 0.5rem;
+      margin: 0;
       font-size: clamp(1.5rem, 3vw, 2.25rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       text-transform: uppercase;
       color: #fff;
     }
-    .cel-nc .nc-stream-stage p {
+    .cel-nc .nc-stream-stage > p {
+      margin: 0;
       color: rgba(255,255,255,0.88);
-      max-width: 34rem;
-      margin-bottom: 1.25rem;
+      max-width: 52rem;
+      line-height: 1.55;
+    }
+    .cel-nc .nc-stream-stage .nc-btn {
+      align-self: flex-start;
     }
     .cel-nc .nc-stream-aside {
       background: rgba(255,255,255,0.06);
@@ -1264,32 +1458,38 @@
     }
 
     /* ===== SPEAKERS: photo-box carousel ===== */
+    #cel-nc-speakers {
+      isolation: isolate;
+    }
     .cel-nc .nc-speakers-intro {
-      max-width: 46rem;
-      margin: 0 auto 2.5rem;
-      text-align: center;
+      max-width: none;
+      width: 100%;
+      margin: 0 0 2.5rem;
+      text-align: left;
     }
     .cel-nc .nc-photo-box {
       position: relative;
-      margin: 0 calc(-1 * var(--nc-pad-x));
-      padding: 0 var(--nc-pad-x);
+      width: 100%;
+      overflow: hidden;
     }
     .cel-nc .nc-photo-track {
       display: flex;
       gap: 1rem;
       overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding: 0.5rem 8vw 1.25rem;
+      padding: 0.75rem var(--nc-pad-x) 1.25rem;
     }
     .cel-nc .nc-photo-track::-webkit-scrollbar { display: none; }
     @media (min-width: 768px) {
-      .cel-nc .nc-photo-track { gap: 1.5rem; padding-left: 12vw; padding-right: 12vw; }
+      .cel-nc .nc-photo-track { gap: 1.25rem; }
     }
     @media (min-width: 992px) {
-      .cel-nc .nc-photo-track { gap: 2.5rem; padding-left: 18vw; padding-right: 18vw; }
+      .cel-nc .nc-photo-track { gap: 1.5rem; }
     }
     .cel-nc .nc-photo-slide {
       flex: 0 0 78%;
@@ -1300,20 +1500,28 @@
       background: #252323;
       aspect-ratio: 3 / 4;
       max-height: 32rem;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      transition: box-shadow 0.35s ease, opacity 0.35s ease;
+      will-change: auto;
     }
     @media (min-width: 768px) {
       .cel-nc .nc-photo-slide { flex-basis: 42%; }
     }
     @media (min-width: 992px) {
-      .cel-nc .nc-photo-slide { flex-basis: 28%; }
+      .cel-nc .nc-photo-slide { flex-basis: 24%; }
+    }
+    @media (min-width: 1200px) {
+      .cel-nc .nc-photo-slide { flex-basis: 20%; }
+    }
+    @media (min-width: 1600px) {
+      .cel-nc .nc-photo-slide { flex-basis: 17%; }
     }
     .cel-nc .nc-photo-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--nc-photo-position, center top);
       display: block;
-      transition: transform 0.5s ease;
+      transition: none;
     }
     .cel-nc .nc-photo-slide::after {
       content: "";
@@ -1335,10 +1543,8 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .cel-nc .nc-photo-slide.is-active {
-      box-shadow: 0 24px 60px rgba(0,0,0,0.28);
-      transform: scale(1.02);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.24);
     }
-    .cel-nc .nc-photo-slide.is-active img { transform: scale(1.04); }
     .cel-nc .nc-photo-slide.is-active .nc-photo-copy {
       opacity: 1;
       transform: translateY(0);
@@ -1436,7 +1642,7 @@
       gap: 1.25rem 2rem;
       margin-bottom: 2rem;
     }
-    .cel-nc .nc-exp-head .nc-lead { margin: 0; max-width: 36rem; }
+    .cel-nc .nc-exp-head .nc-lead { margin: 0; max-width: 56rem; }
     .cel-nc .nc-hover-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1540,6 +1746,9 @@
     @media (max-width: 700px) {
       .cel-nc .nc-stats { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 420px) {
+      .cel-nc .nc-stats { grid-template-columns: 1fr; }
+    }
     .cel-nc .nc-stat {
       background: linear-gradient(
         160deg,
@@ -1560,6 +1769,23 @@
       color: var(--nc-gold);
       margin-bottom: 0.5rem;
     }
+    .cel-nc .nc-stats--highlights {
+      margin-top: 1.5rem;
+      background: rgba(9, 119, 188, 0.12);
+    }
+    .cel-nc .nc-conference-highlights .nc-stat {
+      background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.92) 0%,
+        rgba(240, 248, 255, 0.88) 100%
+      );
+    }
+    .cel-nc .nc-conference-highlights .nc-stat strong {
+      color: var(--nc-blue);
+    }
+    .cel-nc .nc-conference-highlights .nc-stat span {
+      color: rgba(10, 36, 60, 0.72);
+    }
     .cel-nc .nc-stat span {
       font-size: 0.95rem;
       font-weight: 600;
@@ -1568,8 +1794,9 @@
 
     /* FAQ */
     .cel-nc .nc-faq {
-      max-width: 46rem;
-      margin: 0 auto;
+      max-width: none;
+      width: 100%;
+      margin: 0;
     }
     .cel-nc .nc-faq details {
       border-bottom: 1px solid rgba(0, 50, 90, 0.1);
@@ -1828,7 +2055,7 @@
     }
     /* Frosted glass layer between fixed background and UI */
     .cel-nc .nc-final-glass {
-      width: min(42rem, 100%);
+      width: min(64rem, 100%);
       margin: 0 auto;
       padding: clamp(1.25rem, 3vw, 1.9rem) clamp(1.15rem, 3vw, 2rem);
       border-radius: 18px;
@@ -1853,7 +2080,7 @@
     }
     .cel-nc .nc-final-intro p {
       color: rgba(255,255,255,0.9) !important;
-      max-width: 34rem !important;
+      max-width: 52rem !important;
       margin: 0 auto 1.15rem !important;
       font-size: 1.02rem !important;
       text-shadow: 0 1px 14px rgba(0,0,0,0.3);
@@ -1865,7 +2092,7 @@
       gap: 0.75rem;
     }
     .cel-nc .nc-final-logos {
-      width: min(48rem, 100%);
+      width: min(72rem, 100%);
     }
     .cel-nc .nc-final-logos-label {
       margin: 0 0 0.85rem !important;
