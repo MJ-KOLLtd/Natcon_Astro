@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Subnav from '../components/Subnav.astro';
-import Hero from '../components/Hero.astro';
+import FigmaLanding from '../components/FigmaLanding.astro';
 import Secondary from '../components/Secondary.astro';
 import Highlights from '../components/Highlights.astro';
 import Theme from '../components/Theme.astro';
@@ -12,30 +11,35 @@ import Stats from '../components/Stats.astro';
 import Partners from '../components/Partners.astro';
 import FAQ from '../components/FAQ.astro';
 import FinalCta from '../components/FinalCta.astro';
+import '../styles/figma-layout.css';
 import '../styles/natcon.css';
+import '../styles/natcon-theme.css';
 ---
 
-<BaseLayout>
-  <div class="cel-nc" id="cel-natcon-2026">
-    <!-- Fixed brand scene: stays while glass content scrolls over it -->
-    <div class="nc-page-bg" aria-hidden="true">
-      <div class="nc-page-bg-image"></div>
-      <div class="nc-page-bg-shade"></div>
-    </div>
+<BaseLayout
+  title="18th CE-Logic National Conference | NATCON 2026"
+  description="18th CE-Logic National Conference — July 30-31, 2026 at Seda Vertis North, Quezon City. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education."
+>
+  <div id="cel-natcon-2026">
+    <FigmaLanding />
 
-    <div class="nc-page-stack">
-      <Subnav />
-      <Hero />
-      <Secondary />
-      <Highlights />
-      <Theme />
-      <Stream />
-      <Speakers />
-      <Experience />
-      <Stats />
-      <Partners />
-      <FAQ />
-      <FinalCta />
+    <div class="cel-nc">
+      <div class="nc-page-bg" aria-hidden="true">
+        <div class="nc-page-bg-shade"></div>
+      </div>
+
+      <div class="nc-page-stack">
+        <Secondary />
+        <Highlights />
+        <Theme />
+        <Stream />
+        <Speakers />
+        <Experience />
+        <Stats />
+        <Partners />
+        <FAQ />
+        <FinalCta />
+      </div>
     </div>
   </div>
 </BaseLayout>

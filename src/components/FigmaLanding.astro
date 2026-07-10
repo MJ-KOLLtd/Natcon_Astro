@@ -1,0 +1,65 @@
+---
+const REGISTER_URL = 'https://www.ce-logic.com/';
+const INQUIRY_MAIL = 'mailto:info@ce-logic.com';
+const STREAM_URL = 'https://www.facebook.com/celogic';
+---
+
+<div class="cel-nc-figma">
+  <a class="skip" href="#register">Skip to registration</a>
+
+  <header class="site-nav" role="banner">
+    <img
+      src="/assets/nav.png"
+      width="1920"
+      height="88"
+      alt="CE-Logic · NATCON 2026 · July 30-31, 2026"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <nav class="nav-hotspots" aria-label="Primary">
+      <a class="hotspot hs-logo" href="#hero" title="CE-Logic">CE-Logic home</a>
+      <a class="hotspot hs-event" href="#cel-nc-stream" title="Event-Day Stream">Event-Day Stream</a>
+      <a class="hotspot hs-stream" href="#cel-nc-stream" title="Stream">Stream</a>
+      <a class="hotspot hs-speakers" href="#cel-nc-speakers" title="Speakers">Speakers</a>
+      <a class="hotspot hs-partners" href="#cel-nc-partners" title="Partners">Partners</a>
+      <a class="hotspot hs-program" href="#cel-nc-experience" title="Program">Program</a>
+      <a class="hotspot hs-live" href={STREAM_URL} target="_blank" rel="noopener noreferrer" title="Live stream">Live stream</a>
+    </nav>
+  </header>
+
+  <section class="screen" id="hero" aria-label="Conference hero">
+    <div class="screen-frame">
+      <img
+        src="/assets/hero.png"
+        width="1920"
+        height="992"
+        alt="18th CE-Logic National Conference. CE-Logic in partnership with The University Library, University of the Philippines Diliman. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education. July 30-31, 2026 · Seda Vertis North, Quezon City, Manila."
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div class="hotspots">
+        <a class="hotspot hs-date-area" href="#register" title="View registration">July 30-31, 2026 · Register</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="register" aria-label="Registration and organizers">
+    <div class="screen-frame">
+      <img
+        src="/assets/register.png"
+        width="1920"
+        height="992"
+        alt="Organized by CE-Logic. Co-presented by PAARL and Philippine Librarians Association Inc. 7.5 CPD Units. Register now — Limited slots available. Scan QR code to register. For inquiries, contact your Solutions Specialist."
+        decoding="async"
+        loading="lazy"
+      />
+      <div class="hotspots">
+        <a class="hotspot hs-cpd" href="#register" title="7.5 CPD Units">7.5 CPD Units</a>
+        <a class="hotspot hs-register" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Register now — Limited slots available">Register now</a>
+        <a class="hotspot hs-scan" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Scan me to register">Scan me</a>
+        <a class="hotspot hs-qr" href={REGISTER_URL} target="_blank" rel="noopener noreferrer" title="Registration QR code">QR code</a>
+        <a class="hotspot hs-inquiry" href={INQUIRY_MAIL} title="Contact your Solutions Specialist">Contact Solutions Specialist</a>
+      </div>
+    </div>
+  </section>
+</div>

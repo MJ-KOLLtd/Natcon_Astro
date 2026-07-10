@@ -1,0 +1,99 @@
+/* Bridge Figma navy landing → original gray glass scroll sections */
+
+.cel-nc {
+  --nc-figma-bg: #03153a;
+  --nc-figma-nav: #061a36;
+}
+
+/* Navy scene behind frosted gray sections */
+.cel-nc .nc-page-bg {
+  background: var(--nc-figma-bg);
+}
+
+.cel-nc .nc-page-bg-shade {
+  background: linear-gradient(
+    180deg,
+    rgba(3, 21, 58, 0.55) 0%,
+    rgba(6, 26, 54, 0.35) 12%,
+    rgba(8, 32, 64, 0.55) 100%
+  );
+}
+
+
+
+/* Gold buttons match Figma accent */
+.cel-nc .nc-btn-gold {
+  color: #03153a !important;
+  border-radius: 999px;
+}
+
+.cel-nc .nc-subnav .nc-btn,
+.cel-nc .nc-final .nc-btn-gold {
+  border-radius: 999px;
+}
+
+/* Mobile polish — layout only, colors unchanged */
+@media (max-width: 900px) {
+  .cel-nc {
+    --nc-pad-x: clamp(1rem, 4vw, 1.5rem);
+    --nc-section: clamp(2.75rem, 7vw, 4rem);
+  }
+
+  .cel-nc .nc-btn-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cel-nc .nc-btn-row .nc-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cel-nc .nc-secondary-q {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  }
+
+  .cel-nc .nc-exp-head {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+
+  .cel-nc .nc-exp-head .nc-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cel-nc .nc-speakers-intro {
+    padding-left: var(--nc-pad-x);
+    padding-right: var(--nc-pad-x);
+  }
+
+  .cel-nc .nc-photo-box {
+    margin-left: calc(-1 * var(--nc-pad-x));
+    margin-right: calc(-1 * var(--nc-pad-x));
+  }
+
+  .cel-nc .nc-final .nc-btn-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cel-nc .nc-final .nc-btn-row .nc-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cel-nc .nc-h2 {
+    font-size: clamp(1.65rem, 7vw, 2.25rem);
+  }
+
+  .cel-nc .nc-stats {
+    border-radius: 12px;
+  }
+
+  .cel-nc .nc-stat {
+    padding: 1.35rem 0.85rem;
+  }
+}
