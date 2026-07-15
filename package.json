@@ -7,9 +7,16 @@
     "dev": "node ./node_modules/astro/astro.js dev",
     "build": "node ./node_modules/astro/astro.js build",
     "preview": "node ./node_modules/astro/astro.js preview",
-    "astro": "node ./node_modules/astro/astro.js"
+    "astro": "node ./node_modules/astro/astro.js",
+    "deploy": "node ./node_modules/vercel/dist/vc.js deploy --prod",
+    "deploy:preview": "node ./node_modules/vercel/dist/vc.js deploy",
+    "vercel:login": "node ./node_modules/vercel/dist/vc.js login",
+    "vercel:link": "node ./node_modules/vercel/dist/vc.js link"
   },
   "dependencies": {
     "astro": "^5.10.0"
+  },
+  "devDependencies": {
+    "vercel": "^50.0.0"
   }
 }
