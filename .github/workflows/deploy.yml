@@ -1,60 +1,39 @@
-# Builds the static Astro site and deploys dist/ to the production server via SSH/rsync.
+# IT deploy flow: SSH into Ubuntu server, pull, build on-server, rsync to nginx web root.
 #
-# Required GitHub repository secret (Settings → Secrets and variables → Actions):
-#   SSH_PRIVATE_KEY — full private key file for the astro user (ed25519)
-#
-# Optional secret:
-#   SSH_TARGET — remote web root if different from /home/astro/www
+# Required GitHub secrets (Settings → Secrets and variables → Actions):
+#   HOST      — server IP (e.g. 111.125.115.4)
+#   USERNAME  — SSH user (e.g. astro)
+#   SSH_KEY   — full private key file
+#   PORT      — SSH port (e.g. 22)
 
-name: Deploy
+name: Deploy Astro
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: true
-
-env:
-  SITE_URL: https://natcon.ceals.ph
-  SSH_HOST: 111.125.115.4
-  SSH_USER: astro
-  SSH_PORT: 22
-  SSH_TARGET: /home/astro/www
 
 jobs:
   deploy:
-    name: Build and deploy
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Deploy to Ubuntu Server
+        uses: appleboy/ssh-action@v1.2.2
         with:
-          node-version: 20
-          cache: npm
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/astro/Natcon_Astro
 
-      - name: Install dependencies
-        run: npm ci
+            git pull origin main
 
-      - name: Build site
-        run: npm run build
+            npm install
 
-      - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v5.1.0
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ env.SSH_HOST }}
-          REMOTE_USER: ${{ env.SSH_USER }}
-          REMOTE_PORT: ${{ env.SSH_PORT }}
-          SOURCE: dist/
-          TARGET: ${{ secrets.SSH_TARGET || env.SSH_TARGET }}
-          ARGS: -avz --delete
+            npm run build
+
+            rsync -av --delete dist/ /var/www/html/
+
+            sudo systemctl reload nginx
