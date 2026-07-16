@@ -42,6 +42,7 @@ const knowledgePartners = [
     name: 'Cambridge',
     body: 'Scholarly and educational resources supporting globally competitive institutions.',
     box: 'square',
+    logoTone: 'light',
   },
   {
     logo: '/assets/partner-knimbus.webp',
@@ -50,25 +51,32 @@ const knowledgePartners = [
     name: 'Knimbus',
     body: 'Research discovery platform supporting digital library ecosystems.',
     box: 'wide',
+    logoTone: 'light',
   },
 ];
 ---
 
 <section class="nc-section is-soft" id="cel-nc-partners">
   <div class="nc-container">
-    <h2 class="nc-h2">Conference partners</h2>
+    <h2 class="nc-h2">Conference Partners</h2>
     <p class="nc-lead" style="margin-bottom:2.5rem;">
       Technology, content, and research partners supporting the 18th CE-Logic
       National Conference program and live stream experience.
     </p>
 
     <div class="nc-partner-tier">
-      <p class="nc-tier-label is-gold">Major sponsors</p>
+      <p class="nc-tier-label is-gold">Major Sponsors</p>
       <div class="nc-partner-grid nc-partner-grid-major">
         {
           launchPartners.map((p) => (
             <article class="nc-partner">
-              <div class:list={['nc-partner-logo', 'is-dark', 'is-' + p.box]}>
+              <div
+                class:list={[
+                  'nc-partner-logo',
+                  p.logoTone === 'light' ? 'is-light' : 'is-dark',
+                  'is-' + p.box,
+                ]}
+              >
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>
@@ -81,12 +89,18 @@ const knowledgePartners = [
     </div>
 
     <div class="nc-partner-tier">
-      <p class="nc-tier-label">Knowledge &amp; learning partners</p>
+      <p class="nc-tier-label">Knowledge &amp; Learning Partners</p>
       <div class="nc-partner-grid nc-partner-grid-knowledge">
         {
           knowledgePartners.map((p) => (
             <article class="nc-partner">
-              <div class:list={['nc-partner-logo', 'is-dark', 'is-' + p.box]}>
+              <div
+                class:list={[
+                  'nc-partner-logo',
+                  p.logoTone === 'light' ? 'is-light' : 'is-dark',
+                  'is-' + p.box,
+                ]}
+              >
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>

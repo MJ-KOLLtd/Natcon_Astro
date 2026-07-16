@@ -13,19 +13,20 @@ import Subnav from './Subnav.astro';
     <div class="screen-frame">
       <picture>
         <source
-          media="(max-width: 640px)"
-          srcset="/assets/hero-mobile.webp 1080w, /assets/hero-mobile@2x.webp 2160w"
+          media="(min-width: 641px)"
+          srcset="/assets/hero.webp 1920w, /assets/hero@2x.webp 3840w"
           type="image/webp"
           sizes="100vw"
         />
         <img
-          src="/assets/hero.webp"
-          srcset="/assets/hero.webp 1920w, /assets/hero@2x.webp 3840w"
-          width="1920"
-          height="1080"
+          src="/assets/hero-mobile.webp"
+          srcset="/assets/hero-mobile.webp 1080w, /assets/hero-mobile@2x.webp 2160w"
+          width="1080"
+          height="1920"
           sizes="100vw"
           alt="18th CE-Logic National Conference. CE-Logic in partnership with The University Library, University of the Philippines Diliman. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education. July 30-31, 2026 · Seda Vertis North, Quezon City, Manila."
-          decoding="async"
+          decoding="sync"
+          loading="eager"
           fetchpriority="high"
         />
       </picture>
