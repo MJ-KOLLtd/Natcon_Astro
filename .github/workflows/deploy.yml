@@ -1,10 +1,10 @@
 # Build on GitHub Actions, rsync dist/ to nginx web root via SSH.
 #
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
-#   HOST      — server IP
-#   USERNAME  — SSH user (e.g. astro)
-#   SSH_KEY   — full private key file
-#   PORT      — SSH port (optional, defaults to 22)
+#   HOST      — server IP (111.125.115.4)
+#   USERNAME  — SSH user (astro)
+#   SSH_KEY   — valid OpenSSH private key (must include BEGIN/END lines)
+#   PORT      — optional SSH port (defaults to 22)
 
 name: Deploy Astro
 
@@ -40,6 +40,13 @@ jobs:
           test -f dist/favicon-32x32.png
           grep -q 'favicon.ico' dist/index.html
 
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
       - name: Rsync dist to server
         uses: burnett01/rsync-deployments@7.0.1
         with:
@@ -49,7 +56,7 @@ jobs:
           remote_host: ${{ secrets.HOST }}
           remote_user: ${{ secrets.USERNAME }}
           remote_key: ${{ secrets.SSH_KEY }}
-          remote_port: ${{ secrets.PORT || 22 }}
+          remote_port: ${{ secrets.PORT }}
 
       - name: Reload nginx
         uses: appleboy/ssh-action@v1.2.2
@@ -57,7 +64,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT || 22 }}
+          port: ${{ secrets.PORT }}
           script: |
             set -euxo pipefail
             test -f /var/www/html/favicon.ico
