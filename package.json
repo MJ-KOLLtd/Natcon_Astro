@@ -10,7 +10,8 @@
     "astro": "node ./node_modules/astro/astro.js",
     "deploy": "node ./scripts/deploy.mjs",
     "deploy:vercel": "node ./scripts/deploy.mjs",
-    "optimize:assets": "node ./scripts/optimize-assets.mjs"
+    "optimize:assets": "node ./scripts/optimize-assets.mjs",
+    "generate:favicon": "node ./scripts/generate-favicon.mjs"
   },
   "engines": {
     "node": ">=18"
