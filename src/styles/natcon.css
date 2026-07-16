@@ -1748,7 +1748,7 @@
     .cel-nc .nc-theme-visual {
       border-radius: 4px;
       overflow: hidden;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 3 / 2;
       background: transparent;
     }
     .cel-nc .nc-theme-visual img {
