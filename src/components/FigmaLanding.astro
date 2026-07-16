@@ -9,7 +9,10 @@ import Subnav from './Subnav.astro';
     <Subnav homeHref="#hero" />
   </div>
 
-  <section class="screen" id="hero" aria-label="Conference hero">
+  <section class="screen" id="hero" aria-labelledby="cel-nc-hero-title">
+    <h1 id="cel-nc-hero-title" class="nc-sr-only">
+      CE Logic Natcon 2026 — 18th CE-Logic National Conference
+    </h1>
     <div class="screen-frame">
       <picture>
         <source
@@ -24,7 +27,7 @@ import Subnav from './Subnav.astro';
           width="828"
           height="1472"
           sizes="100vw"
-          alt="18th CE-Logic National Conference. CE-Logic in partnership with The University Library, University of the Philippines Diliman. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education. July 30-31, 2026 · Seda Vertis North, Quezon City, Manila."
+          alt="CE Logic Natcon 2026 — 18th CE-Logic National Conference in partnership with the University Library, UP Diliman. July 30-31, 2026 at Seda Vertis North, Quezon City."
           decoding="async"
           loading="eager"
           fetchpriority="high"
