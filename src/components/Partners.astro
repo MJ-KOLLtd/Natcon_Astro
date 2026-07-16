@@ -1,7 +1,7 @@
 ---
 const launchPartners = [
   {
-    logo: '/assets/partner-superhuman.webp',
+    logo: '/assets/partner-superhuman-071626.webp',
     alt: 'Superhuman',
     badge: 'AI productivity',
     name: 'Superhuman',
@@ -9,7 +9,7 @@ const launchPartners = [
     box: 'wide',
   },
   {
-    logo: '/assets/partner-scientific.webp',
+    logo: '/assets/partner-scientific-071626.webp',
     alt: 'Scientific e-Resources',
     badge: 'CeiGo · Launch partner',
     name: 'Scientific e-Resources',
@@ -20,7 +20,7 @@ const launchPartners = [
 
 const knowledgePartners = [
   {
-    logo: '/assets/partner-gale.webp',
+    logo: '/assets/partner-gale-071626.webp',
     alt: 'Gale',
     badge: 'Research content',
     name: 'Gale, Part of Cengage Group',
@@ -42,7 +42,6 @@ const knowledgePartners = [
     name: 'Cambridge',
     body: 'Scholarly and educational resources supporting globally competitive institutions.',
     box: 'wide',
-    logoTone: 'light',
   },
   {
     logo: '/assets/partner-knimbus-071626.webp',
@@ -51,7 +50,6 @@ const knowledgePartners = [
     name: 'Knimbus',
     body: 'Research discovery platform supporting digital library ecosystems.',
     box: 'wide',
-    logoTone: 'light',
   },
 ];
 ---
@@ -70,13 +68,7 @@ const knowledgePartners = [
         {
           launchPartners.map((p) => (
             <article class="nc-partner">
-              <div
-                class:list={[
-                  'nc-partner-logo',
-                  p.logoTone === 'light' ? 'is-light' : 'is-dark',
-                  'is-' + p.box,
-                ]}
-              >
+              <div class:list={['nc-partner-logo', 'is-light', 'is-' + p.box]}>
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>
@@ -94,13 +86,7 @@ const knowledgePartners = [
         {
           knowledgePartners.map((p) => (
             <article class="nc-partner">
-              <div
-                class:list={[
-                  'nc-partner-logo',
-                  p.logoTone === 'light' ? 'is-light' : 'is-dark',
-                  'is-' + p.box,
-                ]}
-              >
+              <div class:list={['nc-partner-logo', 'is-light', 'is-' + p.box]}>
                 <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
               </div>
               <span class="nc-badge">{p.badge}</span>
