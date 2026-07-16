@@ -1,7 +1,7 @@
-# IT deploy flow: SSH into Ubuntu server, pull, build on-server, rsync to nginx web root.
+# Build on GitHub Actions, rsync dist/ to nginx web root via SSH.
 #
 # Required GitHub secrets (Settings → Secrets and variables → Actions):
-#   HOST      — server IP (e.g. 111.125.115.4)
+#   HOST      — server IP
 #   USERNAME  — SSH user (e.g. astro)
 #   SSH_KEY   — full private key file
 #   PORT      — SSH port (optional, defaults to 22)
@@ -20,35 +20,48 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      - name: Deploy to Ubuntu Server
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install and build
+        env:
+          SITE_URL: https://celogic-natcon.ceals.ph
+        run: |
+          set -euxo pipefail
+          npm ci
+          npm run build
+          test -f dist/favicon.ico
+          test -f dist/favicon-32x32.png
+          grep -q 'favicon.ico' dist/index.html
+
+      - name: Rsync dist to server
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: dist/
+          remote_path: /var/www/html/
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USERNAME }}
+          remote_key: ${{ secrets.SSH_KEY }}
+          remote_port: ${{ secrets.PORT || 22 }}
+
+      - name: Reload nginx
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT || 22 }}
-          command_timeout: 10m
           script: |
             set -euxo pipefail
-            cd /var/www/astro/Natcon_Astro
-
-            git fetch origin main
-            git reset --hard origin/main
-            git log -1 --oneline
-
-            npm install
-            export SITE_URL=https://celogic-natcon.ceals.ph
-            npm run build
-
-            test -f dist/favicon.ico
-            test -f dist/favicon-32x32.png
-            grep -q 'favicon.ico' dist/index.html
-
-            rsync -av --delete dist/ /var/www/html/
-            sudo systemctl reload nginx
-
             test -f /var/www/html/favicon.ico
-            echo "Deploy complete: $(head -1 dist/index.html | tr -d '\r')"
+            sudo systemctl reload nginx
 
       - name: Verify production favicon
         run: |
