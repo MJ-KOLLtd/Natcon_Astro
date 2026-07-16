@@ -20,10 +20,9 @@ const pillars = [
     body: 'Library directors and partners discuss artificial intelligence, academic integrity, and sustainable growth.',
   },
   {
-    image: '/assets/visual-keynote-stage.webp',
+    image: '/assets/visual-technology-showcase.webp',
     title: 'Technology Showcase',
     body: 'Keynote on AI in libraries, logo unveiling, and formal product launch proceedings.',
-    logo: '/assets/partner-ceigo.webp',
   },
 ];
 ---
@@ -53,18 +52,8 @@ const pillars = [
     <div class="nc-hover-grid">
       {
         pillars.map((pillar) => (
-          <article class:list={['nc-hover-card', { 'has-brand-logo': !!pillar.logo }]}>
-            <img src={pillar.image} alt="" loading="lazy" width="1280" height="720" />
-            {pillar.logo && (
-              <img
-                class="nc-hover-brand-logo"
-                src={pillar.logo}
-                alt="CeiGo"
-                width="320"
-                height="160"
-                loading="lazy"
-              />
-            )}
+          <article class="nc-hover-card">
+            <img src={pillar.image} alt="" loading="lazy" width="1362" height="908" />
             <div class="nc-hover-content">
               <h3>{pillar.title}</h3>
               <p>{pillar.body}</p>
