@@ -24,6 +24,8 @@ Thumbs.db
 
 # local dev / tooling (not part of the site)
 .vercel
+.deploy_key_temp
+.deploy_key*
 terminals/
 mcps/
 agent-tools/
