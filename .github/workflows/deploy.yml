@@ -4,7 +4,7 @@
 #   HOST      — server IP (e.g. 111.125.115.4)
 #   USERNAME  — SSH user (e.g. astro)
 #   SSH_KEY   — full private key file
-#   PORT      — SSH port (e.g. 22)
+#   PORT      — SSH port (optional, defaults to 22)
 
 name: Deploy Astro
 
@@ -17,6 +17,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Deploy to Ubuntu Server
@@ -25,19 +26,32 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT }}
+          port: ${{ secrets.PORT || 22 }}
+          command_timeout: 10m
           script: |
-            set -e
+            set -euxo pipefail
             cd /var/www/astro/Natcon_Astro
 
             git fetch origin main
             git reset --hard origin/main
+            git log -1 --oneline
 
             npm install
-
             export SITE_URL=https://celogic-natcon.ceals.ph
             npm run build
 
-            rsync -av --delete dist/ /var/www/html/
+            test -f dist/favicon.ico
+            test -f dist/favicon-32x32.png
+            grep -q 'favicon.ico' dist/index.html
 
+            rsync -av --delete dist/ /var/www/html/
             sudo systemctl reload nginx
+
+            test -f /var/www/html/favicon.ico
+            echo "Deploy complete: $(head -1 dist/index.html | tr -d '\r')"
+
+      - name: Verify production favicon
+        run: |
+          sleep 5
+          curl -fsSI "https://celogic-natcon.ceals.ph/favicon.ico" | head -n 1
+          curl -fsS "https://celogic-natcon.ceals.ph/" | grep -o 'rel="icon"[^>]*' | head -n 3

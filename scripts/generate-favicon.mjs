@@ -5,13 +5,7 @@ import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
-const source = path.join(
-  root,
-  '..',
-  '..',
-  'BRAND COLLATERALS',
-  'C&EALS_emblem.png',
-);
+const source = path.join(root, 'public', 'assets', 'ceals-emblem-source.png');
 const publicDir = path.join(root, 'public');
 
 if (!fs.existsSync(source)) {
