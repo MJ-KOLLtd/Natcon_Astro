@@ -1,5 +1,5 @@
 ---
-import { conferenceResources } from '../data/conferenceResources';
+import { resourceNavLinks } from '../data/conferenceResources';
 
 interface Props {
   homeHref?: string;
@@ -17,11 +17,7 @@ const navLinks = [
   { label: 'Partners', href: '#cel-nc-partners' },
 ];
 
-const resourceLinks = conferenceResources.map((item) => ({
-  label: item.label,
-  href: item.href,
-  fileName: item.fileName,
-}));
+const resourceLinks = resourceNavLinks;
 ---
 
 <header class="nc-subnav" data-nc-subnav role="banner">
@@ -101,12 +97,9 @@ const resourceLinks = conferenceResources.map((item) => ({
                 <a
                   class="nc-subnav-resources-item"
                   href={item.href}
-                  download={item.fileName}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   role="menuitem"
                 >
-                  {item.label}
+                  <span>{item.label}</span>
                 </a>
               ))
             }

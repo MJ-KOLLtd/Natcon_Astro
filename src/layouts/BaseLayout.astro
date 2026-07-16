@@ -17,11 +17,31 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#03153a" />
-    <link rel="icon" type="image/png" href="/assets/ce-logic-logo.png" />
+    <link rel="icon" type="image/webp" href="/assets/ce-mark.webp" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/hero.webp"
+      type="image/webp"
+      imagesrcset="/assets/hero.webp 1920w, /assets/hero@2x.webp 3840w"
+      imagesizes="100vw"
+      media="(min-width: 641px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/hero-mobile.webp"
+      type="image/webp"
+      imagesrcset="/assets/hero-mobile.webp 1080w, /assets/hero-mobile@2x.webp 2160w"
+      imagesizes="100vw"
+      media="(max-width: 640px)"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

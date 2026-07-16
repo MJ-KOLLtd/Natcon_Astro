@@ -22,61 +22,73 @@ const sponsors = [
 
 <section class="nc-final">
   <div class="nc-container nc-final-scroll">
-    <div class="nc-final-glass nc-final-intro">
-      <h2 class="nc-h2">
-        July 30-31, 2026<br />Live stream access
-      </h2>
-      <p>
-        18th CE-Logic National Conference. Featured speakers, partners and
-        sponsors, and event-day live streaming are available on this page.
-        Registration is not required to view the stream.
-      </p>
-      <div class="nc-btn-row">
-        <a
-          class="nc-btn nc-btn-gold"
-          href="https://www.facebook.com/celogic"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Live stream</a>
-        <a class="nc-btn nc-btn-outline-light" href="#cel-nc-partners">
-          Partners and sponsors
-        </a>
+    <div class="nc-final-glass nc-final-panel">
+      <div class="nc-final-col nc-final-intro">
+        <p class="nc-final-eyebrow">18th CE-Logic National Conference</p>
+        <h2 class="nc-final-title">
+          <span class="nc-final-date">July 30–31, 2026</span>
+          <span class="nc-final-headline">Live stream access</span>
+        </h2>
+        <p class="nc-final-copy">
+          Featured speakers, partners and sponsors, and event-day live streaming are
+          available on this page. Registration is not required to view the stream.
+        </p>
+        <div class="nc-btn-row nc-final-actions">
+          <a
+            class="nc-btn nc-btn-gold"
+            href="https://www.facebook.com/celogic"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Live stream</a>
+          <a class="nc-btn nc-btn-outline-light" href="#cel-nc-partners">
+            Partners and sponsors
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="nc-final-glass nc-final-logos" aria-label="Conference brands, partners, and sponsors">
-      <p class="nc-final-logos-label">Presented by</p>
-      <ul class="nc-final-logo-row">
-        {
-          brandLogos.map((l) => (
-            <li>
-              <img src={l.src} alt={l.alt} loading="lazy" />
-            </li>
-          ))
-        }
-      </ul>
+      <div
+        class="nc-final-col nc-final-logos"
+        aria-label="Conference brands, partners, and sponsors"
+      >
+        <div class="nc-final-logo-group">
+          <p class="nc-final-logos-label">Presented by</p>
+          <ul class="nc-final-logo-row is-brand">
+            {
+              brandLogos.map((l) => (
+                <li>
+                  <img src={l.src} alt={l.alt} loading="lazy" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-      <p class="nc-final-logos-label">In partnership &amp; endorsed by</p>
-      <ul class="nc-final-logo-row is-seals">
-        {
-          institutional.map((l) => (
-            <li class:list={[l.className]}>
-              <img src={l.src} alt={l.alt} loading="lazy" />
-            </li>
-          ))
-        }
-      </ul>
+        <div class="nc-final-logo-group">
+          <p class="nc-final-logos-label">In partnership &amp; endorsed by</p>
+          <ul class="nc-final-logo-row is-seals">
+            {
+              institutional.map((l) => (
+                <li class:list={[l.className]}>
+                  <img src={l.src} alt={l.alt} loading="lazy" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
 
-      <p class="nc-final-logos-label">Sponsors &amp; partners</p>
-      <ul class="nc-final-logo-row is-sponsors">
-        {
-          sponsors.map((l) => (
-            <li class:list={[l.className]}>
-              <img src={l.src} alt={l.alt} loading="lazy" />
-            </li>
-          ))
-        }
-      </ul>
+        <div class="nc-final-logo-group">
+          <p class="nc-final-logos-label">Sponsors &amp; partners</p>
+          <ul class="nc-final-logo-row is-sponsors">
+            {
+              sponsors.map((l) => (
+                <li class:list={[l.className]}>
+                  <img src={l.src} alt={l.alt} loading="lazy" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
 
     <p class="nc-fine nc-final-fine">

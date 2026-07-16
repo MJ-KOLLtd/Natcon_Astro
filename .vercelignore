@@ -1,0 +1,8 @@
+node_modules
+.astro
+agent-tools
+mcps
+terminals
+scripts
+/assets
+.git

@@ -38,7 +38,9 @@
   line-height: 0;
 }
 
-.cel-nc-figma .screen-frame > img {
+.cel-nc-figma .screen-frame > img,
+.cel-nc-figma .screen-frame > picture,
+.cel-nc-figma .screen-frame > picture > img {
   display: block;
   width: 100%;
   height: auto;
@@ -47,41 +49,6 @@
   -webkit-user-drag: none;
   pointer-events: none;
 }
-
-.cel-nc-figma .hotspots {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
-.cel-nc-figma .hotspot {
-  position: absolute;
-  display: block;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  text-indent: -9999px;
-  overflow: hidden;
-  border-radius: 4px;
-  transition: background 0.15s ease;
-  text-decoration: none;
-}
-
-.cel-nc-figma .hotspot:focus-visible {
-  outline: 2px solid #f5d020;
-  outline-offset: 2px;
-}
-
-.cel-nc-figma .hotspot:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-/* Register-frame content hotspots (coords relative to cropped 1920×992 image) */
-.cel-nc-figma .hs-cpd      { left: 55.5%; top: 7%;  width: 16%; height: 30%; border-radius: 50%; }
-.cel-nc-figma .hs-register { left: 62%;   top: 24%; width: 28%; height: 46%; border-radius: 50%; }
-.cel-nc-figma .hs-inquiry  { left: 52%;   top: 82%; width: 40%; height: 8%; }
-
-.cel-nc-figma .hs-date-area { left: 22%; top: 80%; width: 56%; height: 10%; }
 
 .cel-nc-figma .skip {
   position: absolute;
@@ -101,7 +68,6 @@
 }
 
 #hero,
-#register,
 #cel-nc-highlights,
 #cel-nc-stream,
 #cel-nc-what-streamed,
@@ -109,6 +75,9 @@
 #cel-nc-about,
 #cel-nc-theme,
 #cel-nc-partners,
+#cel-nc-resources,
+#cel-nc-resources-sponsor-videos,
+#cel-nc-resources-partner-brochures,
 #cel-nc-experience {
   scroll-margin-top: clamp(3.25rem, 6vw, 5.5rem);
 }

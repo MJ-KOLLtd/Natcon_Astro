@@ -1,33 +1,41 @@
 ---
-import { conferenceResources } from '../data/conferenceResources';
+import { resourceDriveLinks } from '../data/conferenceResources';
 ---
 
 <section class="nc-section is-soft nc-resources" id="cel-nc-resources" aria-label="Conference resources">
   <div class="nc-container">
-    <h2 class="nc-h3">Conference materials</h2>
-    <p class="nc-lead" style="margin-bottom:1.75rem;">
-      Download program details, endorsement letters, partner brochures, and
-      presentation decks for the 18th CE-Logic National Conference.
+    <p class="nc-eyebrow">Partner library</p>
+    <h2 class="nc-h2">Conference resources</h2>
+    <p class="nc-lead nc-resources-lead">
+      Sponsor presentations and partner brochures are hosted on Google Drive for
+      quick access. Select a folder below to view or download files.
     </p>
 
-    <ul class="nc-resources-list">
+    <div class="nc-resources-drive-grid">
       {
-        conferenceResources.map((item) => (
-          <li>
-            <a
-              class="nc-resources-link"
-              href={item.href}
-              download={item.fileName}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <strong>{item.label}</strong>
-              <span>{item.note}</span>
-              <span class="nc-resources-badge">Download</span>
-            </a>
-          </li>
+        resourceDriveLinks.map((item) => (
+          <a
+            class:list={[
+              'nc-resources-drive-card',
+              item.tone === 'gold' ? 'is-videos' : 'is-brochures',
+            ]}
+            id={`cel-nc-resources-${item.id}`}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="nc-resources-drive-copy">
+              <span class:list={['nc-tier-label', item.tone === 'gold' ? 'is-gold' : 'is-blue']}>
+                {item.label}
+              </span>
+            </span>
+            <span class="nc-resources-drive-action" aria-hidden="true">
+              <span class="nc-resources-drive-action-label">Open folder</span>
+              <span class="nc-resources-drive-arrow"></span>
+            </span>
+          </a>
         ))
       }
-    </ul>
+    </div>
   </div>
 </section>

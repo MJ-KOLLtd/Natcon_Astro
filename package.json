@@ -8,10 +8,11 @@
     "build": "node ./node_modules/astro/astro.js build",
     "preview": "node ./node_modules/astro/astro.js preview",
     "astro": "node ./node_modules/astro/astro.js",
-    "deploy": "node ./node_modules/vercel/dist/vc.js deploy --prod",
-    "deploy:preview": "node ./node_modules/vercel/dist/vc.js deploy",
-    "vercel:login": "node ./node_modules/vercel/dist/vc.js login",
-    "vercel:link": "node ./node_modules/vercel/dist/vc.js link"
+    "deploy": "node ./scripts/deploy.mjs",
+    "deploy:vercel": "node ./scripts/deploy.mjs"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "astro": "^5.10.0"

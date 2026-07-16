@@ -3,7 +3,7 @@ pid: 24668
 cwd: "C:\Users\MJ\Documents\_Thoughts\C&E Group\CEALS\CE LOGIC\Natcon_Astro"
 command: "pip install rembg onnxruntime --quiet 2>&1 | Select-Object -Last 5"
 started_at: 2026-07-15T03:08:37.394Z
-running_for_ms: 1385004  
+running_for_ms: 24620000 
 ---
   WARNING: The script rembg.exe is installed in 'C:\Users\MJ\AppData\Roaming\Python\Python314\Scripts' which is not on 
 PATH.

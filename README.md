@@ -1,8 +1,8 @@
 # CE-Logic National Conference 2026 (Astro)
 
-Static landing page for the **18th CE-Logic National Conference** (July 30–31, 2026). Refactored from a single WordPress HTML block into an [Astro](https://astro.build) project for deployment on **Vercel**.
+Static landing page for the **18th CE-Logic National Conference** (July 30–31, 2026).
 
-## Quick start
+## Quick start (developers)
 
 ```bash
 npm install
@@ -13,55 +13,70 @@ Open the local URL printed in the terminal (usually `http://localhost:4321`).
 
 ```bash
 npm run build    # output → dist/
-npm run preview  # preview production build
+npm run preview  # preview production build locally
 ```
+
+## Deploy for IT (any static web server)
+
+This site is **fully static**. No database, API, or Node.js runtime is required in production.
+
+### Build once
+
+Requirements: **Node.js 18+** and npm (build machine only).
+
+```bash
+npm ci
+npm run build
+```
+
+The deployable site is everything inside **`dist/`**.
+
+### Serve `dist/`
+
+Copy the `dist/` folder to your web server and point the site root at it.
+
+| Platform | Notes |
+|----------|--------|
+| **Nginx / Apache** | Set document root to `dist/`. Enable `gzip` / `brotli` for `.css`, `.js`, `.webp`, `.woff2`. |
+| **IIS** | Create a site with physical path = `dist/`. Add a default document for `index.html`. |
+| **Object storage + CDN** | Upload `dist/` contents (S3, Azure Blob, etc.) and enable static website hosting. |
+| **Vercel** | Import the Git repo; build command `npm run build`, output `dist`. Or run `npm run deploy:vercel`. |
+
+### Before go-live
+
+1. **Stream URL** — edit `src/components/Stream.astro` and set `STREAM_URL` to the live Facebook or video URL, then rebuild.
+2. **Custom domain** — configure on your host after upload.
+3. **Rebuild** after any content change; do not edit files inside `dist/` by hand.
+
+### What not to deploy
+
+These are development-only and are excluded from production builds:
+
+- `node_modules/`
+- `scripts/` (asset processing helpers)
+- `terminals/`, `mcps/`, `agent-tools/`
 
 ## Project structure
 
 ```
-public/assets/          # images (served as /assets/...)
+public/assets/          # images, PDFs, videos (served as /assets/...)
 src/
-  components/           # page sections (Hero, Speakers, Stream, …)
+  components/           # page sections
+  data/                 # conference resources manifest
   layouts/BaseLayout.astro
   pages/index.astro     # home route
-  styles/natcon.css     # design system + section styles
+  styles/               # design system CSS
 ```
 
-The original `natcon-landing.html` is kept for reference only; the live page is Astro.
+## Assets
 
-## Event-day stream URL
+- Hero and section images: WebP with responsive `srcset` where applicable.
+- Partner brochures and sponsor videos: Google Drive folders (linked from the Resources section).
+- Favicon: `public/assets/ce-mark.webp`.
 
-Edit `src/components/Stream.astro` and set:
+## Optional: Vercel (GitHub)
 
-```ts
-const STREAM_URL = 'https://your-stream-url';
-```
-
-When `STREAM_URL` is not `#`, the button becomes an active “Watch live stream” link.
-
-## Deploy to Vercel (via GitHub Desktop)
-
-1. **Install dependencies once** (optional locally; Vercel also installs on deploy):
-   ```bash
-   npm install
-   ```
-2. **Create a GitHub repo** and open this folder in **GitHub Desktop**.
-3. **Commit** all project files (not `node_modules/` or `dist/` — they are gitignored).
-4. **Publish** the branch to GitHub.
-5. In [Vercel](https://vercel.com):
-   - **Add New Project** → import the GitHub repo
-   - Framework: **Astro** (auto-detected)
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Deploy
-
-Every push from GitHub Desktop will trigger a new Vercel deployment.
-
-### Custom domain (optional)
-
-Vercel → Project → **Settings → Domains** → add your conference domain.
-
-## Notes
-
-- Static output only (`output: 'static'`) — no server runtime required.
-- Styles keep the original `.cel-nc` scope so the TED-like CE-Logic design stays intact.
+1. Commit and push to GitHub (exclude `node_modules/` and `dist/`).
+2. Vercel → **Add New Project** → import repo.
+3. Framework: **Astro**; build `npm run build`; output `dist`.
+4. Every push redeploys automatically.

@@ -78,12 +78,12 @@
     padding-right: var(--nc-pad-x);
   }
 
-  .cel-nc .nc-final .nc-btn-row {
-    flex-direction: column;
-    width: 100%;
+  .cel-nc .nc-final-actions {
+    grid-template-columns: 1fr;
+    max-width: none;
   }
 
-  .cel-nc .nc-final .nc-btn-row .nc-btn {
+  .cel-nc .nc-final-actions .nc-btn {
     width: 100%;
   }
 }

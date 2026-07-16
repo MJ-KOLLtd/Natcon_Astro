@@ -22,5 +22,10 @@ Thumbs.db
 !.vscode/extensions.json
 .idea/
 
-# vercel
+# local dev / tooling (not part of the site)
 .vercel
+terminals/
+mcps/
+agent-tools/
+/assets/
+_natcon-assets/

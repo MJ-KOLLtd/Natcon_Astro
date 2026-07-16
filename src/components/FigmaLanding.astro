@@ -1,10 +1,9 @@
 ---
 import Subnav from './Subnav.astro';
-
 ---
 
 <div class="cel-nc-figma">
-  <a class="skip" href="#register">Skip to registration</a>
+  <a class="skip" href="#cel-nc-highlights">Skip to main content</a>
 
   <div class="cel-nc nc-figma-nav">
     <Subnav homeHref="#hero" />
@@ -12,30 +11,24 @@ import Subnav from './Subnav.astro';
 
   <section class="screen" id="hero" aria-label="Conference hero">
     <div class="screen-frame">
-      <img
-        src="/assets/hero.png"
-        width="1920"
-        height="992"
-        alt="18th CE-Logic National Conference. CE-Logic in partnership with The University Library, University of the Philippines Diliman. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education. July 30-31, 2026 · Seda Vertis North, Quezon City, Manila."
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div class="hotspots">
-        <a class="hotspot hs-date-area" href="#register" title="View registration">July 30-31, 2026 · Register</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="screen" id="register" aria-label="Registration and organizers">
-    <div class="screen-frame">
-      <img
-        src="/assets/register.png"
-        width="1920"
-        height="992"
-        alt="Organized by CE-Logic. Co-presented by PAARL and Philippine Librarians Association Inc. 7.5 CPD Units. Register now — Limited slots available. Scan QR code to register. For inquiries, contact your Solutions Specialist."
-        decoding="async"
-        loading="lazy"
-      />
+      <picture>
+        <source
+          media="(max-width: 640px)"
+          srcset="/assets/hero-mobile.webp 1080w, /assets/hero-mobile@2x.webp 2160w"
+          type="image/webp"
+          sizes="100vw"
+        />
+        <img
+          src="/assets/hero.webp"
+          srcset="/assets/hero.webp 1920w, /assets/hero@2x.webp 3840w"
+          width="1920"
+          height="1080"
+          sizes="100vw"
+          alt="18th CE-Logic National Conference. CE-Logic in partnership with The University Library, University of the Philippines Diliman. Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education. July 30-31, 2026 · Seda Vertis North, Quezon City, Manila."
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
   </section>
 </div>
