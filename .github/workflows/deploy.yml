@@ -1,0 +1,60 @@
+# Builds the static Astro site and deploys dist/ to the production server via SSH/rsync.
+#
+# Required GitHub repository secret (Settings → Secrets and variables → Actions):
+#   SSH_PRIVATE_KEY — full private key file for the astro user (ed25519)
+#
+# Optional secret:
+#   SSH_TARGET — remote web root if different from /home/astro/www
+
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SITE_URL: https://natcon.ceals.ph
+  SSH_HOST: 111.125.115.4
+  SSH_USER: astro
+  SSH_PORT: 22
+  SSH_TARGET: /home/astro/www
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ env.SSH_HOST }}
+          REMOTE_USER: ${{ env.SSH_USER }}
+          REMOTE_PORT: ${{ env.SSH_PORT }}
+          SOURCE: dist/
+          TARGET: ${{ secrets.SSH_TARGET || env.SSH_TARGET }}
+          ARGS: -avz --delete
