@@ -1,5 +1,6 @@
 ---
 import { resourceNavLinks } from '../data/conferenceResources';
+import { SITE_NAME } from '../data/site';
 
 interface Props {
   homeHref?: string;
@@ -25,7 +26,7 @@ const resourceLinks = resourceNavLinks;
     <a
       class="nc-subnav-brand"
       href={homeHref}
-      aria-label="CE Logic Natcon 2026 home"
+      aria-label={`${SITE_NAME} 2026 home`}
     >
       <img
         class="nc-subnav-logo"

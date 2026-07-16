@@ -1,4 +1,6 @@
 ---
+import { CONFERENCE_NAME, SITE_NAME } from '../data/site';
+
 const brandLogos = [
   { src: '/assets/ce-logic-logo.webp', alt: 'CE-Logic', width: 220, height: 40 },
   { src: '/assets/ceals-logo.webp', alt: 'C&E Adaptive Learning Solutions', width: 200, height: 65 },
@@ -24,7 +26,7 @@ const sponsors = [
   <div class="nc-container nc-final-scroll">
     <div class="nc-final-glass nc-final-panel">
       <div class="nc-final-col nc-final-intro">
-        <p class="nc-final-eyebrow">CE Logic Natcon · 18th CE-Logic National Conference</p>
+        <p class="nc-final-eyebrow">{SITE_NAME} · {CONFERENCE_NAME}</p>
         <h2 class="nc-final-title">
           <span class="nc-final-date">July 30–31, 2026</span>
           <span class="nc-final-headline">Live Stream Access</span>
