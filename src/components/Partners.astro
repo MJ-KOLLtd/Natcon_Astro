@@ -11,9 +11,9 @@ const launchPartners = [
   {
     logo: '/assets/partner-scientific-071626.webp',
     alt: 'Scientific e-Resources',
-    badge: 'CeiGo · Launch partner',
+    badge: 'Digital resources',
     name: 'Scientific e-Resources',
-    body: 'Digital resource partner supporting research access and the CeiGo launch program.',
+    body: 'Day 2 partner presentation spotlighting digital research and e-resource solutions for academic libraries.',
     box: 'tall',
   },
 ];
@@ -69,7 +69,7 @@ const knowledgePartners = [
           launchPartners.map((p) => (
             <article class="nc-partner">
               <div class:list={['nc-partner-logo', 'is-light', 'is-' + p.box]}>
-                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
+                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" decoding="async" fetchpriority="low" />
               </div>
               <span class="nc-badge">{p.badge}</span>
               <h3>{p.name}</h3>
@@ -87,7 +87,7 @@ const knowledgePartners = [
           knowledgePartners.map((p) => (
             <article class="nc-partner">
               <div class:list={['nc-partner-logo', 'is-light', 'is-' + p.box]}>
-                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" />
+                <img src={p.logo} alt={p.alt} width="320" height="160" loading="lazy" decoding="async" fetchpriority="low" />
               </div>
               <span class="nc-badge">{p.badge}</span>
               <h3>{p.name}</h3>

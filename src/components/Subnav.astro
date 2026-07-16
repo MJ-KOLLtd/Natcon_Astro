@@ -33,6 +33,8 @@ const resourceLinks = resourceNavLinks;
         alt="CE-Logic"
         width="148"
         height="32"
+        decoding="async"
+        fetchpriority="high"
       />
       <span class="nc-subnav-brand-text">NATCON 2026 · July 30, 31, 2026</span>
     </a>
@@ -210,40 +212,5 @@ const resourceLinks = resourceNavLinks;
     }
   }
 
-  function initCountdownCompact() {
-    const TARGET = new Date('2026-07-30T08:00:00+08:00').getTime();
-    const nodes = document.querySelectorAll('[data-nc-countdown-compact]');
-    if (!nodes.length) return;
-
-    function pad(n) {
-      return String(n).padStart(2, '0');
-    }
-
-    function tick() {
-      const remaining = TARGET - Date.now();
-      nodes.forEach((node) => {
-        if (remaining <= 0) {
-          node.textContent = 'Live now';
-          node.classList.add('is-live');
-          return;
-        }
-        const days = Math.floor(remaining / 86400000);
-        const hours = Math.floor((remaining % 86400000) / 3600000);
-        const mins = Math.floor((remaining % 3600000) / 60000);
-        node.textContent = `${days}d ${pad(hours)}h ${pad(mins)}m`;
-      });
-    }
-
-    tick();
-    if (!window.__ncCountdownCompact) {
-      window.__ncCountdownCompact = window.setInterval(tick, 1000);
-    }
-  }
-
   initSubnav();
-  initCountdownCompact();
-  document.addEventListener('astro:page-load', () => {
-    initSubnav();
-    initCountdownCompact();
-  });
 </script>

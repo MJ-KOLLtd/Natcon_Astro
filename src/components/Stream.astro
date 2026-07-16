@@ -14,6 +14,16 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
 
     <div class="nc-stream-grid">
       <div class="nc-stream-stage">
+        <img
+          class="nc-stream-stage-bg"
+          src="/assets/hero-bg.webp"
+          alt=""
+          width="960"
+          height="540"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+        />
         <h3>Official Conference Stream</h3>
         <p>
           Follow CE-Logic on Facebook for the official stream. The live link
@@ -82,51 +92,3 @@ const STREAM_URL = 'https://www.facebook.com/celogic';
     </div>
   </div>
 </section>
-
-<script>
-  function initStreamCountdown() {
-    const root = document.querySelector('[data-nc-countdown]');
-    if (!root || root.dataset.ready === '1') return;
-    root.dataset.ready = '1';
-
-    const daysEl = root.querySelector('[data-nc-countdown-days]');
-    const hoursEl = root.querySelector('[data-nc-countdown-hours]');
-    const minsEl = root.querySelector('[data-nc-countdown-mins]');
-    const secsEl = root.querySelector('[data-nc-countdown-secs]');
-    const labelEl = root.querySelector('.nc-countdown-label');
-    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
-
-    const TARGET = new Date('2026-07-30T08:00:00+08:00').getTime();
-
-    function pad(n) {
-      return String(n).padStart(2, '0');
-    }
-
-    function tick() {
-      const remaining = TARGET - Date.now();
-      if (remaining <= 0) {
-        root.classList.add('is-live');
-        daysEl.textContent = '00';
-        hoursEl.textContent = '00';
-        minsEl.textContent = '00';
-        secsEl.textContent = '00';
-        if (labelEl) labelEl.textContent = 'Livestream is active';
-        return;
-      }
-      const days = Math.floor(remaining / 86400000);
-      const hours = Math.floor((remaining % 86400000) / 3600000);
-      const mins = Math.floor((remaining % 3600000) / 60000);
-      const secs = Math.floor((remaining % 60000) / 1000);
-      daysEl.textContent = String(days);
-      hoursEl.textContent = pad(hours);
-      minsEl.textContent = pad(mins);
-      secsEl.textContent = pad(secs);
-    }
-
-    tick();
-    window.setInterval(tick, 1000);
-  }
-
-  initStreamCountdown();
-  document.addEventListener('astro:page-load', initStreamCountdown);
-</script>

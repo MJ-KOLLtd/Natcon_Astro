@@ -21,13 +21,14 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/hero-mobile.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <link
       rel="preload"
       as="image"
       href="/assets/hero.webp"
       type="image/webp"
-      imagesrcset="/assets/hero.webp 1920w, /assets/hero@2x.webp 3840w"
+      imagesrcset="/assets/hero.webp 1600w, /assets/hero@2x.webp 2400w"
       imagesizes="100vw"
       media="(min-width: 641px)"
       fetchpriority="high"
@@ -37,7 +38,7 @@ const {
       as="image"
       href="/assets/hero-mobile.webp"
       type="image/webp"
-      imagesrcset="/assets/hero-mobile.webp 1080w, /assets/hero-mobile@2x.webp 2160w"
+      imagesrcset="/assets/hero-mobile.webp 828w, /assets/hero-mobile@2x.webp 1242w"
       imagesizes="100vw"
       media="(max-width: 640px)"
       fetchpriority="high"
@@ -45,13 +46,17 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
   </head>
   <body>
     <slot />
+    <script>
+      import { initCountdown } from '../scripts/countdown.ts';
+      initCountdown();
+    </script>
   </body>
 </html>
 

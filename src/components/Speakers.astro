@@ -1,79 +1,86 @@
 ---
 const PLACEHOLDER = '/assets/speaker-placeholder.webp';
 
+function speakerPhoto(stem: string) {
+  return {
+    src: `/assets/speakers/${stem}.webp`,
+    srcset: `/assets/speakers/${stem}.webp 480w, /assets/speakers/${stem}@2x.webp 600w`,
+  };
+}
+
 const speakers = [
   {
     tag: 'Keynote',
     name: 'Dr. Milabel E. Ho',
     role: 'Executive Director, AACCUP',
-    photo: '/assets/speakers/milabel-ho.jpg',
+    ...speakerPhoto('milabel-ho'),
   },
   {
     tag: 'Welcome · Session',
     name: 'Ms. Elvira B. Lapuz',
     role: 'University Librarian, UP Diliman',
-    photo: '/assets/speakers/elvira-lapuz.jpg',
+    ...speakerPhoto('elvira-lapuz'),
   },
   {
     tag: 'PLAI · Session',
     name: 'Dr. Maria Pretty Lay T. Abdala',
     role: 'Dean, BulSU · President, PLAI',
-    photo: '/assets/speakers/maria-pretty-lay-abdala.jpg',
+    ...speakerPhoto('maria-pretty-lay-abdala'),
   },
   {
     tag: 'Session',
     name: 'Janice D.C. Peñaflor',
     role: 'Associate Director, DLSU Libraries',
-    photo: '/assets/speakers/janice-dc-penaflor.jpg',
+    ...speakerPhoto('janice-dc-penaflor'),
   },
   {
     tag: 'Session',
     name: 'Efren M. Torres, Jr.',
     role: 'Access & Resource Management, DLSU Libraries',
-    photo: '/assets/speakers/efren-torres.jpg',
+    ...speakerPhoto('efren-torres'),
   },
   {
     tag: 'Session',
     name: 'Prof. Dan Anthony Dorado',
     role: 'UP School of Library and Information Studies',
-    photo: '/assets/speakers/dan-anthony-dorado.jpg',
+    ...speakerPhoto('dan-anthony-dorado'),
   },
   {
     tag: 'Panel',
     name: 'Ms. Joenabie Arevalo',
     role: 'University Librarian, Ateneo de Manila University',
-    photo: '/assets/speakers/joenabie-arevalo.jpg',
+    ...speakerPhoto('joenabie-arevalo'),
     photoPosition: 'center 8%',
   },
   {
     tag: 'Panel',
     name: 'Edgardo B. Quiros, RL',
     role: 'Assistant Director, National Library of the Philippines',
-    photo: '/assets/speakers/edgardo-quiros.jpg',
+    ...speakerPhoto('edgardo-quiros'),
   },
   {
     tag: 'CeiGo',
     name: 'Dr. Diu Seng (“DS”) See',
     role: 'Business & Sales Enablement Manager, iGroup',
-    photo: '/assets/speakers/diu-seng-ds-see.png',
+    ...speakerPhoto('diu-seng-ds-see'),
   },
   {
     tag: 'Partner',
     name: 'Mike Shen',
     role: 'Channel Partner Manager APAC, Grammarly by Superhuman',
-    photo: '/assets/speakers/mike-shen.jpg',
+    ...speakerPhoto('mike-shen'),
   },
   {
     tag: 'Partner',
     name: 'Sean Chia',
     role: 'Senior Regional Account Manager, Gale / Cengage',
-    photo: '/assets/speakers/sean-chia.png',
+    ...speakerPhoto('sean-chia'),
   },
   {
     tag: 'Panel · Host',
     name: 'Mr. John Emyl Eugenio',
     role: 'Chief Executive Officer, CE-Logic, Inc.',
-    photo: '/assets/speakers/john-emyl-eugenio.png',
+    ...speakerPhoto('john-emyl-eugenio'),
   },
 ];
 ---
@@ -96,11 +103,15 @@ const speakers = [
         speakers.map((speaker, i) => (
           <article class:list={['nc-photo-slide', { 'is-active': i === 0 }]}>
             <img
-              src={speaker.photo ?? PLACEHOLDER}
+              src={speaker.src ?? PLACEHOLDER}
+              srcset={speaker.srcset}
+              sizes="(max-width: 640px) 78vw, (max-width: 991px) 42vw, 24vw"
               alt={speaker.name}
               width="600"
               height="800"
               loading="lazy"
+              decoding="async"
+              fetchpriority="low"
               style={speaker.photoPosition ? `--nc-photo-position: ${speaker.photoPosition}` : undefined}
             />
             <div class="nc-photo-copy">
@@ -203,5 +214,4 @@ const speakers = [
   }
 
   initCarousel();
-  document.addEventListener('astro:page-load', initCarousel);
 </script>

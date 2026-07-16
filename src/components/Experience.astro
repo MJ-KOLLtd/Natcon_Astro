@@ -6,21 +6,29 @@ const FB_STREAM = 'https://www.facebook.com/celogic';
 const pillars = [
   {
     image: '/assets/visual-keynote-stage.webp',
+    imageSrcset:
+      '/assets/visual-keynote-stage-640.webp 640w, /assets/visual-keynote-stage.webp 1280w',
     title: 'Keynote Address',
     body: 'Philippine libraries as strategic enablers of data-driven and globally competitive education.',
   },
   {
     image: '/assets/visual-strategy.webp',
+    imageSrcset:
+      '/assets/visual-strategy-640.webp 640w, /assets/visual-strategy.webp 1280w',
     title: 'Expert Sessions',
     body: 'Development planning, digital ecosystems, AI-enabled services, and library investments aligned with research performance.',
   },
   {
     image: '/assets/visual-panel-room.webp',
+    imageSrcset:
+      '/assets/visual-panel-room-640.webp 640w, /assets/visual-panel-room.webp 1280w',
     title: 'Panel Discussion',
     body: 'Library directors and partners discuss artificial intelligence, academic integrity, and sustainable growth.',
   },
   {
     image: '/assets/visual-technology-showcase.webp',
+    imageSrcset:
+      '/assets/visual-technology-showcase-640.webp 640w, /assets/visual-technology-showcase.webp 1280w',
     title: 'Technology Showcase',
     body: 'Keynote on AI in libraries, logo unveiling, and formal product launch proceedings.',
   },
@@ -53,7 +61,17 @@ const pillars = [
       {
         pillars.map((pillar) => (
           <article class="nc-hover-card">
-            <img src={pillar.image} alt="" loading="lazy" width="1362" height="908" />
+            <img
+              src={pillar.image}
+              srcset={pillar.imageSrcset}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              width="1280"
+              height="853"
+            />
             <div class="nc-hover-content">
               <h3>{pillar.title}</h3>
               <p>{pillar.body}</p>

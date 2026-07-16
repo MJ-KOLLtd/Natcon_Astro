@@ -1,22 +1,22 @@
 ---
 const brandLogos = [
-  { src: '/assets/ce-logic-logo.webp', alt: 'CE-Logic' },
-  { src: '/assets/ceals-logo.webp', alt: 'C&E Adaptive Learning Solutions' },
+  { src: '/assets/ce-logic-logo.webp', alt: 'CE-Logic', width: 220, height: 40 },
+  { src: '/assets/ceals-logo.webp', alt: 'C&E Adaptive Learning Solutions', width: 200, height: 65 },
 ];
 
 const institutional = [
-  { src: '/assets/partner-up-library.webp', alt: 'UP Library' },
-  { src: '/assets/partner-plai.webp', alt: 'PLAI' },
-  { src: '/assets/partner-paarl.webp', alt: 'PAARL', className: 'is-paarl' },
+  { src: '/assets/partner-up-library.webp', alt: 'UP Library', width: 120, height: 120 },
+  { src: '/assets/partner-plai.webp', alt: 'PLAI', width: 120, height: 120 },
+  { src: '/assets/partner-paarl.webp', alt: 'PAARL', className: 'is-paarl', width: 100, height: 96 },
 ];
 
 const sponsors = [
-  { src: '/assets/partner-superhuman-071626.webp', alt: 'Superhuman', className: 'is-wordmark' },
-  { src: '/assets/partner-scientific-071626.webp', alt: 'Scientific e-Resources', className: 'is-wordmark is-compact' },
-  { src: '/assets/partner-gale-071626.webp', alt: 'Gale', className: 'is-wordmark' },
-  { src: '/assets/partner-mcgraw.webp', alt: 'McGraw Hill', className: 'is-wordmark' },
-  { src: '/assets/partner-cambridge-071626.webp', alt: 'Cambridge', className: 'is-wordmark' },
-  { src: '/assets/partner-knimbus-071626.webp', alt: 'Knimbus', className: 'is-wordmark' },
+  { src: '/assets/partner-superhuman-071626.webp', alt: 'Superhuman', className: 'is-wordmark', width: 160, height: 48 },
+  { src: '/assets/partner-scientific-071626.webp', alt: 'Scientific e-Resources', className: 'is-wordmark is-compact', width: 160, height: 48 },
+  { src: '/assets/partner-gale-071626.webp', alt: 'Gale', className: 'is-wordmark', width: 160, height: 48 },
+  { src: '/assets/partner-mcgraw.webp', alt: 'McGraw Hill', className: 'is-wordmark', width: 160, height: 48 },
+  { src: '/assets/partner-cambridge-071626.webp', alt: 'Cambridge', className: 'is-wordmark', width: 160, height: 48 },
+  { src: '/assets/partner-knimbus-071626.webp', alt: 'Knimbus', className: 'is-wordmark', width: 160, height: 48 },
 ];
 ---
 
@@ -56,7 +56,7 @@ const sponsors = [
             {
               brandLogos.map((l) => (
                 <li>
-                  <img src={l.src} alt={l.alt} loading="lazy" />
+                  <img src={l.src} alt={l.alt} width={l.width} height={l.height} loading="lazy" decoding="async" />
                 </li>
               ))
             }
@@ -69,7 +69,7 @@ const sponsors = [
             {
               institutional.map((l) => (
                 <li class:list={[l.className]}>
-                  <img src={l.src} alt={l.alt} loading="lazy" />
+                  <img src={l.src} alt={l.alt} width={l.width} height={l.height} loading="lazy" decoding="async" />
                 </li>
               ))
             }
@@ -82,7 +82,7 @@ const sponsors = [
             {
               sponsors.map((l) => (
                 <li class:list={[l.className]}>
-                  <img src={l.src} alt={l.alt} loading="lazy" />
+                  <img src={l.src} alt={l.alt} width={l.width} height={l.height} loading="lazy" decoding="async" />
                 </li>
               ))
             }
