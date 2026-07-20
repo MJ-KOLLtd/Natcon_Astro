@@ -1,6 +1,6 @@
 /** Central SEO + brand strings for CE-Logic Natcon */
 export const SITE_NAME = 'CE-Logic Natcon';
-export const SITE_NAME_ALT = 'CE Logic Natcon';
+export const SITE_NAME_ALT = 'CE-Logic National Conference';
 export const CONFERENCE_NAME = '18th CE-Logic National Conference';
 export const CONFERENCE_SHORT = 'NATCON 2026';
 
@@ -12,9 +12,8 @@ export const SEO_DESCRIPTION =
 
 export const SEO_KEYWORDS = [
   'CE-Logic Natcon',
-  'CE Logic Natcon',
   'CE-Logic National Conference',
-  'CE Logic National Conference',
+  '18th CE-Logic National Conference',
   'NATCON 2026',
   'CE-Logic conference 2026',
   'CE-Logic live stream',

@@ -1,10 +1,15 @@
 # Build on GitHub Actions, rsync dist/ to nginx web root via SSH.
 #
-# Required GitHub secrets (Settings → Secrets and variables → Actions):
-#   HOST      — server IP (111.125.115.4)
-#   USERNAME  — SSH user (astro)
-#   SSH_KEY   — valid OpenSSH private key (must include BEGIN/END lines)
-#   PORT      — optional SSH port (defaults to 22)
+# Required GitHub secret (Settings → Secrets and variables → Actions):
+#   SSH_KEY  — OpenSSH private key for the `astro` user (include BEGIN/END lines)
+#
+# Optional (fallbacks if SSH_KEY is missing):
+#   SSH_PRIVATE_KEY — alternate secret name used by earlier workflows
+#
+# Optional overrides:
+#   HOST      — server IP (default 111.125.115.4)
+#   USERNAME  — SSH user (default astro)
+#   PORT      — SSH port (default 22)
 
 name: Deploy Astro
 
@@ -13,6 +18,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -38,40 +47,83 @@ jobs:
           npm run build
           test -f dist/favicon.ico
           test -f dist/favicon-32x32.png
+          test -f dist/index.html
           grep -q 'favicon.ico' dist/index.html
+          grep -q 'CE-Logic' dist/index.html
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
-          retention-days: 7
+          retention-days: 14
+
+      - name: Resolve SSH settings
+        id: ssh
+        env:
+          SECRET_HOST: ${{ secrets.HOST }}
+          SECRET_USER: ${{ secrets.USERNAME }}
+          SECRET_PORT: ${{ secrets.PORT }}
+          SECRET_KEY: ${{ secrets.SSH_KEY }}
+          SECRET_KEY_ALT: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          HOST="${SECRET_HOST:-111.125.115.4}"
+          USER="${SECRET_USER:-astro}"
+          PORT="${SECRET_PORT:-22}"
+          KEY="${SECRET_KEY:-}"
+          if [ -z "$KEY" ]; then
+            KEY="${SECRET_KEY_ALT:-}"
+          fi
+          if [ -z "$KEY" ]; then
+            echo "::error::Missing SSH private key. Add repository secret SSH_KEY (or SSH_PRIVATE_KEY) with the full OpenSSH private key for user $USER on $HOST."
+            exit 1
+          fi
+          {
+            echo "host=$HOST"
+            echo "user=$USER"
+            echo "port=$PORT"
+          } >> "$GITHUB_OUTPUT"
+          # Write key with a trailing newline (required by OpenSSH)
+          printf '%s\n' "$KEY" > "$RUNNER_TEMP/deploy_key"
+          chmod 600 "$RUNNER_TEMP/deploy_key"
+          echo "key_path=$RUNNER_TEMP/deploy_key" >> "$GITHUB_OUTPUT"
 
       - name: Rsync dist to server
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -avzr --delete
-          path: dist/
-          remote_path: /var/www/html/
-          remote_host: ${{ secrets.HOST }}
-          remote_user: ${{ secrets.USERNAME }}
-          remote_key: ${{ secrets.SSH_KEY }}
-          remote_port: ${{ secrets.PORT }}
+        env:
+          HOST: ${{ steps.ssh.outputs.host }}
+          USER: ${{ steps.ssh.outputs.user }}
+          PORT: ${{ steps.ssh.outputs.port }}
+          KEY_PATH: ${{ steps.ssh.outputs.key_path }}
+        run: |
+          set -euxo pipefail
+          # Accept host key on first connect; fail clearly on auth errors
+          rsync -avzr --delete \
+            -e "ssh -i \"$KEY_PATH\" -p \"$PORT\" -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=20" \
+            dist/ \
+            "${USER}@${HOST}:/var/www/html/"
 
       - name: Reload nginx
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.PORT }}
-          script: |
-            set -euxo pipefail
-            test -f /var/www/html/favicon.ico
-            sudo systemctl reload nginx
-
-      - name: Verify production favicon
+        env:
+          HOST: ${{ steps.ssh.outputs.host }}
+          USER: ${{ steps.ssh.outputs.user }}
+          PORT: ${{ steps.ssh.outputs.port }}
+          KEY_PATH: ${{ steps.ssh.outputs.key_path }}
         run: |
-          sleep 5
-          curl -fsSI "https://celogic-natcon.ceals.ph/favicon.ico" | head -n 1
-          curl -fsS "https://celogic-natcon.ceals.ph/" | grep -o 'rel="icon"[^>]*' | head -n 3
+          set -euxo pipefail
+          ssh -i "$KEY_PATH" -p "$PORT" \
+            -o StrictHostKeyChecking=accept-new \
+            -o IdentitiesOnly=yes \
+            -o BatchMode=yes \
+            -o ConnectTimeout=20 \
+            "${USER}@${HOST}" \
+            'set -euxo pipefail; test -f /var/www/html/favicon.ico; test -f /var/www/html/index.html; sudo systemctl reload nginx'
+
+      - name: Verify production
+        run: |
+          set -euxo pipefail
+          sleep 3
+          curl -fsSI "https://celogic-natcon.ceals.ph/" | head -n 5
+          curl -fsS "https://celogic-natcon.ceals.ph/" | grep -q 'CE-Logic'
+          curl -fsS "https://celogic-natcon.ceals.ph/" | grep -q 'Conference Program' || true
+          echo "Production verify OK"

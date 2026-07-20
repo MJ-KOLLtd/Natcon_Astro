@@ -6,8 +6,8 @@ import { resourceDriveLinks } from '../data/conferenceResources';
   <div class="nc-container">
     <h2 class="nc-h2">Conference Resources</h2>
     <p class="nc-lead nc-resources-lead">
-      Sponsor resources and speaker materials are hosted on Google Drive for
-      quick access. Select a folder below to view or download files.
+      Open the official conference program, or access sponsor and speaker
+      materials on Google Drive. Select a resource below to view or download.
     </p>
 
     <div class="nc-resources-drive-grid">
@@ -16,7 +16,9 @@ import { resourceDriveLinks } from '../data/conferenceResources';
           <a
             class:list={[
               'nc-resources-drive-card',
-              item.tone === 'gold' ? 'is-videos' : 'is-brochures',
+              item.tone === 'gold' && 'is-videos',
+              item.tone === 'blue' && 'is-brochures',
+              item.tone === 'green' && 'is-program',
             ]}
             id={`cel-nc-resources-${item.id}`}
             href={item.href}
@@ -24,12 +26,19 @@ import { resourceDriveLinks } from '../data/conferenceResources';
             rel="noopener noreferrer"
           >
             <span class="nc-resources-drive-copy">
-              <span class:list={['nc-tier-label', item.tone === 'gold' ? 'is-gold' : 'is-blue']}>
+              <span
+                class:list={[
+                  'nc-tier-label',
+                  item.tone === 'gold' && 'is-gold',
+                  item.tone === 'blue' && 'is-blue',
+                  item.tone === 'green' && 'is-green',
+                ]}
+              >
                 {item.label}
               </span>
             </span>
             <span class="nc-resources-drive-action" aria-hidden="true">
-              <span class="nc-resources-drive-action-label">Open folder</span>
+              <span class="nc-resources-drive-action-label">{item.actionLabel}</span>
               <span class="nc-resources-drive-arrow"></span>
             </span>
           </a>

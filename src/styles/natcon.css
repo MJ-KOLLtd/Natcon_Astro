@@ -774,6 +774,9 @@
     .cel-nc .nc-resources .nc-tier-label.is-blue {
       color: var(--nc-blue);
     }
+    .cel-nc .nc-resources .nc-tier-label.is-green {
+      color: var(--nc-green);
+    }
     @keyframes nc-resources-glow-gold {
       0%, 100% {
         box-shadow:
@@ -810,12 +813,31 @@
           0 0 40px rgba(24, 144, 208, 0.22);
       }
     }
+    /* CEALS logo green (#106838 / --nc-green) */
+    @keyframes nc-resources-glow-green {
+      0%, 100% {
+        box-shadow:
+          inset 2px 2px 5px rgba(255,255,255,0.95),
+          inset -2px -3px 6px rgba(0, 35, 70, 0.07),
+          0 0 0 1px rgba(16, 104, 56, 0.55),
+          0 0 14px rgba(16, 104, 56, 0.32),
+          0 0 28px rgba(16, 104, 56, 0.14);
+      }
+      50% {
+        box-shadow:
+          inset 2px 2px 5px rgba(255,255,255,0.95),
+          inset -2px -3px 6px rgba(0, 35, 70, 0.07),
+          0 0 0 2px rgba(16, 104, 56, 0.82),
+          0 0 22px rgba(16, 104, 56, 0.48),
+          0 0 40px rgba(34, 140, 72, 0.24);
+      }
+    }
     .cel-nc .nc-resources-drive-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.15rem;
     }
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .cel-nc .nc-resources-drive-grid {
         grid-template-columns: 1fr;
       }
@@ -846,6 +868,9 @@
     .cel-nc .nc-resources-drive-card.is-brochures {
       animation: nc-resources-glow-blue 2.6s ease-in-out infinite;
     }
+    .cel-nc .nc-resources-drive-card.is-program {
+      animation: nc-resources-glow-green 2.6s ease-in-out infinite;
+    }
     .cel-nc .nc-resources-drive-card:hover {
       transform: translateY(-2px);
     }
@@ -853,9 +878,13 @@
       outline: 2px solid rgba(0, 112, 176, 0.55);
       outline-offset: 3px;
     }
+    .cel-nc .nc-resources-drive-card.is-program:focus-visible {
+      outline-color: rgba(16, 104, 56, 0.55);
+    }
     @media (prefers-reduced-motion: reduce) {
       .cel-nc .nc-resources-drive-card.is-videos,
-      .cel-nc .nc-resources-drive-card.is-brochures {
+      .cel-nc .nc-resources-drive-card.is-brochures,
+      .cel-nc .nc-resources-drive-card.is-program {
         animation: none;
       }
       .cel-nc .nc-resources-drive-card.is-videos {
@@ -869,6 +898,12 @@
           inset 2px 2px 5px rgba(255,255,255,0.95),
           inset -2px -3px 6px rgba(0, 35, 70, 0.07),
           0 0 0 2px rgba(0, 112, 176, 0.45);
+      }
+      .cel-nc .nc-resources-drive-card.is-program {
+        box-shadow:
+          inset 2px 2px 5px rgba(255,255,255,0.95),
+          inset -2px -3px 6px rgba(0, 35, 70, 0.07),
+          0 0 0 2px rgba(16, 104, 56, 0.55);
       }
     }
     .cel-nc .nc-resources-drive-copy {
@@ -903,6 +938,10 @@
     .cel-nc .nc-resources-drive-card.is-brochures .nc-resources-drive-action {
       color: var(--nc-blue-dark);
       border-color: rgba(0, 112, 176, 0.22);
+    }
+    .cel-nc .nc-resources-drive-card.is-program .nc-resources-drive-action {
+      color: var(--nc-green);
+      border-color: rgba(16, 104, 56, 0.28);
     }
     .cel-nc .nc-resources-drive-action-label {
       font-size: 0.78rem;
