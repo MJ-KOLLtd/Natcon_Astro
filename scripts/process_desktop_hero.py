@@ -10,16 +10,17 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "public" / "assets"
 
 DESKTOP_MASTER = Path(
-    r"C:\Users\MJ\Documents\_Thoughts\C&E Group\CEALS\CE LOGIC\New Hero Layout.png"
+    r"C:\Users\MJ\Documents\_Thoughts\C&E Group\CEALS\CE LOGIC\Natcon Horizontal.png"
 )
 MOBILE_MASTER = Path(
-    r"C:\Users\MJ\Documents\_Thoughts\C&E Group\CEALS\CE LOGIC\1080 x 1920.png"
+    r"C:\Users\MJ\Documents\_Thoughts\C&E Group\CEALS\CE LOGIC\Natcon Vertical.png"
 )
 
-DESKTOP_1X = (1920, 1080)
-DESKTOP_2X = (3840, 2160)
-MOBILE_1X = (1080, 1920)
-MOBILE_2X = (2160, 3840)
+# Masters are 1920x1080 (horizontal) and 1080x1920 (vertical) — never upscale.
+DESKTOP_1X = (1600, 900)
+DESKTOP_2X = (1920, 1080)
+MOBILE_1X = (828, 1472)
+MOBILE_2X = (1080, 1920)
 
 QUALITY_1X = 94
 QUALITY_2X = 90
@@ -27,13 +28,14 @@ METHOD = 6
 
 
 def resize_crisp(img: Image.Image, size: tuple[int, int]) -> Image.Image:
+    img = img.convert("RGB")
     if img.size == size:
-        return img.convert("RGB")
-    downscale = img.width > size[0] or img.height > size[1]
-    resample = Image.Resampling.LANCZOS if downscale else Image.Resampling.BICUBIC
-    out = img.convert("RGB").resize(size, resample)
-    if downscale:
-        out = out.filter(ImageFilter.UnsharpMask(radius=0.9, percent=115, threshold=2))
+        return img
+    # Never upscale past the master — return source when target is larger.
+    if img.width < size[0] or img.height < size[1]:
+        return img
+    out = img.resize(size, Image.Resampling.LANCZOS)
+    out = out.filter(ImageFilter.UnsharpMask(radius=0.9, percent=115, threshold=2))
     return out
 
 
