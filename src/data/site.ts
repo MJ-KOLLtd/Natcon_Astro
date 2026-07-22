@@ -8,7 +8,7 @@ export const SEO_TITLE =
   'CE-Logic Natcon 2026 | 18th CE-Logic National Conference';
 
 export const SEO_DESCRIPTION =
-  'Official CE-Logic Natcon page for the 18th CE-Logic National Conference, July 30-31, 2026 at Seda Vertis North, Quezon City. Live stream, speakers, partners, and program.';
+  'Official CE-Logic Natcon page for the 18th CE-Logic National Conference, July 30-31, 2026. Live stream, speakers, partners, and program.';
 
 export const SEO_KEYWORDS = [
   'CE-Logic Natcon',
@@ -25,7 +25,7 @@ export const EVENT = {
   alternateName: [SITE_NAME, SITE_NAME_ALT, CONFERENCE_SHORT, 'CE-Logic Natcon 2026'],
   startDate: '2026-07-30T08:00:00+08:00',
   endDate: '2026-07-31T18:00:00+08:00',
-  venue: 'Seda Vertis North',
+  venue: 'Quezon City',
   locality: 'Quezon City',
   region: 'Metro Manila',
   country: 'PH',
