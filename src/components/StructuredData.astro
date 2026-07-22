@@ -14,19 +14,9 @@ const eventJson = {
   startDate: EVENT.startDate,
   endDate: EVENT.endDate,
   eventStatus: 'https://schema.org/EventScheduled',
-  eventAttendanceMode: 'https://schema.org/MixedEventAttendanceMode',
+  eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
   image: [imageUrl],
   url: pageUrl,
-  location: {
-    '@type': 'Place',
-    name: EVENT.venue,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: EVENT.locality,
-      addressRegion: EVENT.region,
-      addressCountry: EVENT.country,
-    },
-  },
   organizer: {
     '@type': 'Organization',
     name: ORGANIZER.name,
@@ -79,10 +69,10 @@ const faqJson = {
     },
     {
       '@type': 'Question',
-      name: `When and where is ${SITE_NAME} 2026?`,
+      name: `When is ${SITE_NAME} 2026?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `${SITE_NAME} 2026 takes place on July 30-31, 2026 in Quezon City, Metro Manila. Sessions are also available via live stream.`,
+        text: `${SITE_NAME} 2026 takes place on July 30-31, 2026. Sessions are available via live stream on the CE-Logic Facebook page.`,
       },
     },
   ],

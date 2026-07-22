@@ -25,10 +25,6 @@ export const EVENT = {
   alternateName: [SITE_NAME, SITE_NAME_ALT, CONFERENCE_SHORT, 'CE-Logic Natcon 2026'],
   startDate: '2026-07-30T08:00:00+08:00',
   endDate: '2026-07-31T18:00:00+08:00',
-  venue: 'Quezon City',
-  locality: 'Quezon City',
-  region: 'Metro Manila',
-  country: 'PH',
   theme:
     'Empowering Data Champions for Sustainable, Future-Ready, and Globally Competitive Education',
 };
